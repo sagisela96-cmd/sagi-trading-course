@@ -7,147 +7,120 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;700;900&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Heebo', sans-serif; background-color: #0f172a; color: #f1f5f9; margin: 0; }
+        body { font-family: 'Heebo', sans-serif; background-color: #0f172a; color: #f1f5f9; margin: 0; overflow: hidden; }
         .sidebar-active { background: linear-gradient(to left, #2563eb, #1e40af); border-right: 4px solid #60a5fa; color: white !important; }
         .glass-card { background: rgba(30, 41, 59, 0.7); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.1); }
         .hidden { display: none; }
         
-        /* Mobile Menu */
         @media (max-width: 768px) {
             .sidebar { position: fixed; right: -100%; transition: 0.3s; z-index: 50; height: 100%; width: 250px; }
             .sidebar.open { right: 0; }
         }
     </style>
 </head>
-<body class="h-screen overflow-hidden flex">
+<body class="h-screen flex">
 
     <!-- Sidebar -->
-    <aside id="sidebar" class="sidebar w-64 bg-slate-900 border-l border-slate-800 flex flex-col shrink-0 shadow-2xl">
-        <div class="p-6">
-            <div class="flex items-center gap-2">
-                <div class="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center font-bold text-white shadow-lg shadow-blue-500/20">S</div>
-                <h1 class="text-xl font-black tracking-tighter">SAGI TRADING</h1>
-            </div>
+    <aside id="sidebar" class="sidebar w-64 bg-slate-900 border-l border-slate-800 flex flex-col shrink-0 shadow-2xl transition-all">
+        <div class="p-6 text-center">
+            <h1 class="text-2xl font-black text-blue-500 tracking-tighter">SAGI TRADING</h1>
+            <p class="text-[10px] text-slate-500 uppercase mt-1 font-bold">Trading Mentor</p>
         </div>
         
-        <nav class="flex-1 px-4 space-y-2">
+        <nav class="flex-1 px-4 space-y-2 mt-4">
             <button onclick="navigateTo('live')" class="nav-btn w-full text-right py-3 px-4 rounded-lg flex items-center gap-3 sidebar-active transition-all" data-page="live">
-                <span class="text-lg">🔴</span> חדר מסחר לייב
+                <span class="text-lg">🔴</span> חדר מסחר
             </button>
             <button onclick="navigateTo('academy')" class="nav-btn w-full text-right py-3 px-4 rounded-lg flex items-center gap-3 hover:bg-slate-800 transition-all text-slate-400" data-page="academy">
-                <span class="text-lg">📚</span> אקדמיית ה-10%
+                <span class="text-lg">📚</span> אקדמיה
             </button>
             <button onclick="navigateTo('tools')" class="nav-btn w-full text-right py-3 px-4 rounded-lg flex items-center gap-3 hover:bg-slate-800 transition-all text-slate-400" data-page="tools">
-                <span class="text-lg">🛠️</span> כלי עבודה
-            </button>
-            <button onclick="navigateTo('community')" class="nav-btn w-full text-right py-3 px-4 rounded-lg flex items-center gap-3 hover:bg-slate-800 transition-all text-slate-400" data-page="community">
-                <span class="text-lg">👥</span> קהילה
+                <span class="text-lg">🛠️</span> מחשבון סיכון
             </button>
         </nav>
-
-        <div class="p-4 border-t border-slate-800 text-center">
-            <p class="text-[10px] text-slate-500 uppercase tracking-widest font-bold">Trading is a business</p>
+        
+        <div class="p-4 border-t border-slate-800">
+            <div class="bg-slate-800/50 p-3 rounded-xl text-[10px] text-slate-400 text-center uppercase">
+                Status: Connected
+            </div>
         </div>
     </aside>
 
     <!-- Main View -->
-    <main class="flex-1 flex flex-col overflow-hidden relative">
+    <main class="flex-1 flex flex-col relative overflow-hidden">
         
         <!-- Header -->
-        <header class="h-16 border-b border-slate-800 flex items-center justify-between px-8 bg-slate-900/80 backdrop-blur-md z-10">
+        <header class="h-16 border-b border-slate-800 flex items-center justify-between px-8 bg-slate-900/50 backdrop-blur-md">
             <button class="md:hidden text-2xl text-white" onclick="toggleSidebar()">☰</button>
-            <div id="page-title" class="font-bold text-lg text-blue-400">חדר מסחר לייב</div>
-            <div class="flex items-center gap-4">
-                <div class="hidden sm:flex items-center gap-2 text-xs text-slate-400">
-                    <span class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
-                    חיבור פעיל לבורסה
-                </div>
-                <div class="w-8 h-8 rounded-full bg-slate-700 flex items-center justify-center text-[10px] border border-slate-600">👤</div>
+            <div id="page-title" class="font-bold text-lg text-blue-400 tracking-wide">חדר מסחר לייב</div>
+            <div class="flex items-center gap-2">
+                <span class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
+                <span class="text-[10px] text-slate-400 font-mono">SERVER ACTIVE</span>
             </div>
         </header>
 
-        <!-- Pages Section -->
-        <div class="flex-1 overflow-y-auto p-4 sm:p-8 bg-[#0b1120]">
+        <!-- Content Area -->
+        <div id="content-scroll" class="flex-1 overflow-y-auto p-4 sm:p-8 bg-[#0b1120]">
             
-            <!-- Page: Live -->
+            <!-- דף: חדר מסחר -->
             <section id="page-live" class="page-content space-y-6">
-                <div class="glass-card p-6 rounded-2xl border-r-4 border-blue-500 flex flex-col md:flex-row justify-between items-center gap-4">
+                <div class="glass-card p-6 rounded-2xl border-r-4 border-blue-500 flex justify-between items-center">
                     <div>
-                        <h2 class="text-2xl font-black mb-1">ברוכים הבאים לסשן הלייב</h2>
-                        <p class="text-slate-400">"המשמעת העצמית שלך היא הרווח שלך." - שגיא סלע</p>
+                        <h2 class="text-2xl font-bold italic">"אל תחפש כסף, תחפש הגדרות."</h2>
+                        <p class="text-slate-400 text-sm">סבלנות היא הנכס הכי חשוב של הסוחר.</p>
                     </div>
-                    <div class="bg-blue-600 px-6 py-2 rounded-full font-bold text-sm animate-bounce cursor-pointer">להצטרפות לזום</div>
                 </div>
                 
-                <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-                    <div class="lg:col-span-2 glass-card p-8 rounded-2xl h-[400px] flex flex-col items-center justify-center border-dashed border-slate-700">
-                        <div class="text-6xl mb-4">📺</div>
-                        <h3 class="text-xl font-bold">שידור המסחר (YouTube Live)</h3>
-                        <p class="text-slate-500 mt-2">השידור יופיע כאן עם פתיחת המסחר בארה"ב</p>
-                    </div>
-                    <div class="glass-card p-6 rounded-2xl flex flex-col">
-                        <h3 class="font-bold border-b border-slate-800 pb-2 mb-4">צ'אט מהיר 💬</h3>
-                        <div class="flex-1 text-sm space-y-4 overflow-y-auto">
-                            <div class="text-blue-400"><strong>שגיא:</strong> בוקר טוב לכולם, הכינו רשימות מעקב!</div>
-                            <div class="text-slate-300"><strong>דוד:</strong> NVDA נראית פצצה על רמת ה-140.</div>
-                            <div class="text-slate-300"><strong>מיכל:</strong> מה הסטופ המומלץ ב-AAPL?</div>
-                        </div>
-                        <input type="text" placeholder="כתוב משהו..." class="mt-4 bg-slate-950 border border-slate-800 p-2 rounded-lg text-xs outline-none">
-                    </div>
+                <div class="glass-card aspect-video rounded-3xl flex flex-col items-center justify-center border-2 border-dashed border-slate-700 group hover:border-blue-500/50 transition-all cursor-pointer">
+                    <div class="w-20 h-20 bg-blue-600/10 rounded-full flex items-center justify-center mb-4 group-hover:scale-110 transition-transform text-4xl">▶️</div>
+                    <p class="text-slate-400 font-bold">השידור יתחיל עם פתיחת המסחר</p>
+                    <p class="text-[10px] text-slate-600 mt-2 uppercase tracking-widest italic">Be the 10% or stay with the 90%</p>
                 </div>
             </section>
 
-            <!-- Page: Academy -->
+            <!-- דף: אקדמיה -->
             <section id="page-academy" class="page-content hidden">
-                <h2 class="text-3xl font-black mb-8">תכני הקורס - ממאפס לסוחר מקצועי</h2>
+                <div class="mb-8">
+                    <h2 class="text-3xl font-black italic">סילבוס הקורס המלא</h2>
+                </div>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <!-- Module 1 -->
-                    <div class="glass-card p-6 rounded-2xl hover:border-blue-500 transition cursor-pointer group">
+                    <div class="glass-card p-6 rounded-2xl border border-slate-700 hover:border-blue-500 transition cursor-pointer">
                         <div class="flex items-center gap-4 mb-3">
-                            <div class="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center font-bold">01</div>
-                            <h3 class="text-xl font-bold group-hover:text-blue-400">מבוא ומיינדסט</h3>
+                            <div class="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center font-bold text-white shadow-lg">01</div>
+                            <h3 class="text-xl font-bold italic">מבוא ומיינדסט</h3>
                         </div>
-                        <p class="text-sm text-slate-500">למה 90% מהסוחרים נכשלים? ואיך לבנות תוכנית עבודה מנצחת.</p>
+                        <p class="text-sm text-slate-400">איך להפוך את המוח למכונת מסחר קרה ומחושבת.</p>
+                        <button class="mt-4 bg-blue-600 w-full py-2.5 rounded-xl text-sm font-bold hover:bg-blue-500">צפייה בשיעור</button>
                     </div>
-                    <!-- Module 2 -->
-                    <div class="glass-card p-6 rounded-2xl hover:border-blue-500 transition cursor-pointer group">
+                    <div class="glass-card p-6 rounded-2xl border border-slate-700 opacity-60">
                         <div class="flex items-center gap-4 mb-3">
                             <div class="w-10 h-10 bg-slate-800 rounded-lg flex items-center justify-center font-bold">02</div>
-                            <h3 class="text-xl font-bold group-hover:text-blue-400">תשתית טכנית</h3>
+                            <h3 class="text-xl font-bold italic text-slate-500">תשתית טכנית</h3>
                         </div>
-                        <p class="text-sm text-slate-500">איך הבורסה באמת עובדת? עושי שוק, Level 2 ו-ECN.</p>
+                        <p class="text-sm text-slate-500">מניות, מדדים ו-Level 2 (נעול).</p>
                     </div>
-                    <!-- Add more modules as needed -->
                 </div>
             </section>
 
-            <!-- Page: Tools -->
+            <!-- דף: מחשבון -->
             <section id="page-tools" class="page-content hidden">
-                <div class="max-w-2xl mx-auto glass-card p-10 rounded-3xl shadow-2xl">
-                    <h2 class="text-3xl font-black mb-8 flex items-center gap-3">
-                        <span>🧮</span> מחשבון ניהול סיכונים
-                    </h2>
-                    <div class="space-y-6">
+                <div class="max-w-md mx-auto glass-card p-8 rounded-3xl shadow-2xl border-t-2 border-blue-500">
+                    <h2 class="text-2xl font-black mb-6 text-center italic">מחשבון סיכון (1%)</h2>
+                    <div class="space-y-5">
                         <div>
-                            <label class="block text-sm text-slate-400 mb-2">סך ההון בחשבון ($)</label>
-                            <input type="number" id="capital" value="10000" class="w-full bg-slate-950 p-4 rounded-xl border border-slate-800 outline-none focus:border-blue-500 text-xl font-bold">
+                            <label class="block text-xs text-slate-500 mb-2 mr-1 font-bold">סך ההון בחשבון ($)</label>
+                            <input type="number" id="cap" value="10000" class="w-full bg-slate-950 p-4 rounded-xl border border-slate-800 outline-none focus:border-blue-500 text-xl font-bold">
                         </div>
-                        <div class="grid grid-cols-2 gap-4">
-                            <div>
-                                <label class="block text-sm text-slate-400 mb-2">מחיר כניסה</label>
-                                <input type="number" id="entryPrice" placeholder="0.00" class="w-full bg-slate-950 p-4 rounded-xl border border-slate-800 outline-none focus:border-blue-500">
-                            </div>
-                            <div>
-                                <label class="block text-sm text-slate-400 mb-2">מחיר סטופ-לוס</label>
-                                <input type="number" id="stopPrice" placeholder="0.00" class="w-full bg-slate-950 p-4 rounded-xl border border-slate-800 outline-none focus:border-blue-500">
-                            </div>
+                        <div>
+                            <label class="block text-xs text-slate-500 mb-2 mr-1 font-bold">מרחק לסטופ ($)</label>
+                            <input type="number" id="dist" placeholder="למשל 0.50" class="w-full bg-slate-950 p-4 rounded-xl border border-slate-800 outline-none focus:border-blue-500 text-xl font-bold">
                         </div>
-                        <button onclick="calculateRisk()" class="w-full bg-blue-600 py-4 rounded-xl font-black text-xl hover:bg-blue-700 shadow-lg shadow-blue-500/20 transition-all active:scale-95">חשב כמות מניות</button>
+                        <button onclick="calc()" class="w-full bg-blue-600 py-4 rounded-xl font-black text-lg hover:bg-blue-700 transition-all active:scale-95 shadow-lg shadow-blue-500/20">חשב כמות מניות</button>
                         
-                        <div id="riskResult" class="hidden mt-8 p-6 bg-blue-500/10 rounded-2xl border border-blue-500/20 text-center">
-                            <div class="text-slate-400 text-sm mb-1">כמות מניות לקנייה:</div>
-                            <div id="sharesValue" class="text-5xl font-black text-blue-500">0</div>
-                            <div class="mt-2 text-red-400 font-bold" id="dollarRisk">סיכון כספי: $100 (1%)</div>
+                        <div id="res-box" class="hidden mt-6 p-6 bg-blue-500/10 rounded-2xl border border-blue-500/20 text-center animate-fadeIn">
+                            <div class="text-slate-400 text-xs mb-1 font-bold">כמות לקנייה</div>
+                            <div id="res" class="text-5xl font-black text-blue-500 tracking-tighter">0</div>
+                            <div class="mt-3 text-[11px] text-slate-500 italic">"Never risk more than 1%"</div>
                         </div>
                     </div>
                 </div>
@@ -157,25 +130,20 @@
     </main>
 
     <script>
-        function navigateTo(pageId) {
-            // הסתרת כל הדפים
+        function navigateTo(pId) {
             document.querySelectorAll('.page-content').forEach(p => p.classList.add('hidden'));
-            
-            // הצגת הדף הנבחר
-            const target = document.getElementById('page-' + pageId);
+            const target = document.getElementById('page-' + pId);
             if(target) target.classList.remove('hidden');
-
-            // עדכון כפתורי הסיידבר
-            document.querySelectorAll('.nav-btn').forEach(btn => {
-                btn.classList.remove('sidebar-active');
-                if(btn.getAttribute('data-page') === pageId) btn.classList.add('sidebar-active');
+            
+            document.querySelectorAll('.nav-btn').forEach(b => {
+                b.classList.remove('sidebar-active');
+                if(b.getAttribute('data-page') === pId) b.classList.add('sidebar-active');
             });
 
-            // עדכון כותרת
-            const titles = { 'live': 'חדר מסחר לייב', 'academy': 'אקדמיית SAGI TRADING', 'tools': 'מחשבון ניהול סיכונים', 'community': 'קהילה ודיונים' };
-            document.getElementById('page-title').innerText = titles[pageId] || 'SAGI TRADING';
+            const titles = {'live': 'חדר מסחר לייב', 'academy': 'אקדמיית SAGI TRADING', 'tools': 'מחשבון ניהול סיכונים'};
+            document.getElementById('page-title').innerText = titles[pId] || 'SAGI TRADING';
+            document.getElementById('content-scroll').scrollTop = 0;
 
-            // סגירה במובייל
             if(window.innerWidth < 768) toggleSidebar();
         }
 
@@ -183,21 +151,18 @@
             document.getElementById('sidebar').classList.toggle('open');
         }
 
-        function calculateRisk() {
-            const cap = parseFloat(document.getElementById('capital').value);
-            const entry = parseFloat(document.getElementById('entryPrice').value);
-            const stop = parseFloat(document.getElementById('stopPrice').value);
-            
-            if(cap && entry && stop && entry !== stop) {
-                const riskAmount = cap * 0.01; // סיכון קבוע של 1%
-                const stopDist = Math.abs(entry - stop);
-                const shares = Math.floor(riskAmount / stopDist);
-                
-                document.getElementById('sharesValue').innerText = shares.toLocaleString();
-                document.getElementById('dollarRisk').innerText = "סיכון כספי: $" + riskAmount.toLocaleString() + " (1%)";
-                document.getElementById('riskResult').classList.remove('hidden');
+        function calc() {
+            const capital = parseFloat(document.getElementById('cap').value);
+            const stopDist = parseFloat(document.getElementById('dist').value);
+            if(capital && stopDist && stopDist > 0) {
+                const riskPerTrade = capital * 0.01;
+                const shares = Math.floor(riskPerTrade / stopDist);
+                document.getElementById('res').innerText = shares.toLocaleString();
+                document.getElementById('res-box').classList.remove('hidden');
             }
         }
+        
+        window.onload = () => navigateTo('live');
     </script>
 </body>
 </html>
