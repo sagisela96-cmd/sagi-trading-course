@@ -3,521 +3,201 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SAGI TRADING - קורס המסחר המקיף</title>
+    <title>SAGI TRADING | Community & Academy</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;700;900&display=swap" rel="stylesheet">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 100%);
-            color: #e0e0e0;
-            min-height: 100vh;
-            padding: 20px;
-        }
-
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-
-        header {
-            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
-            padding: 30px;
-            border-radius: 15px;
-            margin-bottom: 30px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-            text-align: center;
-        }
-
-        h1 {
-            font-size: 2.5em;
-            margin-bottom: 10px;
-            color: #fff;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-        }
-
-        .subtitle {
-            font-size: 1.2em;
-            color: #a8d5ff;
-            margin-bottom: 20px;
-        }
-
-        .live-badge {
-            background: linear-gradient(135deg, #4ade80 0%, #22c55e 100%);
-            color: #000;
-            padding: 10px 20px;
-            border-radius: 25px;
-            font-weight: bold;
-            display: inline-block;
-            margin-top: 10px;
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-        }
-
-        .progress-container {
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 10px;
-            padding: 20px;
-            margin-bottom: 30px;
-        }
-
-        .progress-bar {
-            width: 100%;
-            height: 30px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 15px;
-            overflow: hidden;
-            position: relative;
-        }
-
-        .progress-fill {
-            height: 100%;
-            background: linear-gradient(90deg, #4ade80 0%, #22c55e 100%);
-            border-radius: 15px;
-            transition: width 0.3s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: bold;
-        }
-
-        .stats {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px;
-            margin-top: 20px;
-        }
-
-        .stat-card {
-            background: rgba(255, 255, 255, 0.05);
-            padding: 15px;
-            border-radius: 10px;
-            text-align: center;
-        }
-
-        .stat-value {
-            font-size: 2em;
-            font-weight: bold;
-            color: #4ade80;
-        }
-
-        .stat-label {
-            color: #a0a0a0;
-            margin-top: 5px;
-        }
-
-        .modules-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 25px;
-            margin-bottom: 30px;
-        }
-
-        .module-card {
-            background: linear-gradient(135deg, #1a1f3a 0%, #252b47 100%);
-            border-radius: 15px;
-            padding: 25px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            border: 2px solid transparent;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .module-card:hover {
-            transform: translateY(-5px);
-            border-color: #4ade80;
-            box-shadow: 0 15px 40px rgba(74, 222, 128, 0.2);
-        }
-
-        .module-card.completed {
-            border-color: #4ade80;
-        }
-
-        .module-card.active {
-            border-color: #fbbf24;
-        }
-
-        .module-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 15px;
-        }
-
-        .module-number {
-            font-size: 2.5em;
-            font-weight: bold;
-            background: linear-gradient(135deg, #4ade80 0%, #22c55e 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .module-status {
-            font-size: 2em;
-        }
-
-        .module-title {
-            font-size: 1.3em;
-            font-weight: bold;
-            margin-bottom: 10px;
-            color: #fff;
-        }
-
-        .module-description {
-            color: #a0a0a0;
-            margin-bottom: 15px;
-            font-size: 0.95em;
-        }
-
-        .lessons-list {
-            list-style: none;
-            margin-bottom: 15px;
-        }
-
-        .lesson-item {
-            padding: 8px 0;
-            color: #b0b0b0;
-            font-size: 0.9em;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .lesson-item::before {
-            content: "▸";
-            color: #4ade80;
-        }
-
-        .lesson-item.completed {
-            color: #4ade80;
-        }
-
-        .lesson-item.completed::before {
-            content: "✓";
-        }
-
-        .module-footer {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-top: 15px;
-            padding-top: 15px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .lesson-progress {
-            font-size: 0.85em;
-            color: #a0a0a0;
-        }
-
-        .start-btn {
-            background: linear-gradient(135deg, #4ade80 0%, #22c55e 100%);
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 8px;
-            cursor: pointer;
-            font-weight: bold;
-            transition: all 0.3s ease;
-        }
-
-        .start-btn:hover {
-            transform: scale(1.05);
-            box-shadow: 0 5px 15px rgba(74, 222, 128, 0.4);
-        }
-
-        .resources-section {
-            background: linear-gradient(135deg, #1a1f3a 0%, #252b47 100%);
-            border-radius: 15px;
-            padding: 25px;
-            margin-top: 30px;
-        }
-
-        .resources-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 15px;
-            margin-top: 20px;
-        }
-
-        .resource-card {
-            background: rgba(255, 255, 255, 0.05);
-            padding: 20px;
-            border-radius: 10px;
-            text-align: center;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            border: 2px solid transparent;
-        }
-
-        .resource-card:hover {
-            border-color: #4ade80;
-            transform: translateY(-3px);
-        }
-
-        .resource-icon {
-            font-size: 3em;
-            margin-bottom: 10px;
-        }
-
-        .resource-title {
-            font-weight: bold;
-            margin-bottom: 5px;
-        }
-
-        .resource-link {
-            color: #4ade80;
-            text-decoration: none;
-            font-size: 0.9em;
-        }
-
+        body { font-family: 'Heebo', sans-serif; background-color: #0f172a; color: #f1f5f9; margin: 0; }
+        .sidebar-active { background: linear-gradient(to left, #2563eb, #1e40af); border-right: 4px solid #60a5fa; color: white !important; }
+        .glass-card { background: rgba(30, 41, 59, 0.7); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.1); }
+        .hidden { display: none; }
+        
+        /* Mobile Menu */
         @media (max-width: 768px) {
-            h1 {
-                font-size: 1.8em;
-            }
-
-            .modules-grid {
-                grid-template-columns: 1fr;
-            }
+            .sidebar { position: fixed; right: -100%; transition: 0.3s; z-index: 50; height: 100%; width: 250px; }
+            .sidebar.open { right: 0; }
         }
     </style>
 </head>
-<body>
-    <div class="container">
-        <header>
-            <h1>📈 SAGI TRADING</h1>
-            <div class="subtitle">הנתיב המהיר למסחר בשוק ההון וקריפטו</div>
-            <div class="live-badge">🟢 אתר חי - מוכן לשימוש!</div>
+<body class="h-screen overflow-hidden flex">
+
+    <!-- Sidebar -->
+    <aside id="sidebar" class="sidebar w-64 bg-slate-900 border-l border-slate-800 flex flex-col shrink-0 shadow-2xl">
+        <div class="p-6">
+            <div class="flex items-center gap-2">
+                <div class="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center font-bold text-white shadow-lg shadow-blue-500/20">S</div>
+                <h1 class="text-xl font-black tracking-tighter">SAGI TRADING</h1>
+            </div>
+        </div>
+        
+        <nav class="flex-1 px-4 space-y-2">
+            <button onclick="navigateTo('live')" class="nav-btn w-full text-right py-3 px-4 rounded-lg flex items-center gap-3 sidebar-active transition-all" data-page="live">
+                <span class="text-lg">🔴</span> חדר מסחר לייב
+            </button>
+            <button onclick="navigateTo('academy')" class="nav-btn w-full text-right py-3 px-4 rounded-lg flex items-center gap-3 hover:bg-slate-800 transition-all text-slate-400" data-page="academy">
+                <span class="text-lg">📚</span> אקדמיית ה-10%
+            </button>
+            <button onclick="navigateTo('tools')" class="nav-btn w-full text-right py-3 px-4 rounded-lg flex items-center gap-3 hover:bg-slate-800 transition-all text-slate-400" data-page="tools">
+                <span class="text-lg">🛠️</span> כלי עבודה
+            </button>
+            <button onclick="navigateTo('community')" class="nav-btn w-full text-right py-3 px-4 rounded-lg flex items-center gap-3 hover:bg-slate-800 transition-all text-slate-400" data-page="community">
+                <span class="text-lg">👥</span> קהילה
+            </button>
+        </nav>
+
+        <div class="p-4 border-t border-slate-800 text-center">
+            <p class="text-[10px] text-slate-500 uppercase tracking-widest font-bold">Trading is a business</p>
+        </div>
+    </aside>
+
+    <!-- Main View -->
+    <main class="flex-1 flex flex-col overflow-hidden relative">
+        
+        <!-- Header -->
+        <header class="h-16 border-b border-slate-800 flex items-center justify-between px-8 bg-slate-900/80 backdrop-blur-md z-10">
+            <button class="md:hidden text-2xl text-white" onclick="toggleSidebar()">☰</button>
+            <div id="page-title" class="font-bold text-lg text-blue-400">חדר מסחר לייב</div>
+            <div class="flex items-center gap-4">
+                <div class="hidden sm:flex items-center gap-2 text-xs text-slate-400">
+                    <span class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
+                    חיבור פעיל לבורסה
+                </div>
+                <div class="w-8 h-8 rounded-full bg-slate-700 flex items-center justify-center text-[10px] border border-slate-600">👤</div>
+            </div>
         </header>
 
-        <div class="progress-container">
-            <h2 style="margin-bottom: 15px; color: #fff;">התקדמות בקורס</h2>
-            <div class="progress-bar">
-                <div class="progress-fill" id="progressFill" style="width: 0%">0%</div>
-            </div>
-            <div class="stats">
-                <div class="stat-card">
-                    <div class="stat-value" id="completedModules">0</div>
-                    <div class="stat-label">מודולים שהושלמו</div>
+        <!-- Pages Section -->
+        <div class="flex-1 overflow-y-auto p-4 sm:p-8 bg-[#0b1120]">
+            
+            <!-- Page: Live -->
+            <section id="page-live" class="page-content space-y-6">
+                <div class="glass-card p-6 rounded-2xl border-r-4 border-blue-500 flex flex-col md:flex-row justify-between items-center gap-4">
+                    <div>
+                        <h2 class="text-2xl font-black mb-1">ברוכים הבאים לסשן הלייב</h2>
+                        <p class="text-slate-400">"המשמעת העצמית שלך היא הרווח שלך." - שגיא סלע</p>
+                    </div>
+                    <div class="bg-blue-600 px-6 py-2 rounded-full font-bold text-sm animate-bounce cursor-pointer">להצטרפות לזום</div>
                 </div>
-                <div class="stat-card">
-                    <div class="stat-value" id="completedLessons">0</div>
-                    <div class="stat-label">שיעורים שהושלמו</div>
+                
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                    <div class="lg:col-span-2 glass-card p-8 rounded-2xl h-[400px] flex flex-col items-center justify-center border-dashed border-slate-700">
+                        <div class="text-6xl mb-4">📺</div>
+                        <h3 class="text-xl font-bold">שידור המסחר (YouTube Live)</h3>
+                        <p class="text-slate-500 mt-2">השידור יופיע כאן עם פתיחת המסחר בארה"ב</p>
+                    </div>
+                    <div class="glass-card p-6 rounded-2xl flex flex-col">
+                        <h3 class="font-bold border-b border-slate-800 pb-2 mb-4">צ'אט מהיר 💬</h3>
+                        <div class="flex-1 text-sm space-y-4 overflow-y-auto">
+                            <div class="text-blue-400"><strong>שגיא:</strong> בוקר טוב לכולם, הכינו רשימות מעקב!</div>
+                            <div class="text-slate-300"><strong>דוד:</strong> NVDA נראית פצצה על רמת ה-140.</div>
+                            <div class="text-slate-300"><strong>מיכל:</strong> מה הסטופ המומלץ ב-AAPL?</div>
+                        </div>
+                        <input type="text" placeholder="כתוב משהו..." class="mt-4 bg-slate-950 border border-slate-800 p-2 rounded-lg text-xs outline-none">
+                    </div>
                 </div>
-                <div class="stat-card">
-                    <div class="stat-value">10</div>
-                    <div class="stat-label">מודולים סה"כ</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-value">30+</div>
-                    <div class="stat-label">שיעורים</div>
-                </div>
-            </div>
-        </div>
+            </section>
 
-        <div class="modules-grid" id="modulesGrid">
-            <!-- Modules will be inserted here by JavaScript -->
-        </div>
+            <!-- Page: Academy -->
+            <section id="page-academy" class="page-content hidden">
+                <h2 class="text-3xl font-black mb-8">תכני הקורס - ממאפס לסוחר מקצועי</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <!-- Module 1 -->
+                    <div class="glass-card p-6 rounded-2xl hover:border-blue-500 transition cursor-pointer group">
+                        <div class="flex items-center gap-4 mb-3">
+                            <div class="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center font-bold">01</div>
+                            <h3 class="text-xl font-bold group-hover:text-blue-400">מבוא ומיינדסט</h3>
+                        </div>
+                        <p class="text-sm text-slate-500">למה 90% מהסוחרים נכשלים? ואיך לבנות תוכנית עבודה מנצחת.</p>
+                    </div>
+                    <!-- Module 2 -->
+                    <div class="glass-card p-6 rounded-2xl hover:border-blue-500 transition cursor-pointer group">
+                        <div class="flex items-center gap-4 mb-3">
+                            <div class="w-10 h-10 bg-slate-800 rounded-lg flex items-center justify-center font-bold">02</div>
+                            <h3 class="text-xl font-bold group-hover:text-blue-400">תשתית טכנית</h3>
+                        </div>
+                        <p class="text-sm text-slate-500">איך הבורסה באמת עובדת? עושי שוק, Level 2 ו-ECN.</p>
+                    </div>
+                    <!-- Add more modules as needed -->
+                </div>
+            </section>
 
-        <div class="resources-section">
-            <h2 style="margin-bottom: 20px; color: #fff;">קישורים וקהילה</h2>
-            <div class="resources-grid">
-                <div class="resource-card" onclick="window.open('https://t.me/+pFfWwRGAUlFjZjJk', '_blank')">
-                    <div class="resource-icon">📱</div>
-                    <div class="resource-title">קבוצת טלגרם</div>
-                    <div class="resource-link">הצטרף לעדכונים</div>
+            <!-- Page: Tools -->
+            <section id="page-tools" class="page-content hidden">
+                <div class="max-w-2xl mx-auto glass-card p-10 rounded-3xl shadow-2xl">
+                    <h2 class="text-3xl font-black mb-8 flex items-center gap-3">
+                        <span>🧮</span> מחשבון ניהול סיכונים
+                    </h2>
+                    <div class="space-y-6">
+                        <div>
+                            <label class="block text-sm text-slate-400 mb-2">סך ההון בחשבון ($)</label>
+                            <input type="number" id="capital" value="10000" class="w-full bg-slate-950 p-4 rounded-xl border border-slate-800 outline-none focus:border-blue-500 text-xl font-bold">
+                        </div>
+                        <div class="grid grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-sm text-slate-400 mb-2">מחיר כניסה</label>
+                                <input type="number" id="entryPrice" placeholder="0.00" class="w-full bg-slate-950 p-4 rounded-xl border border-slate-800 outline-none focus:border-blue-500">
+                            </div>
+                            <div>
+                                <label class="block text-sm text-slate-400 mb-2">מחיר סטופ-לוס</label>
+                                <input type="number" id="stopPrice" placeholder="0.00" class="w-full bg-slate-950 p-4 rounded-xl border border-slate-800 outline-none focus:border-blue-500">
+                            </div>
+                        </div>
+                        <button onclick="calculateRisk()" class="w-full bg-blue-600 py-4 rounded-xl font-black text-xl hover:bg-blue-700 shadow-lg shadow-blue-500/20 transition-all active:scale-95">חשב כמות מניות</button>
+                        
+                        <div id="riskResult" class="hidden mt-8 p-6 bg-blue-500/10 rounded-2xl border border-blue-500/20 text-center">
+                            <div class="text-slate-400 text-sm mb-1">כמות מניות לקנייה:</div>
+                            <div id="sharesValue" class="text-5xl font-black text-blue-500">0</div>
+                            <div class="mt-2 text-red-400 font-bold" id="dollarRisk">סיכון כספי: $100 (1%)</div>
+                        </div>
+                    </div>
                 </div>
-                <div class="resource-card" onclick="window.open('https://chat.whatsapp.com/Iej39KWKKIK', '_blank')">
-                    <div class="resource-icon">💬</div>
-                    <div class="resource-title">קבוצת וואטסאפ</div>
-                    <div class="resource-link">הצטרף לקהילה</div>
-                </div>
-                <div class="resource-card" onclick="window.open('https://sagiinvest.carrd.co/', '_blank')">
-                    <div class="resource-icon">🌐</div>
-                    <div class="resource-title">דף נחיתה</div>
-                    <div class="resource-link">מדריכים והטבות</div>
-                </div>
-                <div class="resource-card" onclick="window.open('https://youtube.com/@sagi-trading', '_blank')">
-                    <div class="resource-icon">🎥</div>
-                    <div class="resource-title">YouTube</div>
-                    <div class="resource-link">צפה בתוכן</div>
-                </div>
-                <div class="resource-card" onclick="window.open('https://bit.ly/SagiSelaPRO', '_blank')">
-                    <div class="resource-icon">💼</div>
-                    <div class="resource-title">קולמקס פרו</div>
-                    <div class="resource-link">פתח חשבון</div>
-                </div>
-                <div class="resource-card" onclick="window.open('https://lp3.inter-il.com/ab/673', '_blank')">
-                    <div class="resource-icon">🏦</div>
-                    <div class="resource-title">אינטראקטיב ברוקרס</div>
-                    <div class="resource-link">פתח חשבון</div>
-                </div>
-            </div>
+            </section>
+
         </div>
-    </div>
+    </main>
 
     <script>
-        const modules = [
-            {
-                id: 1,
-                title: "מבוא ומיינדסט – הפיכת המוח לסוחר",
-                description: "הבנת הבסיס הנכון למסחר מוצלח, הצבת מטרות ובניית תוכנית עבודה",
-                lessons: 3
-            },
-            {
-                id: 2,
-                title: "תשתית טכנית – איך הבורסה באמת עובדת?",
-                description: "הבנת מבנה השוק, מניות, מדדים ותעודות סל",
-                lessons: 3
-            },
-            {
-                id: 3,
-                title: "בחירת ברוקר והקמת עמדת עבודה",
-                description: "השוואה בין ברוקרים, פתיחת חשבון והגדרת מערכת מסחר",
-                lessons: 3
-            },
-            {
-                id: 4,
-                title: "ניתוח טכני א' – לקרוא את שפת הגרפים",
-                description: "נרות יפניים, תמיכה והתנגדות, קווי מגמה ואסטרטגיית פריצה",
-                lessons: 3
-            },
-            {
-                id: 5,
-                title: "ניתוח טכני ב' – תבניות ומדדים",
-                description: "תבניות היפוך והמשכיות, RSI, ממוצעים נעים ובולינגר",
-                lessons: 3
-            },
-            {
-                id: 6,
-                title: "אסטרטגיות מסחר מעשיות",
-                description: "פריצה, נסיגות ומסחר בפרה-מרקט",
-                lessons: 3
-            },
-            {
-                id: 7,
-                title: "ניהול סיכונים – חבל ההצלה שלך",
-                description: "יחס סיכון-סיכוי, סטופ-לוס וחוק ה-1%",
-                lessons: 3
-            },
-            {
-                id: 8,
-                title: "פסיכולוגיית מסחר – האויב שבפנים",
-                description: "FOMO, משמעת עצמית והתמודדות עם הפסדים",
-                lessons: 3
-            },
-            {
-                id: 9,
-                title: "קריפטו, בלוקצ'יין והכנסה פסיבית",
-                description: "מבוא לנכסים דיגיטליים, Bybit וסטייקינג",
-                lessons: 3
-            },
-            {
-                id: 10,
-                title: "סיכום, מיסוי ויציאה לדרך",
-                description: "יומן מסחר, מדריך מיסוי והצעדים הבאים",
-                lessons: 3
-            }
-        ];
-
-        let completedLessons = new Set(JSON.parse(localStorage.getItem('completedLessons') || '[]'));
-
-        function saveProgress() {
-            localStorage.setItem('completedLessons', JSON.stringify(Array.from(completedLessons)));
-            updateProgress();
-        }
-
-        function updateProgress() {
-            const total = modules.reduce((sum, m) => sum + m.lessons, 0);
-            const completed = completedLessons.size;
-            const percentage = Math.round((completed / total) * 100);
+        function navigateTo(pageId) {
+            // הסתרת כל הדפים
+            document.querySelectorAll('.page-content').forEach(p => p.classList.add('hidden'));
             
-            document.getElementById('progressFill').style.width = percentage + '%';
-            document.getElementById('progressFill').textContent = percentage + '%';
-            document.getElementById('completedLessons').textContent = completed;
-            
-            const completedModulesCount = modules.filter(m => {
-                const moduleCompleted = Array.from({length: m.lessons}, (_, i) => `${m.id}-${i+1}`)
-                    .every(key => completedLessons.has(key));
-                return moduleCompleted;
-            }).length;
-            document.getElementById('completedModules').textContent = completedModulesCount;
-        }
+            // הצגת הדף הנבחר
+            const target = document.getElementById('page-' + pageId);
+            if(target) target.classList.remove('hidden');
 
-        function renderModules() {
-            const grid = document.getElementById('modulesGrid');
-            grid.innerHTML = '';
-
-            modules.forEach(module => {
-                const card = document.createElement('div');
-                const moduleKeys = Array.from({length: module.lessons}, (_, i) => `${module.id}-${i+1}`);
-                const completed = moduleKeys.every(key => completedLessons.has(key));
-                
-                card.className = `module-card ${completed ? 'completed' : ''}`;
-                
-                const lessonsList = [];
-                for (let i = 1; i <= module.lessons; i++) {
-                    const isCompleted = completedLessons.has(`${module.id}-${i}`);
-                    lessonsList.push(`<li class="lesson-item ${isCompleted ? 'completed' : ''}">שיעור ${i}</li>`);
-                }
-                
-                const completedCount = moduleKeys.filter(k => completedLessons.has(k)).length;
-                
-                card.innerHTML = `
-                    <div class="module-header">
-                        <div class="module-number">${module.id}</div>
-                        <div class="module-status">${completed ? '✓' : '📚'}</div>
-                    </div>
-                    <div class="module-title">${module.title}</div>
-                    <div class="module-description">${module.description}</div>
-                    <ul class="lessons-list">
-                        ${lessonsList.join('')}
-                    </ul>
-                    <div class="module-footer">
-                        <div class="lesson-progress">${completedCount}/${module.lessons} שיעורים</div>
-                        <button class="start-btn" onclick="startModule(${module.id})">
-                            ${completed ? 'סקירה' : 'התחל'}
-                        </button>
-                    </div>
-                `;
-                grid.appendChild(card);
+            // עדכון כפתורי הסיידבר
+            document.querySelectorAll('.nav-btn').forEach(btn => {
+                btn.classList.remove('sidebar-active');
+                if(btn.getAttribute('data-page') === pageId) btn.classList.add('sidebar-active');
             });
+
+            // עדכון כותרת
+            const titles = { 'live': 'חדר מסחר לייב', 'academy': 'אקדמיית SAGI TRADING', 'tools': 'מחשבון ניהול סיכונים', 'community': 'קהילה ודיונים' };
+            document.getElementById('page-title').innerText = titles[pageId] || 'SAGI TRADING';
+
+            // סגירה במובייל
+            if(window.innerWidth < 768) toggleSidebar();
         }
 
-        function startModule(id) {
-            const module = modules.find(m => m.id === id);
-            if (!module) return;
+        function toggleSidebar() {
+            document.getElementById('sidebar').classList.toggle('open');
+        }
+
+        function calculateRisk() {
+            const cap = parseFloat(document.getElementById('capital').value);
+            const entry = parseFloat(document.getElementById('entryPrice').value);
+            const stop = parseFloat(document.getElementById('stopPrice').value);
             
-            const lesson = prompt(`מודול ${id}: ${module.title}\n\nהקלד מספר שיעור (1-${module.lessons}) כדי לסמן אותו כהושלם, או לחץ ביטול:`);
-            
-            if (lesson && !isNaN(lesson) && lesson >= 1 && lesson <= module.lessons) {
-                const key = `${id}-${lesson}`;
-                if (completedLessons.has(key)) {
-                    completedLessons.delete(key);
-                    alert(`שיעור ${lesson} סומן כלא הושלם`);
-                } else {
-                    completedLessons.add(key);
-                    alert(`כל הכבוד! השלמת שיעור ${lesson} במודול ${id}!`);
-                }
-                saveProgress();
-                renderModules();
+            if(cap && entry && stop && entry !== stop) {
+                const riskAmount = cap * 0.01; // סיכון קבוע של 1%
+                const stopDist = Math.abs(entry - stop);
+                const shares = Math.floor(riskAmount / stopDist);
+                
+                document.getElementById('sharesValue').innerText = shares.toLocaleString();
+                document.getElementById('dollarRisk').innerText = "סיכון כספי: $" + riskAmount.toLocaleString() + " (1%)";
+                document.getElementById('riskResult').classList.remove('hidden');
             }
         }
-
-        // Initialize
-        renderModules();
-        updateProgress();
     </script>
 </body>
 </html>
