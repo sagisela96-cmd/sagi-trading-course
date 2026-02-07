@@ -7,15 +7,17 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;700;900&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Heebo', sans-serif; background-color: #0b0f1a; color: #f1f5f9; margin: 0; }
+        body { font-family: 'Heebo', sans-serif; background-color: #0b0f1a; color: #f1f5f9; margin: 0; scroll-behavior: smooth; }
         .active-tab { background: #2563eb !important; color: white !important; border-right: 4px solid #60a5fa; }
         .glass { background: rgba(30, 41, 59, 0.7); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.05); }
         .hidden { display: none; }
-        .module-card { transition: all 0.3s ease; border: 1px solid rgba(255,255,255,0.05); cursor: pointer; }
-        .module-card:hover { transform: translateY(-5px); border-color: #3b82f6; background: rgba(30, 41, 59, 0.9); }
+        .module-card { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); border: 1px solid rgba(255,255,255,0.05); cursor: pointer; }
+        .module-card:hover { transform: translateY(-8px); border-color: #3b82f6; background: rgba(30, 41, 59, 0.9); box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3); }
         
         #lesson-modal { display: none; position: fixed; inset: 0; z-index: 100; background: rgba(0,0,0,0.85); backdrop-filter: blur(8px); align-items: center; justify-content: center; padding: 20px; }
-        .modal-inner { background: #0f172a; width: 100%; max-width: 800px; max-height: 85vh; border-radius: 2rem; border: 1px solid #1e293b; display: flex; flex-direction: column; overflow: hidden; }
+        .modal-inner { background: #0f172a; width: 100%; max-width: 800px; max-height: 85vh; border-radius: 2rem; border: 1px solid #1e293b; display: flex; flex-direction: column; overflow: hidden; animation: modalIn 0.3s ease-out; }
+        
+        @keyframes modalIn { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
         
         ::-webkit-scrollbar { width: 6px; }
         ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 10px; }
@@ -34,16 +36,16 @@
             <button onclick="showPage('academy')" class="nav-item w-full text-right py-4 px-6 rounded-xl flex items-center gap-4 active-tab transition-all" id="btn-academy">
                 <span class="text-xl">📚</span> האקדמיה (10 מודולים)
             </button>
-            <button onclick="showPage('benefits')" class="nav-item w-full text-right py-4 px-6 rounded-xl flex items-center gap-4 hover:bg-slate-800 transition-all" id="btn-benefits">
+            <button onclick="showPage('benefits')" class="nav-item w-full text-right py-4 px-6 rounded-xl flex items-center gap-4 hover:bg-slate-800 transition-all text-slate-400" id="btn-benefits">
                 <span class="text-xl">🎁</span> הטבות והרשמה
             </button>
-            <button onclick="showPage('tools')" class="nav-item w-full text-right py-4 px-6 rounded-xl flex items-center gap-4 hover:bg-slate-800 transition-all" id="btn-tools">
+            <button onclick="showPage('tools')" class="nav-item w-full text-right py-4 px-6 rounded-xl flex items-center gap-4 hover:bg-slate-800 transition-all text-slate-400" id="btn-tools">
                 <span class="text-xl">🧮</span> מחשבון ניהול סיכונים
             </button>
         </nav>
         
         <div class="p-6 border-t border-slate-900 bg-slate-950/30 text-center">
-            <div class="text-[10px] text-slate-500 uppercase font-bold tracking-widest">Trading is a Business</div>
+            <div class="text-[10px] text-slate-500 uppercase font-bold tracking-widest italic">Success is a Choice</div>
         </div>
     </aside>
 
@@ -53,7 +55,7 @@
         <header class="h-20 border-b border-slate-800 flex items-center justify-between px-8 bg-[#010409]/50 backdrop-blur-md sticky top-0 z-50">
             <div id="header-title" class="font-bold text-xl text-blue-400">Trading Academy</div>
             <div class="flex items-center gap-4">
-                <div class="text-xs text-slate-500 hidden md:block">מערכת למידה אישית</div>
+                <div class="text-xs text-slate-500 hidden md:block">שלום, סוחר</div>
                 <div class="h-10 w-10 rounded-full bg-gradient-to-tr from-blue-700 to-blue-400 flex items-center justify-center font-bold text-white shadow-lg shadow-blue-500/20">S</div>
             </div>
         </header>
@@ -61,70 +63,67 @@
         <!-- Dynamic Content Section -->
         <div id="main-content" class="flex-1 p-6 md:p-10">
             
-            <!-- Page: Academy (The 10 Modules) -->
-            <div id="page-academy" class="content-page space-y-8">
+            <!-- Page: Academy -->
+            <div id="page-academy" class="content-page space-y-8 animate-fadeIn">
                 <div class="mb-10 text-center md:text-right">
-                    <h2 class="text-4xl font-black mb-2">מסלול הכשרה מקיף</h2>
-                    <p class="text-slate-400 max-w-2xl">מעבר משלב התיאוריה למסחר מקצועי בזמן אמת. 10 מודולים של ידע פרקטי.</p>
+                    <h2 class="text-4xl font-black mb-2 text-white">מסלול הכשרה מקיף</h2>
+                    <p class="text-slate-400 max-w-2xl">ברוך הבא לאקדמיה. כאן תלמד איך להפוך את המסחר לעסק רווחי ומקצועי.</p>
                 </div>
                 
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="modules-grid">
-                    <!-- Modules injected via JavaScript -->
+                    <!-- Modules injected via JS -->
                 </div>
             </div>
 
             <!-- Page: Benefits -->
             <div id="page-benefits" class="content-page hidden space-y-8">
                 <div class="mb-10 text-center md:text-right">
-                    <h2 class="text-3xl font-bold mb-2">הסדרי ברוקרים והטבות</h2>
-                    <p class="text-slate-400">תנאים מועדפים עבור תלמידי SAGI TRADING בבורסות המובילות</p>
+                    <h2 class="text-3xl font-bold mb-2 text-white">הסדרי ברוקרים והטבות</h2>
+                    <p class="text-slate-400">תנאים בלעדיים שסגרנו עבורכם בבורסות העולם</p>
                 </div>
                 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <div class="glass p-10 rounded-[2.5rem] border border-blue-500/20 relative overflow-hidden">
+                    <div class="glass p-10 rounded-[2.5rem] border border-blue-500/20">
                         <h3 class="text-3xl font-bold text-blue-400 mb-4">Colmex Pro</h3>
                         <ul class="text-slate-300 space-y-4 mb-8">
                             <li class="flex items-center gap-3">✅ עמלות מסחר אטרקטיביות (1.5$ לפעולה)</li>
                             <li class="flex items-center gap-3">✅ פלטפורמת מסחר מתקדמת בחינם</li>
-                            <li class="flex items-center gap-3">✅ שירות לקוחות בעברית</li>
+                            <li class="flex items-center gap-3">✅ שירות לקוחות VIP בעברית</li>
                         </ul>
-                        <button class="w-full bg-blue-600 hover:bg-blue-500 py-4 rounded-2xl font-bold transition-all shadow-lg">מעבר לפתיחת חשבון</button>
+                        <button class="w-full bg-blue-600 hover:bg-blue-500 py-4 rounded-2xl font-bold transition-all">לפתיחת חשבון והטבה</button>
                     </div>
 
                     <div class="glass p-10 rounded-[2.5rem] border border-slate-700/50">
                         <h3 class="text-3xl font-bold text-white mb-4 italic text-left">Interactive Brokers</h3>
-                        <p class="text-slate-400 mb-6">הברוקר הגדול והבטוח בעולם. מומלץ למשקיעים לטווח ארוך ולסוחרי אופציות.</p>
-                        <div class="bg-slate-900/50 p-4 rounded-xl mb-8">
-                            <p class="text-xs text-slate-500">שימו לב: הסבר מלא על הגדרות ה-TWS מופיע במודול 3.</p>
-                        </div>
+                        <p class="text-slate-400 mb-6">הברוקר הגדול והבטוח בעולם. אידיאלי למסחר באופציות והשקעות לטווח ארוך.</p>
                         <button class="w-full border border-slate-700 hover:bg-slate-800 py-4 rounded-2xl font-bold transition-all">מדריך פתיחת חשבון IB</button>
                     </div>
                 </div>
             </div>
 
             <!-- Page: Tools (Calculator) -->
-            <div id="page-tools" class="content-page hidden max-w-xl mx-auto">
+            <div id="page-tools" class="content-page hidden max-w-xl mx-auto pt-10">
                 <div class="glass p-10 rounded-[3rem] shadow-2xl border-t-8 border-blue-600">
                     <div class="text-center mb-10">
-                        <h2 class="text-2xl font-bold mb-2">מחשבון ניהול סיכונים</h2>
-                        <p class="text-slate-500 text-sm">סיכון קבוע של 1% מעסקת המסחר</p>
+                        <h2 class="text-2xl font-bold mb-2 text-white">מחשבון ניהול סיכונים</h2>
+                        <p class="text-slate-500 text-sm italic">חישוב לפי סיכון של 1% מההון</p>
                     </div>
 
                     <div class="space-y-6">
                         <div>
                             <label class="block text-xs font-bold text-slate-500 mb-2 mr-2 uppercase tracking-wide">הון בחשבון ($)</label>
-                            <input type="number" id="c-cap" placeholder="לדוגמה: 10,000" class="w-full bg-slate-950/50 p-5 rounded-2xl border border-slate-800 focus:border-blue-500 outline-none transition-all text-xl font-bold text-white">
+                            <input type="number" id="c-cap" placeholder="10,000" class="w-full bg-slate-950/50 p-5 rounded-2xl border border-slate-800 focus:border-blue-500 outline-none transition-all text-xl font-bold text-white text-left">
                         </div>
                         
                         <div>
-                            <label class="block text-xs font-bold text-slate-500 mb-2 mr-2 uppercase tracking-wide">מרחק לסטופ-לוס ($)</label>
-                            <input type="number" id="c-stop" placeholder="לדוגמה: 0.20" class="w-full bg-slate-950/50 p-5 rounded-2xl border border-slate-800 focus:border-blue-500 outline-none transition-all text-xl font-bold text-white">
+                            <label class="block text-xs font-bold text-slate-500 mb-2 mr-2 uppercase tracking-wide">מרחק לסטופ ($)</label>
+                            <input type="number" id="c-stop" placeholder="0.50" class="w-full bg-slate-950/50 p-5 rounded-2xl border border-slate-800 focus:border-blue-500 outline-none transition-all text-xl font-bold text-white text-left">
                         </div>
 
-                        <button onclick="calculate()" class="w-full bg-blue-600 hover:bg-blue-500 py-5 rounded-2xl font-black text-lg transition-all">חשב גודל פוזיציה</button>
+                        <button onclick="calculate()" class="w-full bg-blue-600 hover:bg-blue-500 py-5 rounded-2xl font-black text-lg transition-all shadow-lg shadow-blue-500/20">חשב כמות מניות</button>
 
-                        <div id="res-box" class="hidden mt-6 bg-blue-600/10 p-8 rounded-[2rem] border border-blue-600/30 text-center animate-pulse">
-                            <div class="text-slate-400 text-xs font-bold mb-1">כמות מניות לקנייה:</div>
+                        <div id="res-box" class="hidden mt-6 bg-blue-600/10 p-8 rounded-[2rem] border border-blue-600/30 text-center">
+                            <div class="text-slate-400 text-xs font-bold mb-1 uppercase">כמות מניות לקנייה:</div>
                             <div id="res-val" class="text-5xl font-black text-blue-500">0</div>
                         </div>
                     </div>
@@ -133,21 +132,21 @@
         </div>
     </main>
 
-    <!-- Modal for Lesson View -->
+    <!-- Modal for Lessons -->
     <div id="lesson-modal" onclick="closeModal()">
         <div class="modal-inner" onclick="event.stopPropagation()">
             <header class="p-8 border-b border-slate-800 flex justify-between items-center bg-slate-900/50">
                 <div>
-                    <span id="m-num" class="text-xs font-bold text-blue-500 block mb-1">MOD</span>
-                    <h3 id="m-title" class="text-2xl font-black">Module Name</h3>
+                    <span id="m-num" class="text-xs font-bold text-blue-500 block mb-1">MODULE</span>
+                    <h3 id="m-title" class="text-2xl font-black text-white italic">Module Name</h3>
                 </div>
                 <button onclick="closeModal()" class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center hover:bg-red-500/20 hover:text-red-500 transition-all">✕</button>
             </header>
             <div id="m-body" class="flex-1 overflow-y-auto p-8 space-y-3">
-                <!-- Lessons Injected -->
+                <!-- Lessons injected via JS -->
             </div>
             <footer class="p-4 border-t border-slate-800 bg-slate-950/50 text-center">
-                <p class="text-[10px] text-slate-600">SAGI TRADING ACADEMY - PRIVATE PLATFORM</p>
+                <p class="text-[10px] text-slate-600 font-bold uppercase tracking-widest">SAGI TRADING ACADEMY - PRIVATE CONTENT</p>
             </footer>
         </div>
     </div>
@@ -156,7 +155,7 @@
         const modules = [
             { id: 1, title: "מבוא ומיינדסט - הפיכת המוח לסוחר", icon: "🧠", lessons: ["שיעור 1: ברוכים הבאים למשפחה - מי אני ומה החזון?", "שיעור 2: למה 90% מהסוחרים נכשלים?", "שיעור 3: הצבת מטרות פיננסיות ובניית תוכנית עבודה"] },
             { id: 2, title: "תשתית טכנית - איך הבורסה עובדת?", icon: "📊", lessons: ["שיעור 1: מניות, מדדים ותעודות סל - מה קונים?", "שיעור 2: עושי שוק לעומת סוחרים", "שיעור 3: ווליום, Level 2 וביצועי ECN"] },
-            { id: 3, title: "בחירת ברוקר והקמת עמדת עבודה", icon: "💻", lessons: ["שיעור 1: השוואה בין Interactive ל-Colmex Pro", "שיעור 2: מדריך פתיחת חשבון והטבות תלמידים", "שיעור 3: הכרת מערכות המסחר"] },
+            { id: 3, title: "בחירת ברוקר והקמת עמדת עבודה", icon: "💻", lessons: ["שיעור 1: השוואה בין Interactive ל-Colmex Pro", "שיעור 2: מדריך פתיחת חשבון והטבות תלמידים", "שיעור 3: הכרת מערכות המסחר (TWS מול Colmex)"] },
             { id: 4, title: "ניתוח טכני פרקטי - שפת הגרפים", icon: "📈", lessons: ["שיעור 1: נרות יפניים וקריאת Price Action", "שיעור 2: קווי מגמה, תמיכה והתנגדות", "שיעור 3: אינדיקטורים מובילים: VWAP, RSI וממוצעים נעים"] },
             { id: 5, title: "ניתוח פונדמנטלי ומאקרו כלכלה", icon: "📰", lessons: ["שיעור 1: הודעות ריבית (FED) והשפעתן", "שיעור 2: מסחר בדוחות כספיים - איך לקרוא תוצאות?", "שיעור 3: שימוש ביומן כלכלי"] },
             { id: 6, title: "אסטרטגיות מסחר למתקדמים", icon: "🎯", lessons: ["אסטרטגיה 1: פריצות (Breakout)", "אסטרטגיה 2: נסיגות (Pullback)", "אסטרטגיה 3: היפוכים (Reversal)"] },
@@ -168,14 +167,15 @@
 
         function renderModules() {
             const grid = document.getElementById('modules-grid');
+            if (!grid) return;
             grid.innerHTML = modules.map(m => `
                 <div class="module-card glass p-8 rounded-3xl" onclick="openModule(${m.id})">
                     <div class="text-4xl mb-4 bg-blue-600/10 w-16 h-16 rounded-2xl flex items-center justify-center">${m.icon}</div>
-                    <div class="text-xs text-blue-500 font-bold mb-1">מודול ${m.id}</div>
+                    <div class="text-xs text-blue-500 font-bold mb-1 uppercase tracking-tighter">Module 0${m.id}</div>
                     <h3 class="font-bold text-lg text-white leading-snug">${m.title}</h3>
                     <div class="mt-6 flex justify-between items-center text-[10px] text-slate-500 font-bold uppercase tracking-widest">
                         <span>${m.lessons.length} שיעורים</span>
-                        <span class="text-blue-400">צפה עכשיו ←</span>
+                        <span class="text-blue-400">כניסה למודול ←</span>
                     </div>
                 </div>
             `).join('');
@@ -183,11 +183,11 @@
 
         function openModule(id) {
             const m = modules.find(x => x.id === id);
-            document.getElementById('m-num').innerText = `MODULE 0${m.id}`;
+            document.getElementById('m-num').innerText = `MODULE ${m.id < 10 ? '0' + m.id : m.id}`;
             document.getElementById('m-title').innerText = m.title;
             document.getElementById('m-body').innerHTML = m.lessons.map((l, idx) => `
-                <div class="p-5 bg-slate-800/30 rounded-2xl border border-slate-800 flex items-center gap-4 hover:border-blue-500/50 transition-all cursor-pointer">
-                    <div class="w-8 h-8 rounded-full bg-blue-600/10 flex items-center justify-center text-xs font-bold text-blue-500">${idx+1}</div>
+                <div class="p-5 bg-slate-800/30 rounded-2xl border border-slate-800 flex items-center gap-4 hover:border-blue-500/50 hover:bg-slate-800/50 transition-all cursor-pointer group">
+                    <div class="w-10 h-10 rounded-full bg-slate-900 flex items-center justify-center text-xs font-bold text-slate-500 group-hover:bg-blue-600 group-hover:text-white transition-all">${idx+1}</div>
                     <div class="text-slate-200 font-medium">${l}</div>
                 </div>
             `).join('');
@@ -199,27 +199,45 @@
         }
 
         function showPage(p) {
+            // Hide all pages
             document.querySelectorAll('.content-page').forEach(page => page.classList.add('hidden'));
-            document.getElementById('page-' + p).classList.remove('hidden');
-            document.querySelectorAll('.nav-item').forEach(btn => btn.classList.remove('active-tab'));
-            document.getElementById('btn-' + p).classList.add('active-tab');
+            // Show target page
+            const target = document.getElementById('page-' + p);
+            if (target) target.classList.remove('hidden');
+
+            // Update nav items
+            document.querySelectorAll('.nav-item').forEach(btn => {
+                btn.classList.remove('active-tab');
+                btn.classList.add('text-slate-400');
+            });
+            const activeBtn = document.getElementById('btn-' + p);
+            if (activeBtn) {
+                activeBtn.classList.add('active-tab');
+                activeBtn.classList.remove('text-slate-400');
+            }
             
+            // Update header title
             const titles = {'academy': 'Trading Academy', 'benefits': 'Exclusive Benefits', 'tools': 'Risk Manager'};
-            document.getElementById('header-title').innerText = titles[p];
+            document.getElementById('header-title').innerText = titles[p] || 'SAGI TRADING';
         }
 
         function calculate() {
             const cap = parseFloat(document.getElementById('c-cap').value);
             const stop = parseFloat(document.getElementById('c-stop').value);
             if(cap && stop && stop > 0) {
-                const riskPerTrade = cap * 0.01;
-                const shares = Math.floor(riskPerTrade / stop);
-                document.getElementById('res-val').innerText = shares.toLocaleString();
+                const riskAmount = cap * 0.01;
+                const shares = Math.floor(riskAmount / stop);
+                const resVal = document.getElementById('res-val');
+                resVal.innerText = shares.toLocaleString();
                 document.getElementById('res-box').classList.remove('hidden');
             }
         }
 
-        window.onload = renderModules;
+        // Initialize App
+        window.onload = function() {
+            renderModules();
+            showPage('academy'); // Start with academy
+        };
     </script>
 </body>
 </html>
