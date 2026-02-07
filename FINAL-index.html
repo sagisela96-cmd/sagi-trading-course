@@ -3,583 +3,223 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SAGI TRADING - קורס המסחר המקיף</title>
+    <title>SAGI TRADING | האקדמיה למסחר</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;700;900&display=swap" rel="stylesheet">
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: 'Segoe UI', Tahoma, sans-serif;
-            background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 100%);
-            color: #e0e0e0;
-            line-height: 1.6;
-        }
-        .navbar {
-            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
-            padding: 20px 30px;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .navbar-brand { font-size: 1.8em; font-weight: bold; color: #fff; }
-        .navbar-links { display: flex; gap: 25px; }
-        .navbar-links a {
-            color: #a8d5ff;
-            text-decoration: none;
-            padding: 8px 15px;
-            border-radius: 5px;
-            transition: all 0.3s;
-        }
-        .navbar-links a:hover { background: rgba(255,255,255,0.1); color: #fff; }
-        .hero {
-            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
-            padding: 80px 30px;
-            text-align: center;
-            margin: 30px;
-            border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.4);
-        }
-        .hero h1 { font-size: 3.5em; color: #fff; margin-bottom: 20px; }
-        .hero p { font-size: 1.4em; color: #a8d5ff; margin-bottom: 40px; }
-        .youtube-embed {
-            max-width: 900px;
-            margin: 40px auto;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.4);
-        }
-        .youtube-embed iframe { width: 100%; height: 500px; border: none; }
-        .btn {
-            display: inline-block;
-            padding: 18px 40px;
-            margin: 10px;
-            border-radius: 12px;
-            font-weight: bold;
-            font-size: 1.2em;
-            text-decoration: none;
-            transition: all 0.3s;
-            cursor: pointer;
-            border: none;
-        }
-        .btn-primary {
-            background: linear-gradient(135deg, #4ade80 0%, #22c55e 100%);
-            color: #000;
-        }
-        .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 10px 30px rgba(74,222,128,0.4); }
-        .btn-secondary {
-            background: rgba(255,255,255,0.1);
-            color: #fff;
-            border: 2px solid #4ade80;
-        }
-        .btn-secondary:hover { background: rgba(74,222,128,0.2); }
-        .container { max-width: 1400px; margin: 0 auto; padding: 40px 20px; }
-        .stats {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 25px;
-            margin: 50px 0;
-        }
-        .stat-card {
-            background: rgba(255,255,255,0.05);
-            padding: 30px;
-            border-radius: 15px;
-            text-align: center;
-            transition: all 0.3s;
-        }
-        .stat-card:hover { transform: translateY(-5px); background: rgba(74,222,128,0.1); }
-        .stat-number {
-            font-size: 3em;
-            font-weight: bold;
-            background: linear-gradient(135deg, #4ade80 0%, #22c55e 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        .stat-label { color: #a0a0a0; margin-top: 10px; font-size: 1.1em; }
-        .section-title {
-            font-size: 2.5em;
-            text-align: center;
-            margin: 60px 0 40px;
-            color: #fff;
-        }
-        .modules-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
-            gap: 30px;
-            margin-bottom: 60px;
-        }
-        .module-card {
-            background: linear-gradient(135deg, #1a1f3a 0%, #252b47 100%);
-            border-radius: 18px;
-            padding: 35px;
-            cursor: pointer;
-            transition: all 0.4s;
-            border: 2px solid transparent;
-        }
-        .module-card:hover {
-            transform: translateY(-10px);
-            border-color: #4ade80;
-            box-shadow: 0 25px 60px rgba(74,222,128,0.3);
-        }
-        .module-card.completed { border-color: #4ade80; }
-        .module-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 25px;
-        }
-        .module-number {
-            font-size: 3.5em;
-            font-weight: bold;
-            background: linear-gradient(135deg, #4ade80 0%, #22c55e 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        .module-status { font-size: 3em; }
-        .module-title {
-            font-size: 1.5em;
-            font-weight: bold;
-            color: #fff;
-            margin-bottom: 15px;
-            line-height: 1.4;
-        }
-        .module-description { color: #b0b0b0; margin-bottom: 25px; font-size: 1.05em; }
-        .lessons-preview {
-            background: rgba(0,0,0,0.3);
-            padding: 20px;
-            border-radius: 12px;
-            margin-bottom: 25px;
-        }
-        .lesson-item {
-            padding: 12px 0;
-            color: #b0b0b0;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            border-bottom: 1px solid rgba(255,255,255,0.05);
-        }
-        .lesson-item:last-child { border-bottom: none; }
-        .lesson-item::before { content: "▸"; color: #4ade80; font-size: 1.3em; }
-        .lesson-item.completed { color: #4ade80; }
-        .lesson-item.completed::before { content: "✓"; }
-        .module-footer {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding-top: 25px;
-            border-top: 2px solid rgba(255,255,255,0.1);
-        }
-        .progress-text { color: #a0a0a0; font-size: 1em; }
-        .start-btn {
-            background: linear-gradient(135deg, #4ade80 0%, #22c55e 100%);
-            color: #000;
-            border: none;
-            padding: 14px 28px;
-            border-radius: 10px;
-            font-weight: bold;
-            font-size: 1.05em;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-        .start-btn:hover { transform: scale(1.08); box-shadow: 0 8px 25px rgba(74,222,128,0.5); }
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.96);
-            z-index: 200;
-            overflow-y: auto;
-        }
-        .modal-content {
-            background: linear-gradient(135deg, #1a1f3a 0%, #252b47 100%);
-            margin: 40px auto;
-            padding: 50px;
-            max-width: 1100px;
-            border-radius: 25px;
-            position: relative;
-            box-shadow: 0 30px 80px rgba(0,0,0,0.6);
-        }
-        .close-modal {
-            position: absolute;
-            top: 25px;
-            left: 25px;
-            font-size: 3em;
-            cursor: pointer;
-            color: #a0a0a0;
-            width: 60px;
-            height: 60px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-            background: rgba(255,255,255,0.05);
-            transition: all 0.3s;
-        }
-        .close-modal:hover {
-            color: #fff;
-            background: rgba(255,255,255,0.15);
-            transform: rotate(90deg);
-        }
-        .lesson-header {
-            margin: 40px 0;
-            padding-bottom: 25px;
-            border-bottom: 3px solid rgba(74,222,128,0.3);
-        }
-        .lesson-breadcrumb { color: #4ade80; font-size: 1.1em; margin-bottom: 20px; }
-        .lesson-title { font-size: 2.8em; color: #fff; margin-bottom: 15px; }
-        .lesson-content {
-            color: #d0d0d0;
-            line-height: 2;
-            font-size: 1.15em;
-        }
-        .lesson-content h3 {
-            color: #4ade80;
-            margin: 40px 0 20px;
-            font-size: 1.8em;
-        }
-        .lesson-content h4 {
-            color: #6ee7b7;
-            margin: 30px 0 15px;
-            font-size: 1.5em;
-        }
-        .lesson-content ul, .lesson-content ol { margin: 20px 0 20px 35px; }
-        .lesson-content li { margin: 12px 0; line-height: 1.8; }
-        .lesson-content strong { color: #4ade80; }
-        .lesson-content p { margin: 18px 0; }
-        .lesson-nav {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 50px;
-            padding-top: 35px;
-            border-top: 3px solid rgba(255,255,255,0.1);
-            gap: 20px;
-        }
-        .nav-btn {
-            background: linear-gradient(135deg, #2a5298 0%, #1e3c72 100%);
-            color: white;
-            border: none;
-            padding: 18px 30px;
-            border-radius: 12px;
-            cursor: pointer;
-            font-weight: bold;
-            font-size: 1.1em;
-            transition: all 0.3s;
-            flex: 1;
-        }
-        .nav-btn:hover:not(:disabled) {
-            transform: scale(1.03);
-            box-shadow: 0 10px 25px rgba(42,82,152,0.4);
-        }
-        .nav-btn:disabled { opacity: 0.3; cursor: not-allowed; }
-        .complete-btn {
-            background: linear-gradient(135deg, #4ade80 0%, #22c55e 100%);
-            color: #000;
-            flex: 2;
-        }
-        .resources-section {
-            background: linear-gradient(135deg, #1a1f3a 0%, #252b47 100%);
-            border-radius: 25px;
-            padding: 50px;
-            margin: 60px 0;
-        }
-        .resources-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
-            margin-top: 40px;
-        }
-        .resource-card {
-            background: rgba(255,255,255,0.05);
-            padding: 35px;
-            border-radius: 18px;
-            text-align: center;
-            cursor: pointer;
-            transition: all 0.3s;
-            border: 2px solid transparent;
-        }
-        .resource-card:hover {
-            border-color: #4ade80;
-            transform: translateY(-8px);
-            box-shadow: 0 15px 40px rgba(74,222,128,0.25);
-        }
-        .resource-icon { font-size: 4em; margin-bottom: 20px; }
-        .resource-title { font-weight: bold; margin-bottom: 10px; font-size: 1.2em; }
-        .resource-link { color: #4ade80; font-size: 1.05em; }
-        footer {
-            text-align: center;
-            padding: 50px 20px;
-            color: #a0a0a0;
-            border-top: 2px solid rgba(255,255,255,0.1);
-            margin-top: 80px;
-        }
-        footer p { margin: 8px 0; }
-        @media (max-width: 768px) {
-            .hero h1 { font-size: 2.2em; }
-            .hero p { font-size: 1.1em; }
-            .modules-grid { grid-template-columns: 1fr; }
-            .modal-content { margin: 20px; padding: 30px; }
-            .navbar { flex-direction: column; gap: 15px; }
-            .youtube-embed iframe { height: 280px; }
-            .lesson-title { font-size: 2em; }
-        }
+        body { font-family: 'Heebo', sans-serif; background-color: #0b0f1a; color: #f1f5f9; margin: 0; }
+        .active-tab { background: #2563eb !important; color: white !important; border-right: 4px solid #60a5fa; }
+        .glass { background: rgba(30, 41, 59, 0.7); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.05); }
+        .hidden { display: none; }
+        .module-card { transition: all 0.3s ease; border: 1px solid rgba(255,255,255,0.05); cursor: pointer; }
+        .module-card:hover { transform: translateY(-5px); border-color: #3b82f6; background: rgba(30, 41, 59, 0.9); }
+        
+        #lesson-modal { display: none; position: fixed; inset: 0; z-index: 100; background: rgba(0,0,0,0.85); backdrop-filter: blur(8px); align-items: center; justify-content: center; padding: 20px; }
+        .modal-inner { background: #0f172a; width: 100%; max-width: 800px; max-height: 85vh; border-radius: 2rem; border: 1px solid #1e293b; display: flex; flex-direction: column; overflow: hidden; }
+        
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 10px; }
     </style>
 </head>
-<body>
-    <nav class="navbar">
-        <div class="navbar-brand">📈 SAGI TRADING</div>
-        <div class="navbar-links">
-            <a href="#modules">מודולים</a>
-            <a href="#resources">קהילה</a>
-            <a href="https://youtube.com/@sagi-trading?si=ivnq0_NnWC4vef_0" target="_blank">YouTube</a>
-        </div>
-    </nav>
+<body class="min-h-screen flex text-right overflow-x-hidden">
 
-    <div class="hero">
-        <h1>🎓 קורס המסחר המקצועי</h1>
-        <p>הנתיב המהיר למסחר בשוק ההון וקריפטו - 10 מודולים מקיפים</p>
-        
-        <div class="youtube-embed">
-            <iframe src="https://www.youtube.com/embed?listType=user_uploads&list=@sagi-trading" 
-                    allowfullscreen></iframe>
+    <!-- Sidebar -->
+    <aside id="sidebar" class="w-72 bg-[#010409] border-l border-slate-800 flex flex-col shrink-0 shadow-2xl transition-all sticky top-0 h-screen">
+        <div class="p-8 text-center">
+            <h1 class="text-2xl font-black text-blue-500 italic uppercase tracking-tighter">SAGI TRADING</h1>
+            <p class="text-[10px] text-slate-500 mt-1 tracking-widest uppercase">Elite Trading Academy</p>
         </div>
         
-        <div>
-            <a href="#modules" class="btn btn-primary">🚀 התחל ללמוד עכשיו</a>
-            <a href="https://youtube.com/@sagi-trading?si=ivnq0_NnWC4vef_0" target="_blank" class="btn btn-secondary">
-                🎥 צפה בסרטונים
-            </a>
+        <nav class="flex-1 px-4 space-y-2">
+            <button onclick="showPage('academy')" class="nav-item w-full text-right py-4 px-6 rounded-xl flex items-center gap-4 active-tab transition-all" id="btn-academy">
+                <span class="text-xl">📚</span> האקדמיה (10 מודולים)
+            </button>
+            <button onclick="showPage('benefits')" class="nav-item w-full text-right py-4 px-6 rounded-xl flex items-center gap-4 hover:bg-slate-800 transition-all" id="btn-benefits">
+                <span class="text-xl">🎁</span> הטבות והרשמה
+            </button>
+            <button onclick="showPage('tools')" class="nav-item w-full text-right py-4 px-6 rounded-xl flex items-center gap-4 hover:bg-slate-800 transition-all" id="btn-tools">
+                <span class="text-xl">🧮</span> מחשבון ניהול סיכונים
+            </button>
+        </nav>
+        
+        <div class="p-6 border-t border-slate-900 bg-slate-950/30 text-center">
+            <div class="text-[10px] text-slate-500 uppercase font-bold tracking-widest">Trading is a Business</div>
         </div>
-    </div>
+    </aside>
 
-    <div class="container">
-        <div class="stats">
-            <div class="stat-card">
-                <div class="stat-number" id="completedModules">0</div>
-                <div class="stat-label">מודולים שהושלמו</div>
+    <!-- Main Content Area -->
+    <main class="flex-1 flex flex-col relative bg-[#0d1117]">
+        <!-- Header -->
+        <header class="h-20 border-b border-slate-800 flex items-center justify-between px-8 bg-[#010409]/50 backdrop-blur-md sticky top-0 z-50">
+            <div id="header-title" class="font-bold text-xl text-blue-400">Trading Academy</div>
+            <div class="flex items-center gap-4">
+                <div class="text-xs text-slate-500 hidden md:block">מערכת למידה אישית</div>
+                <div class="h-10 w-10 rounded-full bg-gradient-to-tr from-blue-700 to-blue-400 flex items-center justify-center font-bold text-white shadow-lg shadow-blue-500/20">S</div>
             </div>
-            <div class="stat-card">
-                <div class="stat-number" id="completedLessons">0</div>
-                <div class="stat-label">שיעורים שהושלמו</div>
+        </header>
+
+        <!-- Dynamic Content Section -->
+        <div id="main-content" class="flex-1 p-6 md:p-10">
+            
+            <!-- Page: Academy (The 10 Modules) -->
+            <div id="page-academy" class="content-page space-y-8">
+                <div class="mb-10 text-center md:text-right">
+                    <h2 class="text-4xl font-black mb-2">מסלול הכשרה מקיף</h2>
+                    <p class="text-slate-400 max-w-2xl">מעבר משלב התיאוריה למסחר מקצועי בזמן אמת. 10 מודולים של ידע פרקטי.</p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="modules-grid">
+                    <!-- Modules injected via JavaScript -->
+                </div>
             </div>
-            <div class="stat-card">
-                <div class="stat-number">10</div>
-                <div class="stat-label">מודולים כוללים</div>
+
+            <!-- Page: Benefits -->
+            <div id="page-benefits" class="content-page hidden space-y-8">
+                <div class="mb-10 text-center md:text-right">
+                    <h2 class="text-3xl font-bold mb-2">הסדרי ברוקרים והטבות</h2>
+                    <p class="text-slate-400">תנאים מועדפים עבור תלמידי SAGI TRADING בבורסות המובילות</p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="glass p-10 rounded-[2.5rem] border border-blue-500/20 relative overflow-hidden">
+                        <h3 class="text-3xl font-bold text-blue-400 mb-4">Colmex Pro</h3>
+                        <ul class="text-slate-300 space-y-4 mb-8">
+                            <li class="flex items-center gap-3">✅ עמלות מסחר אטרקטיביות (1.5$ לפעולה)</li>
+                            <li class="flex items-center gap-3">✅ פלטפורמת מסחר מתקדמת בחינם</li>
+                            <li class="flex items-center gap-3">✅ שירות לקוחות בעברית</li>
+                        </ul>
+                        <button class="w-full bg-blue-600 hover:bg-blue-500 py-4 rounded-2xl font-bold transition-all shadow-lg">מעבר לפתיחת חשבון</button>
+                    </div>
+
+                    <div class="glass p-10 rounded-[2.5rem] border border-slate-700/50">
+                        <h3 class="text-3xl font-bold text-white mb-4 italic text-left">Interactive Brokers</h3>
+                        <p class="text-slate-400 mb-6">הברוקר הגדול והבטוח בעולם. מומלץ למשקיעים לטווח ארוך ולסוחרי אופציות.</p>
+                        <div class="bg-slate-900/50 p-4 rounded-xl mb-8">
+                            <p class="text-xs text-slate-500">שימו לב: הסבר מלא על הגדרות ה-TWS מופיע במודול 3.</p>
+                        </div>
+                        <button class="w-full border border-slate-700 hover:bg-slate-800 py-4 rounded-2xl font-bold transition-all">מדריך פתיחת חשבון IB</button>
+                    </div>
+                </div>
             </div>
-            <div class="stat-card">
-                <div class="stat-number">30+</div>
-                <div class="stat-label">שיעורים מקצועיים</div>
+
+            <!-- Page: Tools (Calculator) -->
+            <div id="page-tools" class="content-page hidden max-w-xl mx-auto">
+                <div class="glass p-10 rounded-[3rem] shadow-2xl border-t-8 border-blue-600">
+                    <div class="text-center mb-10">
+                        <h2 class="text-2xl font-bold mb-2">מחשבון ניהול סיכונים</h2>
+                        <p class="text-slate-500 text-sm">סיכון קבוע של 1% מעסקת המסחר</p>
+                    </div>
+
+                    <div class="space-y-6">
+                        <div>
+                            <label class="block text-xs font-bold text-slate-500 mb-2 mr-2 uppercase tracking-wide">הון בחשבון ($)</label>
+                            <input type="number" id="c-cap" placeholder="לדוגמה: 10,000" class="w-full bg-slate-950/50 p-5 rounded-2xl border border-slate-800 focus:border-blue-500 outline-none transition-all text-xl font-bold text-white">
+                        </div>
+                        
+                        <div>
+                            <label class="block text-xs font-bold text-slate-500 mb-2 mr-2 uppercase tracking-wide">מרחק לסטופ-לוס ($)</label>
+                            <input type="number" id="c-stop" placeholder="לדוגמה: 0.20" class="w-full bg-slate-950/50 p-5 rounded-2xl border border-slate-800 focus:border-blue-500 outline-none transition-all text-xl font-bold text-white">
+                        </div>
+
+                        <button onclick="calculate()" class="w-full bg-blue-600 hover:bg-blue-500 py-5 rounded-2xl font-black text-lg transition-all">חשב גודל פוזיציה</button>
+
+                        <div id="res-box" class="hidden mt-6 bg-blue-600/10 p-8 rounded-[2rem] border border-blue-600/30 text-center animate-pulse">
+                            <div class="text-slate-400 text-xs font-bold mb-1">כמות מניות לקנייה:</div>
+                            <div id="res-val" class="text-5xl font-black text-blue-500">0</div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
+    </main>
 
-        <h2 class="section-title" id="modules">📚 תוכנית הלימודים המלאה</h2>
-        <div class="modules-grid" id="modulesGrid"></div>
-
-        <div class="resources-section" id="resources">
-            <h2 class="section-title">🔗 הצטרף לקהילה ופתח חשבון מסחר</h2>
-            <div class="resources-grid">
-                <div class="resource-card" onclick="window.open('https://t.me/+pFfWwRGAUlFjZjJk', '_blank')">
-                    <div class="resource-icon">📱</div>
-                    <div class="resource-title">קבוצת טלגרם</div>
-                    <div class="resource-link">עדכונים יומיים ואותות</div>
+    <!-- Modal for Lesson View -->
+    <div id="lesson-modal" onclick="closeModal()">
+        <div class="modal-inner" onclick="event.stopPropagation()">
+            <header class="p-8 border-b border-slate-800 flex justify-between items-center bg-slate-900/50">
+                <div>
+                    <span id="m-num" class="text-xs font-bold text-blue-500 block mb-1">MOD</span>
+                    <h3 id="m-title" class="text-2xl font-black">Module Name</h3>
                 </div>
-                <div class="resource-card" onclick="window.open('https://chat.whatsapp.com/Iej39KWKKIK', '_blank')">
-                    <div class="resource-icon">💬</div>
-                    <div class="resource-title">קבוצת וואטסאפ</div>
-                    <div class="resource-link">קהילת התלמידים</div>
-                </div>
-                <div class="resource-card" onclick="window.open('https://sagiinvest.carrd.co/', '_blank')">
-                    <div class="resource-icon">🌐</div>
-                    <div class="resource-title">דף נחיתה</div>
-                    <div class="resource-link">מדריכים והטבות בלעדיות</div>
-                </div>
-                <div class="resource-card" onclick="window.open('https://youtube.com/@sagi-trading?si=ivnq0_NnWC4vef_0', '_blank')">
-                    <div class="resource-icon">🎥</div>
-                    <div class="resource-title">ערוץ YouTube</div>
-                    <div class="resource-link">סרטוני הדרכה</div>
-                </div>
-                <div class="resource-card" onclick="window.open('https://open.spotify.com/show/2uyrQFh2OrVR9P0uOxeKxF', '_blank')">
-                    <div class="resource-icon">🎧</div>
-                    <div class="resource-title">פודקאסט Spotify</div>
-                    <div class="resource-link">פרקים על מסחר</div>
-                </div>
-                <div class="resource-card" onclick="window.open('https://bit.ly/SagiSelaPRO', '_blank')">
-                    <div class="resource-icon">💼</div>
-                    <div class="resource-title">קולמקס פרו</div>
-                    <div class="resource-link">פתח חשבון + הטבות</div>
-                </div>
-                <div class="resource-card" onclick="window.open('https://lp3.inter-il.com/ab/673', '_blank')">
-                    <div class="resource-icon">🏦</div>
-                    <div class="resource-title">אינטראקטיב ברוקרס</div>
-                    <div class="resource-link">פתח חשבון + הטבות</div>
-                </div>
+                <button onclick="closeModal()" class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center hover:bg-red-500/20 hover:text-red-500 transition-all">✕</button>
+            </header>
+            <div id="m-body" class="flex-1 overflow-y-auto p-8 space-y-3">
+                <!-- Lessons Injected -->
             </div>
-        </div>
-
-        <footer>
-            <p><strong>© 2025 SAGI TRADING</strong> - כל הזכויות שמורות</p>
-            <p style="margin-top: 15px;">קורס מסחר מקצועי בשוק ההון וקריפטו | 10 מודולים | 30+ שיעורים</p>
-        </footer>
-    </div>
-
-    <div class="modal" id="lessonModal">
-        <div class="modal-content">
-            <span class="close-modal" onclick="closeLesson()">✕</span>
-            <div id="lessonContent"></div>
-            <div class="lesson-nav">
-                <button class="nav-btn" id="prevLesson" onclick="navigateLesson(-1)">← שיעור קודם</button>
-                <button class="nav-btn complete-btn" id="completeLesson" onclick="toggleComplete()">
-                    סמן כהושלם ✓
-                </button>
-                <button class="nav-btn" id="nextLesson" onclick="navigateLesson(1)">שיעור הבא →</button>
-            </div>
+            <footer class="p-4 border-t border-slate-800 bg-slate-950/50 text-center">
+                <p class="text-[10px] text-slate-600">SAGI TRADING ACADEMY - PRIVATE PLATFORM</p>
+            </footer>
         </div>
     </div>
 
     <script>
         const modules = [
-            {id:1,title:"מבוא ומיינדסט – הפיכת המוח לסוחר",desc:"הצבת מטרות, הבנת הבסיס ובניית תוכנית עבודה",lessons:["ברוכים הבאים למשפחה","למה 90% מהסוחרים נכשלים?","הצבת מטרות ובניית תוכנית"]},
-            {id:2,title:"תשתית טכנית – איך הבורסה עובדת?",desc:"מניות, מדדים, עושי שוק וספר פקודות",lessons:["מניות ומדדים ותעודות סל","עושי שוק לעומת סוחרים","ווליום וספר פקודות"]},
-            {id:3,title:"בחירת ברוקר והקמת עמדת עבודה",desc:"השוואה בין ברוקרים ופתיחת חשבון",lessons:["השוואה בין ברוקרים","פתיחת חשבון","הכרת מערכת המסחר"]},
-            {id:4,title:"ניתוח טכני א' – שפת הגרפים",desc:"נרות יפניים, תמיכות והתנגדויות",lessons:["נרות יפניים","תמיכה והתנגדות","אסטרטגיית הפריצה"]},
-            {id:5,title:"ניתוח טכני ב' – תבניות ומדדים",desc:"תבניות מחיר, RSI וממוצעים נעים",lessons:["תבניות היפוך והמשכיות","ממוצעים נעים","RSI ו-MACD"]},
-            {id:6,title:"אסטרטגיות מסחר מעשיות",desc:"פריצה, נסיגות ופרה-מרקט",lessons:["אסטרטגיית הפריצה","מסחר בנסיגות","מסחר בפרה-מרקט"]},
-            {id:7,title:"ניהול סיכונים – חבל ההצלה",desc:"חוק ה-1%, יחס R:R וסטופ-לוס",lessons:["חוק ה-1%","יחס סיכון-סיכוי","חישוב גודל פוזיציה"]},
-            {id:8,title:"פסיכולוגיית מסחר – האויב שבפנים",desc:"FOMO, משמעת ויומן מסחר",lessons:["מחזור הרגשות","הפחד להחמיץ (FOMO)","משמעת ויומן מסחר"]},
-            {id:9,title:"קריפטו, בלוקצ'יין והכנסה פסיבית",desc:"ביטקוין, את'ריום, Bybit וסטייקינג",lessons:["מבוא לנכסים דיגיטליים","עבודה עם Bybit","סטייקינג"]},
-            {id:10,title:"סיכום, מיסוי ויציאה לדרך",desc:"יומן מסחר, מיסוי והצעדים הבאים",lessons:["ניהול יומן מסחר","מדריך מיסוי","הצעדים הבאים"]}
+            { id: 1, title: "מבוא ומיינדסט - הפיכת המוח לסוחר", icon: "🧠", lessons: ["שיעור 1: ברוכים הבאים למשפחה - מי אני ומה החזון?", "שיעור 2: למה 90% מהסוחרים נכשלים?", "שיעור 3: הצבת מטרות פיננסיות ובניית תוכנית עבודה"] },
+            { id: 2, title: "תשתית טכנית - איך הבורסה עובדת?", icon: "📊", lessons: ["שיעור 1: מניות, מדדים ותעודות סל - מה קונים?", "שיעור 2: עושי שוק לעומת סוחרים", "שיעור 3: ווליום, Level 2 וביצועי ECN"] },
+            { id: 3, title: "בחירת ברוקר והקמת עמדת עבודה", icon: "💻", lessons: ["שיעור 1: השוואה בין Interactive ל-Colmex Pro", "שיעור 2: מדריך פתיחת חשבון והטבות תלמידים", "שיעור 3: הכרת מערכות המסחר"] },
+            { id: 4, title: "ניתוח טכני פרקטי - שפת הגרפים", icon: "📈", lessons: ["שיעור 1: נרות יפניים וקריאת Price Action", "שיעור 2: קווי מגמה, תמיכה והתנגדות", "שיעור 3: אינדיקטורים מובילים: VWAP, RSI וממוצעים נעים"] },
+            { id: 5, title: "ניתוח פונדמנטלי ומאקרו כלכלה", icon: "📰", lessons: ["שיעור 1: הודעות ריבית (FED) והשפעתן", "שיעור 2: מסחר בדוחות כספיים - איך לקרוא תוצאות?", "שיעור 3: שימוש ביומן כלכלי"] },
+            { id: 6, title: "אסטרטגיות מסחר למתקדמים", icon: "🎯", lessons: ["אסטרטגיה 1: פריצות (Breakout)", "אסטרטגיה 2: נסיגות (Pullback)", "אסטרטגיה 3: היפוכים (Reversal)"] },
+            { id: 7, title: "ניהול סיכונים - הדרך לשרוד ולהרוויח", icon: "🛡️", lessons: ["שיעור 1: חוק ה-1% וניהול כספי קפדני", "שיעור 2: יחס סיכון/סיכוי (R:R)", "שיעור 3: ניהול עסקה בזמן אמת וקידום סטופ"] },
+            { id: 8, title: "פסיכולוגיית מסחר בזמן אמת", icon: "🧘", lessons: ["שיעור 1: התמודדות עם פחד, חמדנות ו-FOMO", "שיעור 2: משמעת ברזל: חוק 3 העסקאות", "שיעור 3: איך להתאושש מרצף הפסדים"] },
+            { id: 9, title: "מבוא למסחר בקריפטו", icon: "₿", lessons: ["שיעור 1: עולם המטבעות הדיגיטליים - מה זה בלוקצ'יין?", "שיעור 2: מסחר בביטקוין ובמטבעות אלטרנטיביים"] },
+            { id: 10, title: "סיכום ובניית העסק שלך", icon: "🏁", lessons: ["שיעור 1: כתיבת תוכנית מסחר אישית", "שיעור 2: ניהול יומן מסחר וניתוח עצמי", "שיעור 3: הצעדים הבאים בדרך לחופש כלכלי"] }
         ];
 
-        let progress = new Set(JSON.parse(localStorage.getItem('sagiProgress')||'[]'));
-
-        function save() {
-            localStorage.setItem('sagiProgress', JSON.stringify([...progress]));
-            updateStats();
-        }
-
-        function updateStats() {
-            document.getElementById('completedLessons').textContent = progress.size;
-            document.getElementById('completedModules').textContent = modules.filter(m => 
-                m.lessons.every((_,i) => progress.has(`${m.id}-${i}`))
-            ).length;
-        }
-
-        function render() {
-            const grid = document.getElementById('modulesGrid');
-            grid.innerHTML = modules.map(m => {
-                const done = m.lessons.filter((_,i) => progress.has(`${m.id}-${i}`)).length;
-                const complete = done === m.lessons.length;
-                return `
-                    <div class="module-card ${complete?'completed':''}" onclick="openModule(${m.id})">
-                        <div class="module-header">
-                            <div class="module-number">${m.id}</div>
-                            <div class="module-status">${complete?'✓':'📚'}</div>
-                        </div>
-                        <div class="module-title">${m.title}</div>
-                        <div class="module-description">${m.desc}</div>
-                        <div class="lessons-preview">
-                            ${m.lessons.map((l,i) => `
-                                <div class="lesson-item ${progress.has(`${m.id}-${i}`)?'completed':''}">
-                                    ${l}
-                                </div>
-                            `).join('')}
-                        </div>
-                        <div class="module-footer">
-                            <div class="progress-text">${done}/${m.lessons.length} שיעורים</div>
-                            <button class="start-btn">${complete?'סקירה':done>0?'המשך':'התחל'}</button>
-                        </div>
+        function renderModules() {
+            const grid = document.getElementById('modules-grid');
+            grid.innerHTML = modules.map(m => `
+                <div class="module-card glass p-8 rounded-3xl" onclick="openModule(${m.id})">
+                    <div class="text-4xl mb-4 bg-blue-600/10 w-16 h-16 rounded-2xl flex items-center justify-center">${m.icon}</div>
+                    <div class="text-xs text-blue-500 font-bold mb-1">מודול ${m.id}</div>
+                    <h3 class="font-bold text-lg text-white leading-snug">${m.title}</h3>
+                    <div class="mt-6 flex justify-between items-center text-[10px] text-slate-500 font-bold uppercase tracking-widest">
+                        <span>${m.lessons.length} שיעורים</span>
+                        <span class="text-blue-400">צפה עכשיו ←</span>
                     </div>
-                `;
-            }).join('');
+                </div>
+            `).join('');
         }
-
-        let currentMod = 1, currentLesson = 0;
 
         function openModule(id) {
-            currentMod = id;
-            currentLesson = 0;
-            showLesson();
-        }
-
-        function showLesson() {
-            const m = modules.find(x => x.id === currentMod);
-            if (!m) return;
-            const key = `${currentMod}-${currentLesson}`;
-            const done = progress.has(key);
-            
-            document.getElementById('lessonContent').innerHTML = `
-                <div class="lesson-header">
-                    <div class="lesson-breadcrumb">מודול ${currentMod}: ${m.title}</div>
-                    <h2 class="lesson-title">${m.lessons[currentLesson]}</h2>
+            const m = modules.find(x => x.id === id);
+            document.getElementById('m-num').innerText = `MODULE 0${m.id}`;
+            document.getElementById('m-title').innerText = m.title;
+            document.getElementById('m-body').innerHTML = m.lessons.map((l, idx) => `
+                <div class="p-5 bg-slate-800/30 rounded-2xl border border-slate-800 flex items-center gap-4 hover:border-blue-500/50 transition-all cursor-pointer">
+                    <div class="w-8 h-8 rounded-full bg-blue-600/10 flex items-center justify-center text-xs font-bold text-blue-500">${idx+1}</div>
+                    <div class="text-slate-200 font-medium">${l}</div>
                 </div>
-                <div class="lesson-content">
-                    <p>זהו תוכן השיעור "${m.lessons[currentLesson]}" ממודול ${currentMod}.</p>
-                    <p>כאן יופיע התוכן המלא מהסילבוס...</p>
-                </div>
-            `;
-            
-            document.getElementById('prevLesson').disabled = currentLesson === 0;
-            document.getElementById('nextLesson').disabled = currentLesson === m.lessons.length - 1;
-            document.getElementById('completeLesson').textContent = done ? 'הושלם ✓' : 'סמן כהושלם ✓';
-            document.getElementById('completeLesson').style.opacity = done ? '0.7' : '1';
-            
-            document.getElementById('lessonModal').style.display = 'block';
-            document.body.style.overflow = 'hidden';
+            `).join('');
+            document.getElementById('lesson-modal').style.display = 'flex';
         }
 
-        function closeLesson() {
-            document.getElementById('lessonModal').style.display = 'none';
-            document.body.style.overflow = 'auto';
-            render();
+        function closeModal() {
+            document.getElementById('lesson-modal').style.display = 'none';
         }
 
-        function navigateLesson(dir) {
-            const m = modules.find(x => x.id === currentMod);
-            const newIdx = currentLesson + dir;
-            if (newIdx >= 0 && newIdx < m.lessons.length) {
-                currentLesson = newIdx;
-                showLesson();
-            } else if (dir > 0 && currentMod < modules.length) {
-                currentMod++;
-                currentLesson = 0;
-                showLesson();
-            } else if (dir < 0 && currentMod > 1) {
-                currentMod--;
-                currentLesson = modules.find(x => x.id === currentMod).lessons.length - 1;
-                showLesson();
+        function showPage(p) {
+            document.querySelectorAll('.content-page').forEach(page => page.classList.add('hidden'));
+            document.getElementById('page-' + p).classList.remove('hidden');
+            document.querySelectorAll('.nav-item').forEach(btn => btn.classList.remove('active-tab'));
+            document.getElementById('btn-' + p).classList.add('active-tab');
+            
+            const titles = {'academy': 'Trading Academy', 'benefits': 'Exclusive Benefits', 'tools': 'Risk Manager'};
+            document.getElementById('header-title').innerText = titles[p];
+        }
+
+        function calculate() {
+            const cap = parseFloat(document.getElementById('c-cap').value);
+            const stop = parseFloat(document.getElementById('c-stop').value);
+            if(cap && stop && stop > 0) {
+                const riskPerTrade = cap * 0.01;
+                const shares = Math.floor(riskPerTrade / stop);
+                document.getElementById('res-val').innerText = shares.toLocaleString();
+                document.getElementById('res-box').classList.remove('hidden');
             }
         }
 
-        function toggleComplete() {
-            const key = `${currentMod}-${currentLesson}`;
-            if (progress.has(key)) progress.delete(key);
-            else progress.add(key);
-            save();
-            const done = progress.has(key);
-            document.getElementById('completeLesson').textContent = done ? 'הושלם ✓' : 'סמן כהושלם ✓';
-            document.getElementById('completeLesson').style.opacity = done ? '0.7' : '1';
-        }
-
-        window.onclick = e => {
-            if (e.target.id === 'lessonModal') closeLesson();
-        };
-
-        document.addEventListener('keydown', e => {
-            if (e.key === 'Escape') closeLesson();
-        });
-
-        render();
-        updateStats();
-
-        document.querySelectorAll('a[href^="#"]').forEach(a => {
-            a.addEventListener('click', e => {
-                e.preventDefault();
-                document.querySelector(a.getAttribute('href'))?.scrollIntoView({behavior:'smooth'});
-            });
-        });
+        window.onload = renderModules;
     </script>
 </body>
 </html>
