@@ -3,181 +3,552 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SAGI TRADING - קורס המסחר המקצועי המלא</title>
+    <title>SAGI TRADING PRO - קורס מסחר מקצועי מקיף</title>
+    <meta name="description" content="הקורס המקצועי והמקיף ביותר למסחר בשוק ההון - 11 מודולים, 38 שיעורים, תרגילים מעשיים">
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800&family=Rubik:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: 'Segoe UI', Tahoma, sans-serif;
-            background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 100%);
-            color: #e0e0e0;
-            line-height: 1.7;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
+        
+        :root {
+            --navy-dark: #0a1628;
+            --navy-medium: #152238;
+            --navy-light: #1e3a5f;
+            --gold: #f7b731;
+            --gold-light: #ffd369;
+            --cyan: #00d4ff;
+            --green: #00f2c3;
+            --purple: #a78bfa;
+            --red: #ff5757;
+            --white: #ffffff;
+            --gray-light: #cbd5e1;
+            --gray: #94a3b8;
+        }
+        
+        body {
+            font-family: 'Heebo', sans-serif;
+            background: var(--navy-dark);
+            color: var(--white);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+        
+        /* Navbar */
         .navbar {
-            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
-            padding: 18px 30px;
+            background: rgba(10, 22, 40, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 20px 40px;
             position: sticky;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 5px 25px rgba(0,0,0,0.4);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .navbar-container {
+            max-width: 1400px;
+            margin: 0 auto;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
-        .navbar-brand { font-size: 1.8em; font-weight: bold; color: #fff; }
-        .navbar-links { display: flex; gap: 20px; }
+        
+        .navbar-brand {
+            font-family: 'Rubik', sans-serif;
+            font-size: 1.8em;
+            font-weight: 700;
+            color: var(--gold);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .brand-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2em;
+        }
+        
+        .navbar-links {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+        
         .navbar-links a {
-            color: #a8d5ff;
+            color: var(--gray-light);
             text-decoration: none;
-            padding: 8px 15px;
-            border-radius: 6px;
+            font-weight: 500;
             transition: all 0.3s;
+            position: relative;
         }
-        .navbar-links a:hover { background: rgba(255,255,255,0.15); color: #fff; }
+        
+        .navbar-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            right: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gold);
+            transition: width 0.3s;
+        }
+        
+        .navbar-links a:hover {
+            color: var(--gold);
+        }
+        
+        .navbar-links a:hover::after {
+            width: 100%;
+        }
+        
+        /* Hero */
         .hero {
-            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
-            padding: 70px 30px;
-            text-align: center;
-            margin: 25px;
-            border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
-        }
-        .hero h1 { font-size: 3.2em; color: #fff; margin-bottom: 18px; }
-        .hero p { font-size: 1.35em; color: #a8d5ff; margin-bottom: 35px; }
-        .youtube-embed {
-            max-width: 850px;
-            margin: 35px auto;
-            border-radius: 15px;
+            padding: 100px 40px;
+            background: linear-gradient(135deg, var(--navy-dark) 0%, var(--navy-medium) 100%);
+            position: relative;
             overflow: hidden;
-            box-shadow: 0 15px 45px rgba(0,0,0,0.5);
         }
-        .youtube-embed iframe { width: 100%; height: 480px; border: none; }
-        .btn {
-            display: inline-block;
-            padding: 16px 35px;
-            margin: 8px;
-            border-radius: 10px;
-            font-weight: bold;
-            font-size: 1.15em;
-            text-decoration: none;
-            transition: all 0.3s;
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at 30% 50%, rgba(0, 212, 255, 0.15) 0%, transparent 50%),
+                        radial-gradient(circle at 70% 50%, rgba(247, 183, 49, 0.1) 0%, transparent 50%);
+            animation: heroGlow 20s ease-in-out infinite;
         }
-        .btn-primary {
-            background: linear-gradient(135deg, #4ade80 0%, #22c55e 100%);
-            color: #000;
+        
+        @keyframes heroGlow {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            50% { transform: translate(5%, 5%) rotate(180deg); }
         }
-        .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 10px 30px rgba(74,222,128,0.5); }
-        .btn-secondary {
-            background: rgba(255,255,255,0.1);
-            color: #fff;
-            border: 2px solid #4ade80;
-        }
-        .btn-secondary:hover { background: rgba(74,222,128,0.2); }
-        .container { max-width: 1400px; margin: 0 auto; padding: 35px 20px; }
-        .stats {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 22px;
-            margin: 45px 0;
-        }
-        .stat-card {
-            background: rgba(255,255,255,0.06);
-            padding: 28px;
-            border-radius: 14px;
+        
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
             text-align: center;
-            transition: all 0.3s;
+            position: relative;
+            z-index: 1;
         }
-        .stat-card:hover { transform: translateY(-6px); background: rgba(74,222,128,0.12); }
-        .stat-number {
-            font-size: 2.8em;
-            font-weight: bold;
-            background: linear-gradient(135deg, #4ade80 0%, #22c55e 100%);
+        
+        .hero-badge {
+            display: inline-block;
+            background: rgba(247, 183, 49, 0.1);
+            border: 1px solid var(--gold);
+            color: var(--gold);
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-size: 0.9em;
+            font-weight: 600;
+            margin-bottom: 30px;
+        }
+        
+        .hero h1 {
+            font-family: 'Rubik', sans-serif;
+            font-size: 4em;
+            font-weight: 800;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, var(--white) 0%, var(--gold-light) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1.2;
         }
-        .stat-label { color: #b0b0b0; margin-top: 8px; }
-        .section-title {
-            font-size: 2.4em;
+        
+        .hero-subtitle {
+            font-size: 1.4em;
+            color: var(--gray-light);
+            margin-bottom: 50px;
+            font-weight: 300;
+        }
+        
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 60px;
+            margin: 60px 0;
+            flex-wrap: wrap;
+        }
+        
+        .hero-stat {
             text-align: center;
-            margin: 55px 0 38px;
-            color: #fff;
         }
+        
+        .hero-stat-number {
+            font-size: 3.5em;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--cyan) 0%, var(--green) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .hero-stat-label {
+            color: var(--gray);
+            margin-top: 8px;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 40px;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            padding: 18px 40px;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 1.1em;
+            text-decoration: none;
+            transition: all 0.3s;
+            cursor: pointer;
+            border: none;
+            display: inline-block;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
+            color: var(--navy-dark);
+            box-shadow: 0 10px 30px rgba(247, 183, 49, 0.3);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(247, 183, 49, 0.5);
+        }
+        
+        .btn-secondary {
+            background: rgba(255,255,255,0.1);
+            color: var(--white);
+            border: 2px solid rgba(255,255,255,0.2);
+        }
+        
+        .btn-secondary:hover {
+            background: rgba(255,255,255,0.15);
+            border-color: var(--gold);
+        }
+        
+        /* Container */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 80px 40px;
+        }
+        
+        /* Stats Dashboard */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin: 60px 0;
+        }
+        
+        .stat-card {
+            background: linear-gradient(135deg, var(--navy-medium) 0%, var(--navy-light) 100%);
+            padding: 40px;
+            border-radius: 20px;
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--gold) 0%, var(--cyan) 100%);
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--gold);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+        }
+        
+        .stat-icon {
+            font-size: 3em;
+            margin-bottom: 20px;
+        }
+        
+        .stat-number {
+            font-size: 3em;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .stat-label {
+            color: var(--gray);
+            margin-top: 12px;
+            font-size: 1.1em;
+        }
+        
+        /* Section Title */
+        .section-title {
+            font-family: 'Rubik', sans-serif;
+            font-size: 3em;
+            font-weight: 700;
+            text-align: center;
+            margin: 80px 0 30px;
+            background: linear-gradient(135deg, var(--white) 0%, var(--gold) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.3em;
+            color: var(--gray);
+            margin-bottom: 60px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        /* Modules Grid */
         .modules-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(370px, 1fr));
-            gap: 28px;
-            margin-bottom: 55px;
+            grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
+            gap: 40px;
+            margin: 60px 0;
         }
+        
         .module-card {
-            background: linear-gradient(135deg, #1a1f3a 0%, #252b47 100%);
-            border-radius: 16px;
-            padding: 32px;
-            cursor: pointer;
-            transition: all 0.35s;
+            background: var(--navy-medium);
+            border-radius: 24px;
+            padding: 40px;
             border: 2px solid rgba(255,255,255,0.05);
+            transition: all 0.4s;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
         }
+        
+        .module-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at top right, rgba(247, 183, 49, 0.05) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.4s;
+        }
+        
+        .module-card:hover::before {
+            opacity: 1;
+        }
+        
         .module-card:hover {
-            transform: translateY(-8px);
-            border-color: #4ade80;
-            box-shadow: 0 22px 55px rgba(74,222,128,0.3);
+            transform: translateY(-10px);
+            border-color: var(--gold);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.4);
         }
-        .module-card.completed { border-color: #4ade80; }
+        
+        .module-card.completed {
+            border-color: var(--green);
+            background: linear-gradient(135deg, rgba(0, 242, 195, 0.05) 0%, var(--navy-medium) 100%);
+        }
+        
+        .module-card.new {
+            border-color: var(--purple);
+            background: linear-gradient(135deg, rgba(167, 139, 250, 0.05) 0%, var(--navy-medium) 100%);
+        }
+        
         .module-header {
             display: flex;
             justify-content: space-between;
-            align-items: center;
-            margin-bottom: 22px;
+            align-items: flex-start;
+            margin-bottom: 25px;
         }
+        
         .module-number {
-            font-size: 3.2em;
-            font-weight: bold;
-            background: linear-gradient(135deg, #4ade80 0%, #22c55e 100%);
+            font-size: 4em;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1;
         }
-        .module-status { font-size: 2.8em; }
-        .module-title {
-            font-size: 1.45em;
+        
+        .module-badges {
+            display: flex;
+            gap: 10px;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        
+        .module-badge {
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.85em;
             font-weight: 600;
-            color: #fff;
-            margin-bottom: 14px;
         }
-        .module-description { color: #b5b5b5; margin-bottom: 22px; }
-        .lessons-preview {
-            background: rgba(0,0,0,0.25);
+        
+        .badge-new {
+            background: var(--purple);
+            color: var(--white);
+        }
+        
+        .badge-status {
+            font-size: 2em;
+        }
+        
+        .module-title {
+            font-family: 'Rubik', sans-serif;
+            font-size: 1.7em;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 15px;
+        }
+        
+        .module-description {
+            color: var(--gray-light);
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+        
+        .module-summary {
+            background: rgba(247, 183, 49, 0.1);
+            border-right: 4px solid var(--gold);
             padding: 18px;
-            border-radius: 11px;
-            margin-bottom: 22px;
+            border-radius: 12px;
+            color: var(--gold-light);
+            margin-bottom: 25px;
+            font-size: 0.95em;
         }
-        .lesson-item {
-            padding: 11px 0;
-            color: #b5b5b5;
+        
+        .module-meta {
+            display: flex;
+            gap: 25px;
+            margin: 20px 0;
+            flex-wrap: wrap;
+        }
+        
+        .meta-item {
             display: flex;
             align-items: center;
-            gap: 11px;
-            border-bottom: 1px solid rgba(255,255,255,0.04);
+            gap: 8px;
+            color: var(--gray);
+            font-size: 0.95em;
         }
-        .lesson-item:last-child { border-bottom: none; }
-        .lesson-item::before { content: "▸"; color: #4ade80; }
-        .lesson-item.completed { color: #4ade80; }
-        .lesson-item.completed::before { content: "✓"; }
+        
+        .lessons-list {
+            background: rgba(0,0,0,0.3);
+            padding: 25px;
+            border-radius: 16px;
+            margin: 25px 0;
+        }
+        
+        .lesson-item {
+            padding: 14px 0;
+            color: var(--gray-light);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            transition: all 0.3s;
+        }
+        
+        .lesson-item:last-child {
+            border-bottom: none;
+        }
+        
+        .lesson-item::before {
+            content: "▶";
+            color: var(--gold);
+            font-size: 0.8em;
+        }
+        
+        .lesson-item.completed {
+            color: var(--green);
+        }
+        
+        .lesson-item.completed::before {
+            content: "✓";
+            font-weight: bold;
+        }
+        
+        .lesson-item:hover {
+            color: var(--gold);
+            padding-right: 10px;
+        }
+        
         .module-footer {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding-top: 22px;
-            border-top: 2px solid rgba(255,255,255,0.08);
+            padding-top: 25px;
+            border-top: 2px solid rgba(255,255,255,0.1);
+            margin-top: 25px;
+            gap: 20px;
         }
-        .start-btn {
-            background: linear-gradient(135deg, #4ade80 0%, #22c55e 100%);
-            color: #000;
+        
+        .progress-container {
+            flex: 1;
+        }
+        
+        .progress-bar {
+            background: rgba(255,255,255,0.1);
+            height: 12px;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 8px;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--gold) 0%, var(--gold-light) 100%);
+            border-radius: 10px;
+            transition: width 0.6s ease;
+            box-shadow: 0 0 20px rgba(247, 183, 49, 0.5);
+        }
+        
+        .progress-text {
+            color: var(--gray);
+            font-size: 0.9em;
+        }
+        
+        .module-btn {
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
+            color: var(--navy-dark);
+            padding: 14px 30px;
+            border-radius: 10px;
+            font-weight: 700;
             border: none;
-            padding: 13px 26px;
-            border-radius: 9px;
-            font-weight: 600;
             cursor: pointer;
             transition: all 0.3s;
+            white-space: nowrap;
         }
-        .start-btn:hover { transform: scale(1.06); }
+        
+        .module-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(247, 183, 49, 0.4);
+        }
+        
+        /* Modal */
         .modal {
             display: none;
             position: fixed;
@@ -185,264 +556,405 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0,0,0,0.97);
+            background: rgba(0,0,0,0.95);
             z-index: 2000;
             overflow-y: auto;
         }
+        
         .modal-content {
-            background: linear-gradient(135deg, #1a1f3a 0%, #252b47 100%);
-            margin: 35px auto;
-            padding: 45px;
-            max-width: 1050px;
-            border-radius: 22px;
+            background: var(--navy-medium);
+            margin: 50px auto;
+            padding: 50px;
+            max-width: 1100px;
+            border-radius: 24px;
             position: relative;
+            border: 1px solid rgba(255,255,255,0.1);
         }
-        .close-modal {
+        
+        .modal-close {
             position: absolute;
-            top: 22px;
-            left: 22px;
-            font-size: 2.8em;
+            top: 25px;
+            left: 25px;
+            font-size: 2.5em;
+            color: var(--gray);
             cursor: pointer;
-            color: #a5a5a5;
-            width: 55px;
-            height: 55px;
+            width: 50px;
+            height: 50px;
             display: flex;
             align-items: center;
             justify-content: center;
             border-radius: 50%;
-            background: rgba(255,255,255,0.06);
+            background: rgba(255,255,255,0.05);
             transition: all 0.3s;
         }
-        .close-modal:hover {
-            color: #fff;
-            background: rgba(255,255,255,0.14);
+        
+        .modal-close:hover {
+            color: var(--gold);
+            background: rgba(247, 183, 49, 0.1);
             transform: rotate(90deg);
         }
+        
         .lesson-header {
-            margin: 35px 0;
-            padding-bottom: 22px;
-            border-bottom: 3px solid rgba(74,222,128,0.35);
+            margin: 40px 0 30px;
+            padding-bottom: 25px;
+            border-bottom: 2px solid rgba(247, 183, 49, 0.3);
         }
-        .lesson-breadcrumb { color: #4ade80; margin-bottom: 18px; }
-        .lesson-title { font-size: 2.6em; color: #fff; margin-bottom: 12px; }
+        
+        .lesson-breadcrumb {
+            color: var(--gold);
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+        
+        .lesson-title {
+            font-family: 'Rubik', sans-serif;
+            font-size: 2.8em;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 15px;
+        }
+        
         .lesson-content {
-            color: #d5d5d5;
-            line-height: 1.95;
-            font-size: 1.12em;
+            color: var(--gray-light);
+            font-size: 1.15em;
+            line-height: 1.9;
         }
+        
         .lesson-content h3 {
-            color: #4ade80;
-            margin: 38px 0 18px;
-            font-size: 1.75em;
+            color: var(--gold);
+            font-family: 'Rubik', sans-serif;
+            font-size: 2em;
+            margin: 40px 0 20px;
+            font-weight: 700;
         }
+        
         .lesson-content h4 {
-            color: #6ee7b7;
-            margin: 28px 0 14px;
-            font-size: 1.45em;
+            color: var(--gold-light);
+            font-size: 1.5em;
+            margin: 30px 0 15px;
+            font-weight: 600;
         }
-        .lesson-content ul, .lesson-content ol { margin: 18px 0 18px 32px; }
-        .lesson-content li { margin: 11px 0; }
-        .lesson-content strong { color: #4ade80; }
-        .lesson-content p { margin: 16px 0; }
-        .lesson-content a { color: #4ade80; text-decoration: underline; }
+        
+        .lesson-content p {
+            margin: 18px 0;
+        }
+        
+        .lesson-content ul,
+        .lesson-content ol {
+            margin: 20px 0 20px 40px;
+        }
+        
+        .lesson-content li {
+            margin: 12px 0;
+        }
+        
+        .lesson-content strong {
+            color: var(--gold);
+            font-weight: 700;
+        }
+        
+        .lesson-content a {
+            color: var(--cyan);
+            text-decoration: underline;
+        }
+        
+        .lesson-content table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 30px 0;
+        }
+        
+        .lesson-content th,
+        .lesson-content td {
+            padding: 15px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .lesson-content th {
+            background: rgba(247, 183, 49, 0.2);
+        }
+        
         .lesson-nav {
             display: flex;
             justify-content: space-between;
-            margin-top: 45px;
-            padding-top: 32px;
-            border-top: 3px solid rgba(255,255,255,0.1);
-            gap: 18px;
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 2px solid rgba(255,255,255,0.1);
+            gap: 20px;
         }
+        
         .nav-btn {
-            background: linear-gradient(135deg, #2a5298 0%, #1e3c72 100%);
-            color: white;
-            border: none;
-            padding: 17px 28px;
-            border-radius: 11px;
+            background: var(--navy-light);
+            color: var(--white);
+            padding: 18px 35px;
+            border-radius: 12px;
+            border: 1px solid rgba(255,255,255,0.1);
             cursor: pointer;
             font-weight: 600;
+            font-size: 1.1em;
             transition: all 0.3s;
             flex: 1;
         }
-        .nav-btn:hover:not(:disabled) { transform: scale(1.03); }
-        .nav-btn:disabled { opacity: 0.35; cursor: not-allowed; }
+        
+        .nav-btn:hover:not(:disabled) {
+            background: var(--gold);
+            color: var(--navy-dark);
+            transform: scale(1.02);
+        }
+        
+        .nav-btn:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+        
         .complete-btn {
-            background: linear-gradient(135deg, #4ade80 0%, #22c55e 100%);
-            color: #000;
+            background: linear-gradient(135deg, var(--green) 0%, var(--cyan) 100%);
+            color: var(--navy-dark);
             flex: 2;
         }
-        .resources-section {
-            background: linear-gradient(135deg, #1a1f3a 0%, #252b47 100%);
-            border-radius: 22px;
-            padding: 45px;
-            margin: 55px 0;
+        
+        .complete-btn:hover {
+            transform: scale(1.02);
         }
+        
+        /* Resources Section */
+        .resources-section {
+            background: var(--navy-medium);
+            border-radius: 24px;
+            padding: 60px;
+            margin: 80px 0;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        
         .resources-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
-            gap: 22px;
-            margin-top: 35px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
         }
+        
         .resource-card {
-            background: rgba(255,255,255,0.05);
-            padding: 32px;
-            border-radius: 16px;
+            background: rgba(255,255,255,0.03);
+            padding: 40px;
+            border-radius: 20px;
             text-align: center;
-            cursor: pointer;
+            border: 1px solid rgba(255,255,255,0.1);
             transition: all 0.3s;
-            border: 2px solid rgba(255,255,255,0.05);
+            cursor: pointer;
         }
+        
         .resource-card:hover {
-            border-color: #4ade80;
-            transform: translateY(-7px);
+            border-color: var(--gold);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
         }
-        .resource-icon { font-size: 3.8em; margin-bottom: 18px; }
-        .resource-title { font-weight: 600; margin-bottom: 9px; font-size: 1.18em; }
-        .resource-link { color: #4ade80; }
+        
+        .resource-icon {
+            font-size: 3.5em;
+            margin-bottom: 20px;
+        }
+        
+        .resource-title {
+            font-weight: 700;
+            font-size: 1.3em;
+            margin-bottom: 12px;
+            color: var(--white);
+        }
+        
+        .resource-link {
+            color: var(--gold);
+        }
+        
+        /* Footer */
         footer {
+            background: var(--navy-dark);
+            padding: 60px 40px;
             text-align: center;
-            padding: 45px 20px;
-            color: #a8a8a8;
-            border-top: 2px solid rgba(255,255,255,0.08);
-            margin-top: 75px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            margin-top: 100px;
         }
+        
+        footer p {
+            color: var(--gray);
+            margin: 10px 0;
+        }
+        
+        /* Responsive */
         @media (max-width: 768px) {
-            .hero h1 { font-size: 2em; }
-            .modules-grid { grid-template-columns: 1fr; }
-            .modal-content { margin: 18px; padding: 28px; }
-            .navbar { flex-direction: column; gap: 14px; }
-            .youtube-embed iframe { height: 260px; }
+            .hero h1 {
+                font-size: 2.5em;
+            }
+            
+            .hero-stats {
+                flex-direction: column;
+                gap: 30px;
+            }
+            
+            .modules-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .modal-content {
+                margin: 20px;
+                padding: 30px;
+            }
+            
+            .navbar-links {
+                display: none;
+            }
+            
+            .lesson-nav {
+                flex-direction: column;
+            }
         }
     </style>
 </head>
 <body>
+    <!-- Navbar -->
     <nav class="navbar">
-        <div class="navbar-brand">📈 SAGI TRADING</div>
-        <div class="navbar-links">
-            <a href="#modules">📚 תוכנית הלימודים</a>
-            <a href="#resources">🎁 הטבות והרשמה</a>
-            <a href="https://youtube.com/@sagi-trading?si=ivnq0_NnWC4vef_0" target="_blank">🎥 YouTube</a>
+        <div class="navbar-container">
+            <div class="navbar-brand">
+                <div class="brand-icon">📈</div>
+                SAGI TRADING PRO
+            </div>
+            <div class="navbar-links">
+                <a href="#modules">📚 תוכנית לימודים</a>
+                <a href="#resources">🎁 משאבים</a>
+                <a href="https://youtube.com/@sagi-trading" target="_blank">🎥 YouTube</a>
+            </div>
         </div>
     </nav>
 
-    <div class="hero">
-        <h1>🎓 קורס המסחר המקצועי והמקיף</h1>
-        <p>ברוכים הבאים ל-SAGI TRADING - הנתיב המהיר שלכם למסחר מקצועי בשוק ההון וקריפטו</p>
-        
-        <div style="max-width: 900px; margin: 30px auto; text-align: right; background: rgba(255,255,255,0.05); padding: 35px; border-radius: 18px; line-height: 1.9;">
-            <h3 style="color: #4ade80; font-size: 1.8em; margin-bottom: 20px;">שלום לכולם, אני שגיא סלע 👋</h3>
-            <p style="font-size: 1.15em; margin-bottom: 18px;">
-                אני רוצה לברך אתכם על הבחירה לקחת שליטה על העתיד הפיננסי שלכם. אם הגעתם ל-SAGI TRADING, כנראה שהבנתם שמסחר בשוק ההון ובקריפטו הוא לא רק "גרפים ומספרים", אלא <strong style="color: #4ade80;">המיומנות העוצמתית ביותר לייצר חופש זמן וגמישות בעולם המודרני</strong>.
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-badge">✨ הקורס המקצועי והמקיף ביותר בישראל</div>
+            <h1>אקדמיה מקצועית<br/>למסחר בשוק ההון</h1>
+            <p class="hero-subtitle">
+                11 מודולים מעמיקים | 38 שיעורים מקצועיים | תרגילים מעשיים | תמיכה מלאה
             </p>
-            <p style="font-size: 1.15em; margin-bottom: 18px;">
-                החזון שלי הוא פשוט: <strong style="color: #4ade80;">להפוך את הידע המקצועי לפרקטי ונגיש לכל אחד</strong>. אני כאן כדי ללמד אתכם איך לסחור בצורה אחראית, שקולה ומבוססת נתונים.
-            </p>
-            <p style="font-size: 1.15em;">
-                במהלך 10 המודולים שלנו, אנחנו נבנה תשתית שלמה שתהפוך אתכם לסוחרים עצמאיים - מהבנת השוק, דרך ניתוח טכני ואסטרטגיות, ועד ניהול סיכונים ופסיכולוגיית מסחר.
-            </p>
+            
+            <div class="hero-stats">
+                <div class="hero-stat">
+                    <div class="hero-stat-number" id="completedModules">0</div>
+                    <div class="hero-stat-label">מודולים שהושלמו</div>
+                </div>
+                <div class="hero-stat">
+                    <div class="hero-stat-number" id="completedLessons">0</div>
+                    <div class="hero-stat-label">שיעורים שהושלמו</div>
+                </div>
+                <div class="hero-stat">
+                    <div class="hero-stat-number">11</div>
+                    <div class="hero-stat-label">מודולים במערכת</div>
+                </div>
+                <div class="hero-stat">
+                    <div class="hero-stat-number">38</div>
+                    <div class="hero-stat-label">שיעורים מקצועיים</div>
+                </div>
+            </div>
+            
+            <div class="hero-buttons">
+                <a href="#modules" class="btn btn-primary">🚀 התחל ללמוד עכשיו</a>
+                <a href="#resources" class="btn btn-secondary">🎁 משאבים והטבות</a>
+            </div>
         </div>
-        
-        <div style="margin-top: 35px;">
-            <a href="#modules" class="btn btn-primary">🚀 התחל ללמוד עכשיו</a>
-            <a href="#resources" class="btn btn-secondary">🎁 הטבות והרשמה</a>
-        </div>
-    </div>
+    </section>
 
+    <!-- Stats Dashboard -->
     <div class="container">
-        <div class="stats">
+        <div class="stats-grid">
             <div class="stat-card">
-                <div class="stat-number" id="completedModules">0</div>
-                <div class="stat-label">מודולים שהושלמו</div>
+                <div class="stat-icon">🎯</div>
+                <div class="stat-number" id="progressPercent">0%</div>
+                <div class="stat-label">התקדמות כוללת</div>
             </div>
             <div class="stat-card">
-                <div class="stat-number" id="completedLessons">0</div>
-                <div class="stat-label">שיעורים שהושלמו</div>
+                <div class="stat-icon">⏱️</div>
+                <div class="stat-number">100+</div>
+                <div class="stat-label">שעות לימוד</div>
             </div>
             <div class="stat-card">
-                <div class="stat-number">10</div>
-                <div class="stat-label">מודולים כוללים</div>
-            </div>
-            <div class="stat-card">
+                <div class="stat-icon">💼</div>
                 <div class="stat-number">30+</div>
-                <div class="stat-label">שיעורים מקצועיים</div>
+                <div class="stat-label">תרגילים מעשיים</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">🏆</div>
+                <div class="stat-number">∞</div>
+                <div class="stat-label">תמיכה וליווי</div>
             </div>
         </div>
-
+        
+        <!-- Modules Section -->
         <h2 class="section-title" id="modules">📚 תוכנית הלימודים המלאה</h2>
-        <div class="modules-grid" id="modulesGrid"></div>
-
+        <p class="section-subtitle">
+            11 מודולים מקיפים עם 38 שיעורים מקצועיים - מהבסיס המוחלט ועד לרמה מתקדמת
+        </p>
+        
+        <div class="modules-grid" id="modulesContainer"></div>
+        
+        <!-- Resources Section -->
         <div class="resources-section" id="resources">
-            <h2 class="section-title">🎁 הטבות בלעדיות והצטרפות לקהילה</h2>
-            <p style="text-align: center; font-size: 1.2em; color: #b5b5b5; margin-bottom: 35px;">
-                פתחו חשבון מסחר עם הטבות מיוחדות והצטרפו לקבוצות הקהילה שלנו
+            <h2 class="section-title">🎁 משאבים והטבות בלעדיות</h2>
+            <p class="section-subtitle">
+                פתח חשבון מסחר עם הטבות מיוחדות והצטרף לקהילה שלנו
             </p>
+            
             <div class="resources-grid">
                 <div class="resource-card" onclick="window.open('https://bit.ly/SagiSelaPRO', '_blank')">
                     <div class="resource-icon">💼</div>
                     <div class="resource-title">קולמקס פרו</div>
-                    <div class="resource-link">פתח חשבון + הטבות בלעדיות + חודש חינם</div>
+                    <div class="resource-link">הטבות בלעדיות + חודש חינם</div>
                 </div>
                 <div class="resource-card" onclick="window.open('https://lp3.inter-il.com/ab/673', '_blank')">
                     <div class="resource-icon">🏦</div>
                     <div class="resource-title">אינטראקטיב ברוקרס</div>
-                    <div class="resource-link">פתח חשבון + הטבות בלעדיות + עמלות מוזלות</div>
+                    <div class="resource-link">פתיחת חשבון + הטבות</div>
                 </div>
                 <div class="resource-card" onclick="window.open('https://t.me/+pFfWwRGAUlFjZjJk', '_blank')">
                     <div class="resource-icon">📱</div>
                     <div class="resource-title">קבוצת טלגרם</div>
-                    <div class="resource-link">עדכונים יומיים, אותות ומידע בזמן אמת</div>
+                    <div class="resource-link">עדכונים יומיים ואותות</div>
                 </div>
                 <div class="resource-card" onclick="window.open('https://chat.whatsapp.com/Iej39KWKKIK', '_blank')">
                     <div class="resource-icon">💬</div>
                     <div class="resource-title">קבוצת וואטסאפ</div>
-                    <div class="resource-link">קהילת התלמידים - שאלות ותשובות</div>
+                    <div class="resource-link">קהילת תלמידים</div>
                 </div>
                 <div class="resource-card" onclick="window.open('https://sagiinvest.carrd.co/', '_blank')">
                     <div class="resource-icon">🌐</div>
                     <div class="resource-title">דף נחיתה</div>
-                    <div class="resource-link">מדריכים, כלים והטבות נוספות</div>
+                    <div class="resource-link">מדריכים והטבות</div>
                 </div>
-                <div class="resource-card" onclick="window.open('https://youtube.com/@sagi-trading?si=51Lv_md5hzU6puVE', '_blank')">
+                <div class="resource-card" onclick="window.open('https://youtube.com/@sagi-trading', '_blank')">
                     <div class="resource-icon">🎥</div>
                     <div class="resource-title">ערוץ YouTube</div>
-                    <div class="resource-link">סרטוני הדרכה ואסטרטגיות מסחר</div>
+                    <div class="resource-link">סרטוני הדרכה</div>
                 </div>
-                <div class="resource-card" onclick="window.open('https://open.spotify.com/show/2uyrQFh2OrVR9P0uOxeKxF?si=jtjKTGLLST2fSKjiIW-DAw', '_blank')">
+                <div class="resource-card" onclick="window.open('https://open.spotify.com/show/2uyrQFh2OrVR9P0uOxeKxF', '_blank')">
                     <div class="resource-icon">🎧</div>
                     <div class="resource-title">פודקאסט Spotify</div>
-                    <div class="resource-link">פרקים על מסחר, כלכלה והשקעות</div>
+                    <div class="resource-link">פרקים מעניינים</div>
                 </div>
             </div>
         </div>
-
-        <div class="resources-section" style="margin-top: 80px;">
-            <h2 class="section-title">🎥 הערוץ שלנו ב-YouTube</h2>
-            <p style="text-align: center; font-size: 1.2em; color: #b5b5b5; margin-bottom: 35px;">
-                צפו בסרטוני הדרכה מקצועיים, ניתוחי שוק וטיפים למסחר
-            </p>
-            <div class="youtube-embed" style="max-width: 900px; margin: 0 auto;">
-                <iframe src="https://www.youtube.com/embed?listType=user_uploads&list=@sagi-trading" 
-                        allowfullscreen></iframe>
-            </div>
-            <div style="text-align: center; margin-top: 25px;">
-                <a href="https://youtube.com/@sagi-trading?si=ivnq0_NnWC4vef_0" target="_blank" class="btn btn-primary">
-                    📺 עברו לערוץ YouTube
-                </a>
-                <a href="https://open.spotify.com/show/2uyrQFh2OrVR9P0uOxeKxF?si=jtjKTGLLST2fSKjiIW-DAw" target="_blank" class="btn btn-secondary">
-                    🎧 האזינו בפודקאסט
-                </a>
-            </div>
-        </div>
-
-        <footer>
-            <p><strong>© 2025 SAGI TRADING</strong> - כל הזכויות שמורות</p>
-            <p style="margin-top: 14px;">קורס מסחר מקצועי בשוק ההון וקריפטו | 10 מודולים | 30+ שיעורים</p>
-        </footer>
     </div>
 
+    <!-- Footer -->
+    <footer>
+        <p style="font-size: 1.3em; font-weight: 600; color: var(--gold); margin-bottom: 15px;">
+            © 2025 SAGI TRADING PRO - כל הזכויות שמורות
+        </p>
+        <p>קורס מסחר מקצועי מקיף | 11 מודולים | 38 שיעורים | תמיכה מלאה</p>
+        <p style="margin-top: 20px; color: var(--gray);">
+            המסע שלך לחופש כלכלי מתחיל כאן 🚀
+        </p>
+    </footer>
+
+    <!-- Modal -->
     <div class="modal" id="lessonModal">
         <div class="modal-content">
-            <span class="close-modal" onclick="closeLesson()">✕</span>
+            <span class="modal-close" onclick="closeLesson()">✕</span>
             <div id="lessonContent"></div>
             <div class="lesson-nav">
                 <button class="nav-btn" id="prevLesson" onclick="navigateLesson(-1)">← שיעור קודם</button>
@@ -455,816 +967,325 @@
     </div>
 
     <script>
-// ==================================================
-// קורס SAGI TRADING - תוכן מלא מהסילבוס
-// ==================================================
-
+        // Course Data - ALL 11 MODULES WITH FULL CONTENT
+// ALL MODULES WITH FULL CONTENT - 11 modules, 38 lessons
 const modules = [
     {
-        id: 1,
-        title: "מבוא ומיינדסט – הפיכת המוח לסוחר",
-        description: "הבנת הבסיס הנכון למסחר מוצלח, הצבת מטרות ובניית תוכנית עבודה",
+        id: 0,
+        title: "יסודות קריטיים",
+        badge: "חדש",
+        description: "תשתית כלכלית ופסיכולוגית לפני תחילת המסחר",
+        summary: "הבנת מבנה השוק, פסיכולוגיה של סוחר, הבנת סיכונים ובניית תוכנית מסחר מקצועית.",
+        meta: { lessons: 4, duration: "8 שעות", level: "מתחילים" },
         lessons: [
-            {
-                title: "ברוכים הבאים למשפחה",
-                content: `
-                    <h3>המסע שלך לחופש כלכלי מתחיל כאן</h3>
-                    <p>שלום לכולם, אני שגיא סלע, ואני רוצה לברך אתכם על הבחירה לקחת שליטה על העתיד הפיננסי שלכם. אם הגעתם ל-SAGI TRADING, כנראה שהבנתם שמסחר בשוק ההון ובקריפטו הוא לא רק "גרפים ומספרים", אלא המיומנות העוצמתית ביותר לייצר חופש זמן וגמישות בעולם המודרני.</p>
-                    
-                    <h3>החזון שלנו</h3>
-                    <p>החזון שלי הוא פשוט: להפוך את הידע המקצועי, שלעיתים נראה מסובך ומפחיד, לפרקטי ונגיש לכל אחד. אני כאן כדי ללמד אתכם איך לסחור בצורה אחראית, שקולה ומבוססת נתונים.</p>
-                    
-                    <h3>מפת הדרכים של הקורס</h3>
-                    <p>במהלך 10 המודולים שלנו, אנחנו נבנה תשתית שלמה שתהפוך אתכם לסוחרים עצמאיים:</p>
-                    <ul>
-                        <li><strong>הבנת השוק:</strong> איך הבורסה באמת עובדת מאחורי הקלעים</li>
-                        <li><strong>ניתוח טכני:</strong> קריאת שפת הגרפים והבנת הפסיכולוגיה של הקונים והמוכרים</li>
-                        <li><strong>אסטרטגיות עבודה:</strong> תוכניות מסחר מוכחות למצבי שוק שונים</li>
-                        <li><strong>ניהול סיכונים:</strong> הכלי החשוב ביותר שיבטיח שתישארו במשחק לאורך זמן</li>
-                    </ul>
-                    
-                    <h3>המשימה הראשונה שלכם: הצטרפות לקהילה</h3>
-                    <p>הכוח של SAGI TRADING הוא בקהילה. מסחר יכול להיות עיסוק בודד, אבל כשאתם חלק מקבוצה שחולקת ידע וניתוחים, הלמידה מואצת פי כמה.</p>
-                    
-                    <h4>הצטרפו עכשיו:</h4>
-                    <ul>
-                        <li><a href="https://t.me/+pFfWwRGAUlFjZjJk" target="_blank">📱 קבוצת הטלגרם לעדכונים שוטפים</a></li>
-                        <li><a href="https://chat.whatsapp.com/Iej39KWKKIK" target="_blank">💬 קבוצת הוואטסאפ הקהילתית</a></li>
-                        <li><a href="https://sagiinvest.carrd.co/" target="_blank">🌐 דף הנחיתה עם מדריכים והטבות</a></li>
-                        <li><a href="https://youtube.com/@sagi-trading?si=51Lv_md5hzU6puVE" target="_blank">🎥 ערוץ YouTube</a></li>
-                        <li><a href="https://open.spotify.com/show/2uyrQFh2OrVR9P0uOxeKxF?si=jtjKTGLLST2fSKjiIW-DAw" target="_blank">🎧 פודקאסט Spotify</a></li>
-                    </ul>
-                `
-            },
-            {
-                title: "למה 90% מהסוחרים נכשלים?",
-                content: `
-                    <h3>הפסיכולוגיה מאחורי הכישלון</h3>
-                    <p>הנתון היבש אומר שרוב הסוחרים החדשים יפסידו את כספם תוך פחות משנה. זה לא קורה כי הם לא חכמים, אלא כי הם נופלים למלכודות פסיכולוגיות וטכניות קבועות.</p>
-                    
-                    <h3>שלוש המלכודות העיקריות:</h3>
-                    
-                    <h4>1. הניסיון "לנצח" את השוק</h4>
-                    <p>חובבנים מנסים להוכיח שהם צודקים. הם רואים מניה יורדת וקונים עוד ועוד כי "היא חייבת לעלות". סוחר מקצועי מבין שהוא לא מנצח את השוק, אלא זורם איתו.</p>
-                    
-                    <h4>2. מלכודת ה-FOMO (הפחד להחמיץ)</h4>
-                    <p>כשאתה רואה מניה טסה ב-20% וכולם מדברים עליה, המוח שלך צועק "כנס!". זה בדרך כלל הרגע שבו הסוחרים המקצועיים כבר מתחילים למכור ולצאת.</p>
-                    
-                    <h4>3. חוסר בניהול סיכונים</h4>
-                    <p>החובבן מסתכל רק על "כמה אני יכול להרוויח". המקצוען מסתכל קודם כל על "כמה אני מוכן להפסיד" לפני שהוא בכלל נכנס לעסקה.</p>
-                `
-            },
-            {
-                title: "הצבת מטרות ובניית תוכנית",
-                content: `
-                    <h3>מסחר בלי מטרה הוא כמו נהיגה בלי GPS</h3>
-                    <p>כדי להצליח, אנחנו צריכים להפוך את המסחר לעסק מסודר עם תוכנית עבודה.</p>
-                    
-                    <h3>הגדרות הבסיס שלכם:</h3>
-                    <ul>
-                        <li><strong>סגנון המסחר:</strong> האם אתם סוחרי יום (דקות/שעות) או סוחרי סווינג (ימים/שבועות)?</li>
-                        <li><strong>סיכון מקסימלי לטרייד:</strong> אנחנו נעבוד לפי "חוק ה-1%" – לעולם לא נסכן יותר מ-1% מתיק המסחר שלנו בעסקה אחת</li>
-                        <li><strong>ניהול זמן:</strong> הגדירו מראש כמה שעות ביום אתם מקדישים ללמידה ולמסחר</li>
-                    </ul>
-                    
-                    <h3>המשימה שלכם לסיום המודול:</h3>
-                    <p>כתבו לעצמכם את "החוזה שלכם עם עצמכם":</p>
-                    <ol>
-                        <li>מהו סכום הכסף המדויק שאני מקצה למסחר (סכום שלא יפגע לי באיכות החיים)?</li>
-                        <li>כמה שעות בשבוע אני מתחייב ללמוד ולתרגל?</li>
-                        <li>מה היעד הפיננסי הריאלי שלי (באחוזים) ל-3 החודשים הקרובים?</li>
-                    </ol>
-                `
-            }
+            { title: "מבנה השוק הפיננסי", content: `<h3>מהי בורסה ולמה היא קיימת?</h3><p><strong>הגדרה:</strong> שוק מאורגן למסחר בניירות ערך שבו נפגשים קונים ומוכרים.</p><h4>תפקידים עיקריים:</h4><ol><li><strong>גיוס הון לחברות</strong></li><li><strong>נזילות למשקיעים</strong></li><li><strong>גילוי מחירים</strong></li><li><strong>פיקוח ורגולציה</strong></li></ol><h3>השחקנים בשוק</h3><p>משקיעים מוסדיים (70%), משקיעים קמעונאיים, עושי שוק ו-HFT.</p><h3>שעות המסחר</h3><ul><li>Pre-Market: 11:00-16:30</li><li>Regular: 16:30-23:00</li><li>After-Hours: 23:00-02:00</li></ul><p style="background: rgba(247, 183, 49, 0.1); padding: 20px; border-right: 4px solid #f7b731; margin: 20px 0;"><strong>💡 טיפ:</strong> 70% מהתנודתיות מתרחשת בשעה הראשונה והאחרונה!</p>` },
+            { title: "פסיכולוגיה: משקיע vs. סוחר", content: `<h3>ההבדל המנטלי</h3><table style="width:100%; border-collapse:collapse; margin:30px 0;"><tr style="background:rgba(247,183,49,0.2);"><th style="padding:15px;">משקיע</th><th style="padding:15px;">סוחר</th></tr><tr><td style="padding:12px;">חושב בשנים</td><td>חושב בימים/שעות</td></tr><tr><td style="padding:12px;">מחפש ערך</td><td>מחפש תנועה</td></tr></table><h3>5 טעויות פסיכולוגיות</h3><h4>1. Anchoring Bias</h4><p>"קניתי ב-$100, אז אמכור רק ב-$100"</p><h4>2. FOMO</h4><p>הפחד להחמיץ - קניה בשיא</p><h4>3. Loss Aversion</h4><p>פחד לחתוך הפסד</p><h3>חוק הזהב</h3><div style="background: linear-gradient(135deg, rgba(247,183,49,0.1), rgba(0,212,255,0.1)); padding: 30px; text-align: center; font-size: 1.3em; font-weight: 600;">Plan the trade → Trade the plan → Review the trade</div>` },
+            { title: "הבנת הסיכון האמיתי", content: `<h3>סוגי סיכונים</h3><h4>1. Market Risk</h4><p>השוק יכול לרדת 10% ביום</p><h4>2. Liquidity Risk</h4><p>לא תמיד תוכל למכור במחיר רצוי</p><h4>3. Leverage Risk</h4><p style="color:#ff5757;">⚠️ מינוף גבוה = סיכון למחיקת חשבון</p><h4>4. Psychological Risk</h4><p style="color:#f7b731;">💥 הסיכון המסוכן ביותר!</p><h3>חישוב Risk of Ruin</h3><table style="width:100%; border-collapse:collapse; margin:30px 0;"><tr style="background:rgba(247,183,49,0.2);"><th>הפסדים</th><th>סוחר A (10%)</th><th>סוחר B (1%)</th></tr><tr><td>5</td><td style="color:#ff5757;">-41%</td><td style="color:#00f2c3;">-5%</td></tr><tr><td>10</td><td style="color:#ff5757;">-65%</td><td style="color:#00f2c3;">-10%</td></tr></table>` },
+            { title: "בניית תוכנית מסחר", content: `<h3>מבנה תוכנית מקצועית</h3><h4>1. Goals</h4><ul><li>יעד: 2-3% חודשי</li><li>מקסימום ירידה: 10% בחודש</li><li>20+ טריידים בחודש</li></ul><h4>2. Instruments</h4><ul><li>5-10 מניות בנזילות גבוהה</li><li>Volume מעל 1M</li><li>מחיר: $10-$500</li></ul><h4>3. Position Sizing</h4><div style="background:rgba(0,212,255,0.1); padding:20px; margin:20px 0;"><p style="font-size:1.2em; color:#00d4ff;">Shares = (Account × Risk%) / (Entry - Stop)</p><p style="margin-top:20px;"><strong>דוגמה:</strong><br>חשבון: $10,000<br>סיכון: 1% = $100<br>Entry: $50, Stop: $48<br><strong style="color:#00f2c3;">→ 50 מניות</strong></p></div>` }
+        ]
+    },
+    {
+        id: 1,
+        title: "מבוא ומיינדסט",
+        description: "הבנת הבסיס הנכון למסחר מוצלח",
+        summary: "פסיכולוגיה של מסחר, הצבת מטרות ריאליות ובניית תוכנית עבודה.",
+        meta: { lessons: 3, duration: "6 שעות", level: "מתחילים" },
+        lessons: [
+            { title: "ברוכים הבאים למשפחה", content: `<h3>המסע שלך לחופש כלכלי מתחיל כאן</h3><p>שלום, אני שגיא סלע. ברוכים הבאים ל-SAGI TRADING - המקום שבו הופכים ידע מקצועי לפרקטי ונגיש.</p><h3>מפת הדרכים</h3><ul><li><strong>הבנת השוק:</strong> איך הבורסה עובדת</li><li><strong>ניתוח טכני:</strong> קריאת שפת הגרפים</li><li><strong>אסטרטגיות:</strong> תוכניות מסחר מוכחות</li><li><strong>ניהול סיכונים:</strong> הישארות במשחק</li></ul><h3>הצטרפו לקהילה</h3><ul><li><a href="https://t.me/+pFfWwRGAUlFjZjJk" target="_blank">📱 טלגרם</a></li><li><a href="https://chat.whatsapp.com/Iej39KWKKIK" target="_blank">💬 וואטסאפ</a></li><li><a href="https://youtube.com/@sagi-trading" target="_blank">🎥 YouTube</a></li><li><a href="https://open.spotify.com/show/2uyrQFh2OrVR9P0uOxeKxF" target="_blank">🎧 Spotify</a></li></ul>` },
+            { title: "למה 90% נכשלים?", content: `<h3>הפסיכולוגיה מאחורי הכישלון</h3><p>רוב הסוחרים מפסידים תוך שנה - לא כי הם לא חכמים, אלא בגלל מלכודות פסיכולוגיות.</p><h4>1. לנצח את השוק</h4><p>חובבנים מנסים להוכיח שהם צודקים. <strong>מקצוענים זורמים עם השוק.</strong></p><h4>2. FOMO</h4><p>כשכולם מדברים על מניה - אתה כנראה מאוחר.</p><h4>3. חוסר ניהול סיכונים</h4><p>החובבן שואל "כמה ארוויח?". המקצוען שואל "כמה אפסיד?".</p>` },
+            { title: "הצבת מטרות ובניית תוכנית", content: `<h3>מסחר בלי מטרה = נהיגה בלי GPS</h3><p>אנחנו הופכים את המסחר לעסק מסודר.</p><h3>הגדרות בסיס</h3><ul><li><strong>סגנון:</strong> Day Trading או Swing Trading?</li><li><strong>סיכון:</strong> חוק ה-1% - לעולם לא יותר מ-1% לטרייד</li><li><strong>זמן:</strong> כמה שעות ביום?</li></ul><h3>המשימה</h3><ol><li>כמה כסף אני מקצה למסחר?</li><li>כמה שעות בשבוע ללמוד?</li><li>מה היעד ל-3 חודשים?</li></ol>` }
         ]
     },
     {
         id: 2,
-        title: "תשתית טכנית – איך הבורסה באמת עובדת?",
-        description: "מניות, מדדים, עושי שוק וספר פקודות",
+        title: "תשתית טכנית",
+        description: "איך הבורסה באמת עובדת?",
+        summary: "מניות, מדדים, עושי שוק, ווליום וספר פקודות - המנגנון האמיתי של השוק.",
+        meta: { lessons: 3, duration: "7 שעות", level: "מתחילים" },
         lessons: [
-            {
-                title: "מניות, מדדים ותעודות סל",
-                content: `
-                    <h3>מניה: הבעלות שלך בעסק</h3>
-                    <p>כשאתם קונים מניה, אתם לא סתם קונים "טיקר" (סימול) על המסך. אתם קונים חלק מחברה אמיתית. אם קניתם מנייה של AAPL (Apple), אתם שותפים ברווחים, בנכסים ובצמיחה של החברה. כסוחרים, אנחנו מחפשים חברות עם "סיפור" גרפי חזק או תנודתיות שמאפשרת רווח.</p>
-                    
-                    <h3>מדדים (Indices): הדופק של השוק</h3>
-                    <p>המדדים הם סל של מניות שמשקף את הביצועים של סקטור מסוים או של הכלכלה כולה:</p>
-                    <ul>
-                        <li><strong>S&P 500:</strong> 500 החברות הגדולות בארה"ב. זהו המדד החשוב ביותר</li>
-                        <li><strong>QQQ (Nasdaq 100):</strong> מתמקד בחברות טכנולוגיה וצמיחה</li>
-                        <li><strong>Dow Jones 30:</strong> חברות הענק המסורתיות של ארה"ב</li>
-                    </ul>
-                    
-                    <h3>תעודות סל (ETF): לסחור על הכל בבת אחת</h3>
-                    <p>תעודת סל היא נייר ערך שעוקב אחרי מדד או סקטור. במקום לקנות 500 מניות בנפרד, אתם קונים נייר אחד (כמו SPY) שעושה בדיוק מה שה-S&P 500 עושה. זה כלי מעולה לסוחרי סווינג שמחפשים יציבות.</p>
-                `
-            },
-            {
-                title: "עושי שוק לעומת סוחרים",
-                content: `
-                    <h3>מי זה עושה השוק (Market Maker)?</h3>
-                    <p>הבורסה היא לא מקום שבו קונים ומוכרים נפגשים במקרה. בכל רגע נתון, יש גופים פיננסיים גדולים (כמו גולדמן זאקס או סיטאדל) שתפקידם "לספק נזילות". הם חייבים לצטט מחיר קנייה ומחיר מכירה בכל זמן.</p>
-                    
-                    <h3>איך הם מרוויחים? (ה-Spread)</h3>
-                    <p>עושה השוק תמיד ימכור לכם קצת יותר ביוקר (Ask) ויקנה מכם קצת יותר בזול (Bid). ההפרש הזה נקרא ספרד (Spread), וזה הרווח שלהם. כסוחרים, אנחנו רוצים לסחור במניות עם "נזילות גבוהה" שבהן הספרד קטן מאוד, כדי לא להפסיד כסף ברגע הכניסה.</p>
-                    
-                    <h3>המשחק: נזילות ופקודות</h3>
-                    <p>הבנת עושי השוק עוזרת לנו להבין למה מחיר "נתקע" באזורים מסוימים. עושי השוק צריכים למלא פקודות ענק, ולפעמים הם ייצרו תנועות שיגרמו לסוחרים קטנים לצאת בסטופ-לוס רק כדי שהם יוכלו לאסוף את הסחורה.</p>
-                `
-            },
-            {
-                title: "ווליום, ספר פקודות וביצועי ECN",
-                content: `
-                    <h3>ווליום (Volume): הדלק של המחיר</h3>
-                    <p>ווליום מייצג את כמות המניות שהחליפו ידיים בזמן נתון.</p>
-                    <p><strong>כלל ברזל:</strong> פריצה טכנית בגרף ללא ווליום גבוה היא כנראה פריצת שווא. אנחנו רוצים לראות "אישור" מהמוסדיים בצורה של מחזור מסחר גבוה.</p>
-                    
-                    <h3>ספר הפקודות (Level 2)</h3>
-                    <p>בזמן שרוב האנשים רואים רק את המחיר הנוכחי, סוחרים מקצועיים מסתכלים על ה-Level 2. זהו "התור בקופות". שם רואים בדיוק כמה קונים מחכים במחיר מסוים וכמה מוכרים מחכים מעליו. זה עוזר לנו לזהות "קירות" של פקודות.</p>
-                    
-                    <h3>ביצועי ECN (Electronic Communication Network)</h3>
-                    <p>בעבודה עם ברוקרים מקצועיים (כמו אלו שנלמד במודול הבא), הפקודות שלנו עוברות ברשתות ECN. זה מאפשר לנו ביצוע מהיר יותר, ישירות מול הבורסה, בלי מתווכים מיותרים בדרך. זה קריטי לסוחרי יום שצריכים דיוק של סנטים.</p>
-                `
-            }
+            { title: "מניות, מדדים ותעודות סל", content: `<h3>מניה: הבעלות שלך בעסק</h3><p>כשקונים מניה, אתם קונים חלק מחברה אמיתית - רווחים, נכסים וצמיחה.</p><h3>מדדים</h3><ul><li><strong>S&P 500:</strong> 500 החברות הגדולות בארה"ב</li><li><strong>QQQ:</strong> טכנולוגיה וצמיחה</li><li><strong>Dow Jones:</strong> ענקיות מסורתיות</li></ul><h3>תעודות סל (ETF)</h3><p>נייר אחד שעוקב אחרי מדד שלם. במקום 500 מניות - קונים SPY אחד.</p>` },
+            { title: "עושי שוק לעומת סוחרים", content: `<h3>מי זה Market Maker?</h3><p>גופים פיננסיים (Goldman Sachs, Citadel) שתפקידם לספק נזילות - לצטט מחיר קנייה ומכירה תמיד.</p><h3>איך הם מרוויחים? (Spread)</h3><p>עושה השוק מוכר קצת יותר יקר (Ask) וקונה קצת יותר זול (Bid). ההפרש = הרווח שלהם.</p><h3>המשחק</h3><p>עושי השוק צריכים למלא פקודות ענק. לפעמים הם יוצרים תנועות שיגרמו לסוחרים קטנים לצאת בסטופ-לוס.</p>` },
+            { title: "ווליום, ספר פקודות ו-ECN", content: `<h3>Volume - הדלק של המחיר</h3><p><strong>כלל ברזל:</strong> פריצה בלי ווליום = פריצת שווא!</p><h3>Level 2 (ספר הפקודות)</h3><p>"התור בקופות" - רואים בדיוק כמה קונים וכמה מוכרים מחכים בכל מחיר.</p><h3>ECN (ביצועים אלקטרוניים)</h3><p>ברוקרים מקצועיים מעבירים פקודות ישירות לבורסה דרך ECN - ביצוע מהיר וללא מתווכים.</p>` }
         ]
     },
     {
         id: 3,
-        title: "בחירת ברוקר והקמת עמדת עבודה",
-        description: "השוואה בין ברוקרים, פתיחת חשבון והגדרת מערכת מסחר",
+        title: "בחירת ברוקר והקמת עמדה",
+        description: "השוואה בין ברוקרים ופתיחת חשבון",
+        summary: "בחירת הברוקר המתאים, פתיחת חשבון והגדרת מערכת מסחר מקצועית.",
+        meta: { lessons: 3, duration: "5 שעות", level: "מתחילים" },
         lessons: [
-            {
-                title: "השוואה בין ברוקרים מובילים",
-                content: `
-                    <h3>השותף העסקי שלך למסחר</h3>
-                    <p>כדי להתחיל לסחור בבורסה האמריקאית, אתם זקוקים ל"ברוקר" – גוף פיננסי שדרכו אתם מזרימים פקודות קנייה ומכירה לשוק. בחירת הברוקר היא ההחלטה העסקית הראשונה שלכם כסוחרים.</p>
-                    
-                    <h3>1. אינטראקטיב ברוקרס (Interactive Brokers)</h3>
-                    <p>הברוקר הגדול והנפוץ ביותר בעולם. מתאים מאוד למשקיעים לטווח ארוך וסוחרי סווינג שמחפשים יציבות מקסימלית ומגוון אינסופי של נכסים (מניות, אופציות, חוזים עתידיים וקריפטו).</p>
-                    <p><strong>הטבת קהילה:</strong> <a href="https://lp3.inter-il.com/ab/673" target="_blank">הרשמה דרך הקישור</a> תניב לכם את הטבות הקהילה ועמלות מסחר מופחתות.</p>
-                    
-                    <h3>2. קולמקס פרו (Colmex Pro)</h3>
-                    <p>הבחירה המועדפת על סוחרי יום (Day Traders) בישראל. קולמקס מציעה מערכת מסחר מהירה במיוחד (COLMEX PRO 2.0) המיועדת לביצועים מהירים בשבריר שנייה.</p>
-                    <p><strong>הטבת קהילה:</strong> <a href="https://bit.ly/SagiSelaPRO" target="_blank">הרשמה דרך הקישור</a> תניב לכם הטבות הקהילה, עמלות מוזלות וחודש שימוש חינם במערכת המסחר.</p>
-                `
-            },
-            {
-                title: "פתיחת חשבון - שלב אחר שלב",
-                content: `
-                    <h3>תהליך פתיחת החשבון</h3>
-                    <p>תהליך פתיחת החשבון הוא טכני, אך דורש דיוק. הנה הדברים שחשוב לשים אליהם לב:</p>
-                    
-                    <h4>1. סוגי חשבונות:</h4>
-                    <ul>
-                        <li><strong>חשבון מזומן (Cash):</strong> מסחר רק בכסף שיש לכם בחשבון</li>
-                        <li><strong>חשבון מרג'ין (Margin):</strong> מאפשר לכם להשתמש במינוף (כסף מהברוקר) ולבצע עסקאות "שורט" (רווח מירידות). לסוחרים אקטיביים זהו חשבון חובה</li>
-                    </ul>
-                    
-                    <h4>2. מסמכים דרושים:</h4>
-                    <ul>
-                        <li>צילום תעודת זהות / דרכון בתוקף</li>
-                        <li>אישור כתובת (חשבון חשמל/ארנונה/תדפיס בנק) משלושת החודשים האחרונים</li>
-                    </ul>
-                    
-                    <h4>3. אימות והצהרות:</h4>
-                    <p>בזמן ההרשמה תתבקשו להצהיר על ניסיון במסחר ורמת הכנסה. ודאו שאתם מבינים את השאלות כדי לקבל אישור לסחור במוצרים מורכבים במידת הצורך.</p>
-                `
-            },
-            {
-                title: "הכרת מערכת המסחר",
-                content: `
-                    <h3>הגדרת מערכת המסחר</h3>
-                    <p>לאחר פתיחת החשבון, נתקין את תוכנת המסחר במחשב (חשוב: לא לסחור מהנייד!).</p>
-                    
-                    <h3>מה נגדיר במערכת?</h3>
-                    <ul>
-                        <li><strong>סידור ה-Layout:</strong> נלמד איך למקם את הגרף, ספר הפקודות (Level 2) וה-Watchlist שלכם בצורה יעילה</li>
-                        <li><strong>הגדרת פקודות הגנה:</strong> נלמד להגדיר פקודות Stop Loss אוטומטיות לכל עסקה</li>
-                        <li><strong>שימוש ב-Hotkeys:</strong> הגדרת מקשים במקלדת לביצוע קנייה ומכירה מהירים ללא צורך בעכבר</li>
-                    </ul>
-                    
-                    <h3>המשימה שלכם לסיום המודול:</h3>
-                    <ol>
-                        <li>בחרו את הברוקר המתאים לכם והגישו בקשה לפתיחת חשבון דרך קישורי הקהילה</li>
-                        <li>הורידו את תוכנת המסחר (דמו או לייב) למחשב</li>
-                        <li>בצעו הגדרת גרף ראשונה למנייה גדולה (כמו TSLA או NVDA)</li>
-                    </ol>
-                `
-            }
+            { title: "השוואה בין ברוקרים", content: `<h3>השותף העסקי שלך</h3><p>הברוקר הוא הדרך שלך לשוק - בחירה קריטית!</p><h3>1. Interactive Brokers</h3><p>הגדול בעולם - מתאים למשקיעים ארוכי טווח וסווינג. מגוון עצום של נכסים.</p><p><strong>הטבה:</strong> <a href="https://lp3.inter-il.com/ab/673" target="_blank">פתיחת חשבון + הטבות</a></p><h3>2. Colmex Pro</h3><p>הבחירה של Day Traders בישראל - מערכת מהירה במיוחד.</p><p><strong>הטבה:</strong> <a href="https://bit.ly/SagiSelaPRO" target="_blank">חודש חינם + עמלות מוזלות</a></p>` },
+            { title: "פתיחת חשבון - שלב אחר שלב", content: `<h3>תהליך פתיחת החשבון</h3><h4>סוגי חשבונות</h4><ul><li><strong>Cash:</strong> מסחר רק בכסף שיש לך</li><li><strong>Margin:</strong> מינוף + שורט (לסוחרים אקטיביים)</li></ul><h4>מסמכים דרושים</h4><ul><li>תעודת זהות / דרכון</li><li>אישור כתובת (3 חודשים אחרונים)</li></ul><h4>אימות והצהרות</h4><p>תצהירו על ניסיון ורמת הכנסה - ודאו שמבינים את השאלות.</p>` },
+            { title: "הכרת מערכת המסחר", content: `<h3>הגדרת המערכת</h3><p>לאחר פתיחה - מתקינים תוכנת מסחר במחשב (לא נייד!).</p><h3>מה להגדיר?</h3><ul><li><strong>Layout:</strong> מיקום גרף, Level 2, Watchlist</li><li><strong>Stop Loss אוטומטי:</strong> לכל עסקה</li><li><strong>Hotkeys:</strong> מקשים לקנייה/מכירה מהירה</li></ul><h3>המשימה</h3><ol><li>בחרו ברוקר והגישו בקשה</li><li>הורידו תוכנת מסחר (דמו)</li><li>הגדירו גרף למניה גדולה (TSLA/NVDA)</li></ol>` }
         ]
     },
     {
         id: 4,
-        title: "ניתוח טכני א' – השפה של הגרף",
-        description: "נרות יפניים, תמיכה והתנגדות, קווי מגמה ופריצות",
+        title: "ניתוח טכני א'",
+        description: "השפה של הגרף",
+        summary: "נרות יפניים, תמיכה והתנגדות, קווי מגמה ופריצות - קריאת שפת הגרפים.",
+        meta: { lessons: 3, duration: "8 שעות", level: "בינוני" },
         lessons: [
-            {
-                title: "נרות יפניים",
-                content: `
-                    <h3>מהו ניתוח טכני?</h3>
-                    <p>ניתוח טכני הוא לא חיזוי העתיד, אלא קריאת פסיכולוגיית ההמונים. הגרף הוא שיקוף של פחד וחמדנות בזמן אמת. נלמד לזהות את העקבות שהמוסדיים (הכסף הגדול) משאירים על הגרף.</p>
-                    
-                    <h3>נר יפני – הסיפור שמאחורי המחיר</h3>
-                    <p>נר יפני הוא הדרך הטובה ביותר להבין מי שולט בטרייד: הקונים (השוורים) או המוכרים (הדובים).</p>
-                    
-                    <h4>מבנה הנר:</h4>
-                    <ul>
-                        <li><strong>גוף הנר (Body):</strong> ההפרש בין המחיר הפתיחה והסגירה</li>
-                        <li><strong>זנבות/פתילים (Wicks):</strong> השיאים והשפלים של הנר</li>
-                    </ul>
-                    
-                    <h4>תבניות היפוך קריטיות:</h4>
-                    <ul>
-                        <li><strong>פטיש (Hammer):</strong> נר עם זנב ארוך למטה שמופיע אחרי ירידות – מעיד על קונים ש"בלעו" את המוכרים</li>
-                        <li><strong>היפוך ענן שחור / Engulfing:</strong> נר ש"בולע" את הנר הקודם ומראה על שינוי כיוון אגרסיבי</li>
-                        <li><strong>דוג'י (Doji):</strong> נר ללא גוף, מעיד על חוסר החלטה בשוק – נקודת המתנה</li>
-                    </ul>
-                `
-            },
-            {
-                title: "תמיכה והתנגדות",
-                content: `
-                    <h3>הבסיס של כל אסטרטגיה רווחית</h3>
-                    <p>הבסיס של כל אסטרטגיה רווחית הוא זיהוי אזורי עניין.</p>
-                    
-                    <h4>1. תמיכה (Support): "הרצפה"</h4>
-                    <p>מחיר שמתחתיו הקונים מרגישים שהמניה "זולה" ונכנסים בכל הכוח.</p>
-                    
-                    <h4>2. התנגדות (Resistance): "התקרה"</h4>
-                    <p>מחיר שבו המוכרים מרגישים שהמניה "יקרה" ומתחילים למכור.</p>
-                    
-                    <h4>3. קווי מגמה (Trendlines): אלכסונים</h4>
-                    <p>אלכסונים שמחברים שיאים או שפלים.</p>
-                    <p><strong>כלל הזהב:</strong> ככל שנקודה ננגעה יותר פעמים (לפחות 3), הקו הופך למשמעותי יותר.</p>
-                `
-            },
-            {
-                title: "אסטרטגיית הפריצה",
-                content: `
-                    <h3>אסטרטגיית ה-Breakout (פריצה)</h3>
-                    <p>זוהי אחת האסטרטגיות הרווחיות ביותר ב-Day Trading.</p>
-                    
-                    <h3>התנאים לפריצה איכותית:</h3>
-                    <ol>
-                        <li><strong>דחיסה (Consolidation):</strong> המחיר נשאר בטווח צר לאורך זמן (כמו קפיץ דרוך)</li>
-                        <li><strong>ווליום גבוה:</strong> בנר הפריצה חייב להיות מחזור מסחר גבוה משמעותית מהממוצע</li>
-                        <li><strong>הסגירה:</strong> הנר חייב להיסגר מעל רמת ההתנגדות</li>
-                    </ol>
-                    
-                    <p>פריצה בלי ווליום היא פריצת שווא!</p>
-                `
-            }
+            { title: "נרות יפניים", content: `<h3>מהו ניתוח טכני?</h3><p>קריאת פסיכולוגיית ההמונים דרך הגרף - זיהוי עקבות המוסדיים.</p><h3>נר יפני - הסיפור</h3><p>הדרך הטובה ביותר להבין מי שולט: קונים או מוכרים.</p><h4>מבנה</h4><ul><li><strong>Body:</strong> הפרש פתיחה-סגירה</li><li><strong>Wicks:</strong> שיאים ושפלים</li></ul><h4>תבניות היפוך</h4><ul><li><strong>Hammer:</strong> זנב ארוך למטה אחרי ירידות</li><li><strong>Engulfing:</strong> נר ש"בולע" את הקודם</li><li><strong>Doji:</strong> ללא גוף - חוסר החלטה</li></ul>` },
+            { title: "תמיכה, התנגדות וקווי מגמה", content: `<h3>הבסיס של כל אסטרטגיה</h3><h4>1. Support - "הרצפה"</h4><p>מחיר שמתחתיו הקונים מרגישים שהמניה זולה.</p><h4>2. Resistance - "התקרה"</h4><p>מחיר שבו המוכרים מרגישים שהמניה יקרה.</p><h4>3. Trendlines - אלכסונים</h4><p>מחברים שיאים או שפלים.</p><p><strong>כלל הזהב:</strong> ככל שנקודה ננגעה יותר (3+), הקו חזק יותר.</p>` },
+            { title: "אסטרטגיית הפריצה", content: `<h3>Breakout - אחת הרווחיות ביותר</h3><h4>תנאים לפריצה איכותית</h4><ol><li><strong>Consolidation:</strong> מחיר בטווח צר (קפיץ דרוך)</li><li><strong>Volume גבוה:</strong> מחזור גבוה משמעותית</li><li><strong>Closing:</strong> סגירה מעל ההתנגדות</li></ol><p style="background:rgba(247,183,49,0.1); padding:20px; margin:20px 0; border-right:4px solid #f7b731;"><strong>זכרו:</strong> פריצה בלי Volume = פריצת שווא!</p>` }
         ]
     },
     {
         id: 5,
-        title: "ניתוח טכני ב' – תבניות ומדדים",
-        description: "תבניות היפוך, RSI, ממוצעים נעים ובולינגר",
+        title: "ניתוח טכני ב'",
+        description: "תבניות ומדדים",
+        summary: "תבניות מחיר (ראש וכתפיים, דגלים), ממוצעים נעים, RSI ו-Bollinger Bands.",
+        meta: { lessons: 3, duration: "9 שעות", level: "בינוני" },
         lessons: [
-            {
-                title: "תבניות היפוך והמשכיות",
-                content: `
-                    <h3>תבניות מחיר (Chart Patterns)</h3>
-                    <p>תבניות מחיר הן צורות גיאומטריות שחוזרות על עצמן ומעידות על הפסיכולוגיה של הסוחרים.</p>
-                    
-                    <h4>תבניות היפוך (Reversal Patterns):</h4>
-                    <ul>
-                        <li><strong>ראש וכתפיים (Head and Shoulders):</strong> כתף שמאל, ראש גבוה יותר, וכתף ימין בגובה דומה. הקונים נחלשים ולא מצליחים לייצר שיא חדש</li>
-                        <li><strong>תחתית כפולה / פסגה כפולה (Double Bottom/Top):</strong> המחיר מנסה לפרוץ רמה מסוימת פעמיים ונכשל</li>
-                    </ul>
-                    
-                    <h4>תבניות המשכיות (Continuation Patterns):</h4>
-                    <ul>
-                        <li><strong>דגל (Flag):</strong> תנועה חדה למעלה (תורן) ואז דשדוש קל בתוך תעלה צרה</li>
-                        <li><strong>משולשים (Triangles):</strong> מחיר שהולך ומצטמצם לתוך פינה</li>
-                    </ul>
-                `
-            },
-            {
-                title: "ממוצעים נעים",
-                content: `
-                    <h3>ממוצעים נעים (Moving Averages - MA)</h3>
-                    <p>הממוצע מחליק את רעשי הרקע ומראה לנו את הכיוון הכללי.</p>
-                    
-                    <h4>ממוצעים עיקריים:</h4>
-                    <ul>
-                        <li><strong>50 SMA (לטווח קצר-בינוני):</strong> משמש כקו תמיכה דינמי</li>
-                        <li><strong>200 SMA (לטווח ארוך):</strong> "קו פרשת המים" – מעליו השוק שורי, מתחתיו השוק דובי</li>
-                    </ul>
-                    
-                    <h4>צלב הזהב (Golden Cross):</h4>
-                    <p>כשממוצע 50 חוצה את 200 מלמטה למעלה – סימן לקנייה חזקה.</p>
-                    
-                    <h4>צלב המוות (Death Cross):</h4>
-                    <p>כשממוצע 50 חוצה את 200 מלמעלה למטה – סימן אזהרה לירידות.</p>
-                `
-            },
-            {
-                title: "RSI ו-MACD",
-                content: `
-                    <h3>מדד הכוח היחסי (RSI - Relative Strength Index)</h3>
-                    <p>מודד את עוצמת התנועה בטווח של 0 עד 100.</p>
-                    <ul>
-                        <li><strong>מעל 70:</strong> "קניית יתר" (Overbought) – זהירות, המחיר עלול לרדת</li>
-                        <li><strong>מתחת ל-30:</strong> "מכירת יתר" (Oversold) – המחיר זול מדי, פוטנציאל לעליות</li>
-                    </ul>
-                    
-                    <h3>MACD</h3>
-                    <p>מדד מומנטום שמראה את היחס בין שני ממוצעים נעים. חיתוך של קווי ה-MACD מעלה או מטה מסמן שינוי במומנטום.</p>
-                    
-                    <h4>טיפ למקצוענים - סטייה (Divergence):</h4>
-                    <p>אם המחיר מייצר שיא חדש אבל ה-RSI מייצר שיא נמוך יותר – זוהי "סטייה דובית" שמאותתת על היפוך מגמה קרוב.</p>
-                `
-            }
+            { title: "תבניות היפוך והמשכיות", content: `<h3>Chart Patterns</h3><p>צורות גיאומטריות שחוזרות ומעידות על פסיכולוגיה.</p><h4>תבניות היפוך</h4><ul><li><strong>Head & Shoulders:</strong> כתף-ראש-כתף, הקונים נחלשים</li><li><strong>Double Top/Bottom:</strong> פסגה/תחתית כפולה</li></ul><h4>תבניות המשכיות</h4><ul><li><strong>Flag:</strong> תנועה חדה + דשדוש בתעלה</li><li><strong>Triangles:</strong> מחיר מצטמצם לפינה</li></ul><p><strong>כניסה:</strong> רק אחרי שבירת Neckline!</p>` },
+            { title: "ממוצעים נעים", content: `<h3>Moving Averages - ה-GPS של המגמה</h3><p>מחליקים רעש ומראים כיוון כללי.</p><h4>ממוצעים עיקריים</h4><ul><li><strong>50 SMA:</strong> קו תמיכה דינמי</li><li><strong>200 SMA:</strong> "קו פרשת המים" - מעליו שורי, מתחתיו דובי</li></ul><h4>Golden Cross</h4><p>50 חוצה את 200 למעלה = סימן קנייה חזקה.</p><h4>Death Cross</h4><p>50 חוצה את 200 למטה = אזהרה לירידות.</p>` },
+            { title: "RSI ו-Bollinger Bands", content: `<h3>RSI - Relative Strength Index</h3><p>מודד עוצמה בטווח 0-100.</p><ul><li><strong>מעל 70:</strong> Overbought - זהירות</li><li><strong>מתחת ל-30:</strong> Oversold - פוטנציאל לעליות</li></ul><h4>טיפ מקצועי - Divergence</h4><p>המחיר עושה שיא חדש אבל RSI לא = סטייה דובית!</p><h3>Bollinger Bands</h3><p>סטייה מהממוצע. כשהרצועות מתכווצות = "שקט לפני סערה".</p>` }
         ]
     },
     {
         id: 6,
         title: "אסטרטגיות מסחר מעשיות",
-        description: "פריצה, נסיגות ומסחר בפרה-מרקט",
+        description: "פריצה, נסיגות ופרה-מרקט",
+        summary: "אסטרטגיות מוכחות: פריצות עם Volume, מסחר בנסיגות וניצול Pre-Market.",
+        meta: { lessons: 3, duration: "10 שעות", level: "בינוני-מתקדם" },
         lessons: [
-            {
-                title: "אסטרטגיית הפריצה",
-                content: `
-                    <h3>אסטרטגיית הפריצה (Breakout) – לרכוב על גל של עוצמה</h3>
-                    <p>אסטרטגיית הפריצה היא אחת הדרכים המהירות ביותר לייצר רווח בתנועה חדה. הרעיון הוא לזהות רמת התנגדות קריטית שהמניה "נלחמה" בה זמן רב, להיכנס לטרייד ברגע שהיא נפרצת כלפי מעלה בווליום גבוה.</p>
-                    
-                    <h4>מה אנחנו מחפשים?</h4>
-                    <p>מניה שדשדשה בטווח מסוים ופורצת רמת מחיר פסיכולוגית (כמו מספר עגול) או שיא כל הזמנים.</p>
-                    
-                    <h4>כלל ברזל:</h4>
-                    <p>פריצה ללא ווליום (Volume) גבוה היא פריצת שווא. אנחנו רוצים לראות את ה"דלק" של המוסדיים דוחף את המחיר.</p>
-                    
-                    <h4>ניהול העסקה:</h4>
-                    <p>כניסה מעל רמת הפריצה, וסטופ-לוס מתחת לרמת התמיכה החדשה שנוצרה.</p>
-                `
-            },
-            {
-                title: "מסחר בנסיגות",
-                content: `
-                    <h3>מסחר בנסיגות (Pullbacks) – לקנות בזול בתוך מגמה עולה</h3>
-                    <p>אם פריצה היא הניסיון "לתפוס את הרכבת כשהיא יוצאת מהתחנה", נסיגה היא הניסיון לעלות עליה כשהיא עוצרת רגע להפסקה.</p>
-                    
-                    <h4>הקונספט:</h4>
-                    <p>מניה חזקה שנמצאת במגמה עולה לעולם לא עולה בקו ישר. היא תמיד תבצע "תיקון" קטן (Pullback) למטה לפני המשך העלייה.</p>
-                    
-                    <h4>איפה קונים?</h4>
-                    <p>אנחנו מחפשים שהמחיר "יירגע" ויחזור לממוצע נע (Moving Average) או לרמת תמיכה קודמת. זה המקום לקנות בסיכון נמוך פוטנציאל רווח גבוה.</p>
-                    
-                    <h4>היתרון:</h4>
-                    <p>אנחנו קונים ב"הנחה" על מניה שכבר הוכיחה שהיא חזקה.</p>
-                `
-            },
-            {
-                title: "מסחר בפרה-מרקט",
-                content: `
-                    <h3>מסחר ב-Pre-Market – ניצול הדקות שלפני הפתיחה</h3>
-                    <p>המסחר המקדים (בין 11:00 ל-16:30 שעון ישראל) הוא המקום שבו "נחתמו החוזים" הגדולים של היום. זהו זמן שבו הנזילות נמוכה יותר, אך התנודתיות גבוהה מאוד.</p>
-                    
-                    <h4>למה לסחור ב-Pre-Market?</h4>
-                    <p>זה מאפשר לנו לזהות הודעות דרמטיות (דוחות, אישורי FDA, רכישות) לפני שכל העולם מתנפל ב-16:30.</p>
-                    
-                    <h4>איך עובדים?</h4>
-                    <p>מחפשים את ה-Top Gainers (המניות שעלו הכי הרבה בפרה-מרקט) ובונים עליהן תוכנית עבודה לרגע הפתיחה.</p>
-                    
-                    <h4>זהירות:</h4>
-                    <p>בגלל הנזילות הנמוכה, הספרדים (Spread) עלולים להיות רחבים. חובה להשתמש בפקודות Limit בלבד.</p>
-                `
-            }
+            { title: "אסטרטגיית הפריצה", content: `<h3>Breakout - לרכוב על גל עוצמה</h3><p>זיהוי התנגדות קריטית + כניסה כשהיא נפרצת בVolume.</p><h4>מה מחפשים?</h4><p>מניה שדשדשה ופורצת מחיר פסיכולוגי או ATH.</p><h4>כלל ברזל</h4><p>פריצה ללא Volume = שווא!</p><h4>ניהול</h4><p>כניסה מעל הפריצה, Stop מתחת לתמיכה החדשה.</p>` },
+            { title: "מסחר בנסיגות", content: `<h3>Pullbacks - לקנות בזול במגמה עולה</h3><p>פריצה = תופסים רכבת יוצאת. נסיגה = עולים בהפסקה.</p><h4>הקונספט</h4><p>מניה חזקה לעולם לא עולה בקו ישר - תמיד יש תיקון קטן.</p><h4>איפה קונים?</h4><p>כשהמחיר חוזר ל-MA או לתמיכה קודמת.</p><h4>היתרון</h4><p>קונים "בהנחה" על מניה שכבר הוכיחה חוזק.</p>` },
+            { title: "מסחר ב-Pre-Market", content: `<h3>Pre-Market - ניצול הדקות לפני הפתיחה</h3><p>11:00-16:30 - המקום שבו "נחתמו החוזים" הגדולים.</p><h4>למה לסחור?</h4><p>זיהוי הודעות דרמטיות (דוחות, FDA, רכישות) לפני שכולם נכנסים.</p><h4>איך עובדים?</h4><p>מחפשים Top Gainers בפרה-מרקט ובונים תוכנית לפתיחה.</p><h4>זהירות</h4><p>נזילות נמוכה = Spread רחב. חובה: פקודות Limit בלבד!</p>` }
         ]
     },
     {
         id: 7,
-        title: "ניהול סיכונים – חבל ההצלה",
-        description: "יחס סיכון-סיכוי, סטופ-לוס וחוק ה-1%",
+        title: "ניהול סיכונים",
+        description: "חבל ההצלה",
+        summary: "חוק ה-1%, יחס סיכון-סיכוי, חישוב גודל פוזיציה וניהול Stop Loss מקצועי.",
+        meta: { lessons: 4, duration: "11 שעות", level: "מתקדם" },
         lessons: [
-            {
-                title: "חוק ה-1%",
-                content: `
-                    <h3>המתמטיקה שמאחורי הכסף</h3>
-                    <p>במסחר, אנחנו לא עוסקים ב"צדק" או "טעות", אלא בהסתברות. המטרה שלנו במודול הזה היא לבנה מערכת שבה גם אם אתם צודקים רק ב-50% מהזמן, אתם עדיין מסיימים את החודש ברווח משמעותי.</p>
-                    
-                    <h3>חוק ה-1% – כמה לסכן בכל טרייד?</h3>
-                    <p>הטעות הכי גדולה של מתחילים היא לסכן יותר מדי על טרייד בודד.</p>
-                    
-                    <h4>הכלל:</h4>
-                    <p>לעולם אל תסכנו יותר מ-1% עד 2% מסך תיק המסחר שלכם בעסקה אחת.</p>
-                    
-                    <h4>למה?</h4>
-                    <p>כדי שסדרה של הפסדים (וזה יקרה) לא תוציא אתכם מהמשחק. אם תפסידו 5 טריידים ברצף ותסכנו 1% לכל טרייד, עדיין יישאר לכם 95% מהתיק. אם תסכנו 10% – נשארתם עם חצי.</p>
-                `
-            },
-            {
-                title: "יחס סיכון-סיכוי",
-                content: `
-                    <h3>יחס סיכון-סיכוי (Risk/Reward Ratio)</h3>
-                    <p>זהו המפתח לרווחיות ארוכת טווח. אנחנו מחפשים עסקאות שבהן הפוטנציאל גדול משמעותית מהסיכון.</p>
-                    
-                    <h4>היחס המינימלי ב-SAGI TRADING:</h4>
-                    <p>1:2</p>
-                    
-                    <h4>הסבר:</h4>
-                    <p>על כל שקל שאתם מסכנים (בסטופ לוס), אתם שואפים להרוויח לפחות 2 שקלים (בטייק פרופיט).</p>
-                    
-                    <h4>המתמטיקה:</h4>
-                    <p>ביחס של 1:2, אתם יכולים להפסיד ב-60% מהטריידים שלכם ועדיין להיות רווחיים!</p>
-                `
-            },
-            {
-                title: "חישוב גודל פוזיציה",
-                content: `
-                    <h3>חישוב גודל פוזיציה (Position Sizing)</h3>
-                    <p>סוחרים מתחילים קונים "מספר עגול" של מניות (למשל 100 מניות). סוחר מקצועי קונה לפי מרחק הסטופ לוס שלו.</p>
-                    
-                    <h4>הנוסחה:</h4>
-                    <p><strong>כמות מניות = (סכום הסיכון בדולרים) / (מחיר כניסה - מחיר סטופ לוס)</strong></p>
-                    
-                    <h4>דוגמה:</h4>
-                    <p>יש לכם $10,000. אתם מסכנים 1% ($100). מחיר כניסה: $50, סטופ לוס: $48. המרחק הוא $2.</p>
-                    <p>$100 חלקי $2 = אתם קונים 50 מניות.</p>
-                    
-                    <h3>ניהול הסטופ לוס (Stop Loss Management)</h3>
-                    <p>הסטופ לוס הוא לא המלצה, הוא פקודה קדושה.</p>
-                    
-                    <h4>סטופ טכני:</h4>
-                    <p>תמיד נמקם את הסטופ מתחת לרמת תמיכה משמעותית או מתחת לנר ההיפוך (הפטיש).</p>
-                    
-                    <h4>קידום סטופ (Trailing Stop):</h4>
-                    <p>ברגע שהמניה הגיעה ליעד הראשון (1:1), אנחנו מקדמים את הסטופ למחיר הכניסה ("Break Even"). ככה אנחנו יוצרים טרייד "חופשי מסיכון".</p>
-                `
-            }
+            { title: "חוק ה-1%", content: `<h3>המתמטיקה שמאחורי הכסף</h3><p>במסחר = הסתברות, לא "צדק".</p><h3>חוק ה-1%</h3><p><strong>הכלל:</strong> לעולם לא לסכן יותר מ-1-2% מהתיק בעסקה אחת.</p><h4>למה?</h4><p>5 הפסדים ב-1% = -5%. 5 הפסדים ב-10% = -41%!</p><table style="width:100%; margin:20px 0;"><tr><th>הפסדים</th><th>1% לטרייד</th><th>10% לטרייד</th></tr><tr><td>5</td><td>-4.9%</td><td>-41%</td></tr></table>` },
+            { title: "יחס סיכון-סיכוי", content: `<h3>Risk/Reward Ratio</h3><p>המפתח לרווחיות ארוכת טווח.</p><h4>היחס המינימלי: 1:2</h4><p>על כל שקל סיכון (Stop) → 2 שקלים רווח (Target).</p><h4>המתמטיקה</h4><p>ביחס 1:2 - תוכלו להפסיד ב-60% מהטריידים ועדיין להרוויח!</p>` },
+            { title: "חישוב גודל פוזיציה", content: `<h3>Position Sizing</h3><p>מתחילים קונים "מספר עגול". מקצוענים מחשבים לפי Stop Loss.</p><h4>הנוסחה</h4><div style="background:rgba(0,212,255,0.1); padding:20px; margin:20px 0;"><p style="font-size:1.3em; color:#00d4ff;">Shares = (Risk $) / (Entry - Stop)</p><p style="margin-top:15px;"><strong>דוגמה:</strong><br>$10,000 חשבון, 1% = $100<br>Entry: $50, Stop: $48<br>מרחק: $2<br><strong style="color:#00f2c3; font-size:1.2em;">→ 50 מניות</strong></p></div>` },
+            { title: "ניהול Stop Loss", content: `<h3>Stop Loss Management</h3><p>Stop Loss = פקודה קדושה, לא המלצה!</p><h4>סטופ טכני</h4><p>תמיד מתחת לתמיכה משמעותית או מתחת לנר היפוך.</p><h4>Trailing Stop</h4><p>כשהמניה הגיעה ל-1:1, מעבירים Stop ל-Break Even = טרייד "חופשי מסיכון".</p>` }
         ]
     },
     {
         id: 8,
-        title: "פסיכולוגיית מסחר – האויב שבפנים",
-        description: "FOMO, משמעת עצמית והתמודדות עם הפסדים",
+        title: "פסיכולוגיית מסחר",
+        description: "האויב שבפנים",
+        summary: "מחזור הרגשות, FOMO, משמעת עצמית ויומן מסחר - השליטה ברגשות.",
+        meta: { lessons: 3, duration: "8 שעות", level: "מתקדם" },
         lessons: [
-            {
-                title: "מחזור הרגשות",
-                content: `
-                    <h3>מחזור הרגשות של הסוחר</h3>
-                    <p>מסחר הוא רכבת הרים רגשית. הבנת השלבים תעזור לכם לפעול מהראש ולא מהבטן.</p>
-                    
-                    <h4>האופוריה:</h4>
-                    <p>השלב שבו הכל עולה, כולם בטוחים שהם גאונים, וזה בדיוק הזמן שבו הסיכון הוא הגבוה ביותר.</p>
-                    
-                    <h4>הפחד והפאניקה:</h4>
-                    <p>השלב שבו הגרף יורד והסוחר הלא מיומן מוכר במינימום בגלל לחץ.</p>
-                    
-                    <h4>הייאוש:</h4>
-                    <p>הנקודה שבה כולם מוותרים – שלעיתים קרובות היא ההזדמנות הטובה ביותר לכניסה.</p>
-                    
-                    <h4>הכלל המוזהב:</h4>
-                    <p>"קנה כשכולם מפחדים, מכור כשכולם חמדנים"</p>
-                `
-            },
-            {
-                title: "הפחד להחמיץ (FOMO)",
-                content: `
-                    <h3>הטיית האישור וניהול הפסדים</h3>
-                    
-                    <h4>למה כל כך קשה לנו לחתוך הפסד?</h4>
-                    <p><strong>הטיית האישור:</strong> הנטייה שלנו לחפש רק חדשות טובות על מניה שאנחנו מופסדים בה כדי להצדיק את הישארותנו בעסקה.</p>
-                    
-                    <h4>ההבדל בין טרייד רע לטרייד מפסיד:</h4>
-                    <p>טרייד מפסיד שבוצע לפי התוכנית הוא טרייד מצוין. טרייד מרוויח שבוצע ללא תוכנית הוא טרייד מסוכן מאוד לטווח הארוך.</p>
-                    
-                    <h3>פסיכולוגיה של הפסדים ונקמה (Revenge Trading)</h3>
-                    <p>ניהול סיכונים הוא בעיקר ניהול רגשות.</p>
-                    
-                    <h4>מסחר נקמה:</h4>
-                    <p>הניסיון "להחזיר את הכסף" מיד אחרי הפסד. זה השלב שבו נמחקים תיקים.</p>
-                    
-                    <h4>כלל ה"שלושה הפסדים":</h4>
-                    <p>הפסדתם 3 טריידים ביום? סוגרים את המחשב ויוצאים לטייל. השוק יהיה שם גם מחר.</p>
-                `
-            },
-            {
-                title: "משמעת ויומן מסחר",
-                content: `
-                    <h3>יומן עסקאות (Trading Journal) – המראה שלכם</h3>
-                    <p>בלי תיעוד, אתם לא סוחרים – אתם מהמרים.</p>
-                    
-                    <h4>מה מתעדים?</h4>
-                    <p>מחיר כניסה, מחיר סטופ, מחיר יעד, סיבת הכניסה (הטריגר) והמצב הרגשי שלכם באותו רגע.</p>
-                    
-                    <h4>סטטיסטיקות קריטיות:</h4>
-                    <ul>
-                        <li><strong>Win Rate:</strong> אחוז העסקאות המנצחות</li>
-                        <li><strong>Profit Factor:</strong> היחס בין סך הרווחים לסך ההפסדים</li>
-                    </ul>
-                    
-                    <h4>ניתוח שבועי:</h4>
-                    <p>בסוף כל שבוע עוברים על היומן ומחפשים טעויות חוזרות (למשל: "אני תמיד מפסיד בעסקאות שאני פותח לפני הודעות ריבית").</p>
-                    
-                    <h3>בניית תוכנית עבודה יומית (Routine)</h3>
-                    <p>סוחר מקצועי מגיע לשוק מוכן.</p>
-                    
-                    <h4>Pre-Market:</h4>
-                    <p>סריקת חדשות, בדיקת יומן כלכלי (דוחות, ריבית) וסימון רמות תמיכה והתנגדות.</p>
-                    
-                    <h4>במהלך המסחר:</h4>
-                    <p>עבודה לפי "צ'ק ליסט" – לא נכנסים לעסקה אם היא לא עונה על כל התנאים.</p>
-                    
-                    <h4>Post-Market:</h4>
-                    <p>תיעוד העסקאות ביומן והסקת מסקנות למחרת.</p>
-                `
-            }
+            { title: "מחזור הרגשות", content: `<h3>מחזור הרגשות של הסוחר</h3><p>מסחר = רכבת הרים רגשית. הבנת השלבים = פעולה מהראש.</p><h4>אופוריה</h4><p>הכל עולה, כולם בטוחים שהם גאונים - הסיכון הגבוה ביותר!</p><h4>פחד ופאניקה</h4><p>הגרף יורד, הלא מיומן מוכר במינימום.</p><h4>ייאוש</h4><p>כולם מוותרים - לעיתים הזדמנות הטובה ביותר!</p><h4>כלל הזהב</h4><p style="font-size:1.2em; color:#f7b731;">"קנה כשכולם מפחדים, מכור כשכולם חמדנים"</p>` },
+            { title: "הפחד להחמיץ (FOMO)", content: `<h3>הטיית האישור וניהול הפסדים</h3><h4>למה קשה לחתוך הפסד?</h4><p><strong>הטיית אישור:</strong> לחפש רק חדשות טובות על מניה מפסידה.</p><h4>ההבדל</h4><p>טרייד מפסיד לפי תוכנית = מצוין. טרייד מרוויח ללא תוכנית = מסוכן!</p><h3>Revenge Trading</h3><p>הניסיון "להחזיר כסף" מיד = המקום שבו נמחקים תיקים.</p><h4>כלל 3 ההפסדים</h4><p>3 הפסדים ביום? סוגרים מחשב ויוצאים לטייל!</p>` },
+            { title: "משמעת ויומן מסחר", content: `<h3>Trading Journal - המראה שלכם</h3><p>בלי תיעוד = מהמרים, לא סוחרים!</p><h4>מה מתעדים?</h4><p>מחיר כניסה, Stop, יעד, סיבת כניסה ומצב רגשי.</p><h4>סטטיסטיקות קריטיות</h4><ul><li><strong>Win Rate:</strong> % עסקאות מנצחות</li><li><strong>Profit Factor:</strong> יחס רווחים/הפסדים</li></ul><h4>ניתוח שבועי</h4><p>סוף שבוע - מחפשים טעויות חוזרות.</p><h3>Routine יומית</h3><ul><li><strong>Pre-Market:</strong> חדשות, יומן כלכלי, סימון רמות</li><li><strong>במסחר:</strong> צ'ק ליסט לכל כניסה</li><li><strong>Post-Market:</strong> תיעוד + מסקנות</li></ul>` }
         ]
     },
     {
         id: 9,
         title: "קריפטו, בלוקצ'יין והכנסה פסיבית",
-        description: "מבוא לנכסים דיגיטליים, Bybit וסטייקינג",
+        description: "מבוא לנכסים דיגיטליים",
+        summary: "בלוקצ'יין, BTC ו-ETH, הכנסה פסיבית דרך Staking והלוואות, ארנקים ואבטחה.",
+        meta: { lessons: 3, duration: "9 שעות", level: "בינוני" },
         lessons: [
-            {
-                title: "מבוא לנכסים דיגיטליים",
-                content: `
-                    <h3>מה זה בכלל בלוקצ'יין? (הבסיס)</h3>
-                    <p>דמיינו ספר חשבונות דיגיטלי שפתוח לעיני כולם, אבל אף אחד לא יכול למחוק או לשנות בו דפים. זהו הבלוקצ'יין.</p>
-                    
-                    <h4>מאפיינים עיקריים:</h4>
-                    <ul>
-                        <li><strong>ביזור:</strong> אין בנק מרכזי שמנהל את העסק. המידע נשמר אצל אלפי מחשבים במקביל</li>
-                        <li><strong>אמינות:</strong> כל עסקה שנרשמת היא סופית ומאובטחת ברמה הגבוהה ביותר</li>
-                        <li><strong>שקיפות:</strong> כל אחד יכול לאמת את העסקאות, מה שיוצר אמון בלי צורך במתווכים</li>
-                    </ul>
-                    
-                    <h3>המטבעות הגדולים (BTC ו-ETH)</h3>
-                    <p>לפני שצוללים, חשוב להכיר את שני עמודי התווך של השוק:</p>
-                    
-                    <h4>BTC (Bitcoin):</h4>
-                    <p>ה"זהב הדיגיטלי". המטבע הראשון והגדול מכולם, משמש בעיקר כשמירת ערך.</p>
-                    
-                    <h4>ETH (Ethereum):</h4>
-                    <p>ה"מחשב העולמי". רשת שמאפשרת לבנות עליה אפליקציות וחוזים חכמים המתבצעים אוטומטית.</p>
-                    
-                    <h4>Altcoins:</h4>
-                    <p>כל שאר המטבעות (כמו AVAX או SOL) שמנסים לפתור בעיות ספציפיות או להיות מהירים יותר.</p>
-                `
-            },
-            {
-                title: "עבודה עם Bybit",
-                content: `
-                    <h3>עבודה עם Bybit</h3>
-                    <p>Bybit היא אחת הבורסות המובילות למסחר בקריפטו, במיוחד לחוזים עתידיים ומינופים.</p>
-                    
-                    <h4>תכונות עיקריות:</h4>
-                    <ul>
-                        <li>מסחר במינוף (עד x100)</li>
-                        <li>ממשק ידידותי למתחילים</li>
-                        <li>מגוון רחב של מטבעות</li>
-                        <li>אפשרויות למסחר ספוט ועתידי</li>
-                    </ul>
-                    
-                    <h3>איך מייצרים הכנסה פסיבית בקריפטו?</h3>
-                    <p>אחד היתרונות הגדולים בעולם הקריפטו הוא שהכסף שלכם יכול "לעבוד" בשבילכם, גם כשאתם ישנים:</p>
-                    
-                    <h4>סטייקינג (Staking):</h4>
-                    <p>"נעילת" מטבעות ברשת כדי לאבטח אותה, וקבלת ריבית במטבעות נוספים (דומה לפיקדון בבנק, אך לרוב עם תשואה גבוהה יותר).</p>
-                    
-                    <h4>הלוואות (Lending):</h4>
-                    <p>השאלת הקריפטו שלכם למשתמשים אחרים דרך פלטפורמות מאובטחות וקבלת ריבית על ההלוואה.</p>
-                `
-            },
-            {
-                title: "סטייקינג",
-                content: `
-                    <h3>סטייקינג (Staking) – איך לייצר "ריבית" מהמטבעות שלך</h3>
-                    
-                    <h4>מהו סטייקינג?</h4>
-                    <p>סטייקינג הוא תהליך שבו אתם "נועלים" את המטבעות שלכם בארנק או בפלטפורמה לתקופה מסוימת. בתמורה, אתם מקבלים תשואה שנתית שיכולה להגיע ל-5%-20% ויותר, תלוי במטבע ובתנאים.</p>
-                    
-                    <h4>איך זה עובד?</h4>
-                    <p>המטבעות הנעולים שלכם עוזרים לאבטח את הרשת (במודל Proof of Stake), ובתמורה אתם מקבלים "פרס" בצורה של מטבעות נוספים.</p>
-                    
-                    <h3>הארנק הדיגיטלי – איפה הכסף שלי?</h3>
-                    <p>בקריפטו, אתם הבנק של עצמכם. יש שתי דרכים עיקריות לשמור על המטבעות:</p>
-                    
-                    <h4>ארנק בבורסה (Hot Wallet):</h4>
-                    <p>נוח למסחר יומי ומהיר, אבל פחות בטוח לשמירה של סכומים גדולים לטווח ארוך.</p>
-                    
-                    <h4>ארנק קר (Cold Wallet):</h4>
-                    <p>מכשיר פיזי שמנותק מהאינטרנט. זו הדרך הבטוחה ביותר לשמור על הנכסים שלכם.</p>
-                    
-                    <h4>כלל ברזל:</h4>
-                    <p>לעולם לא משתפים את ה"סיד" (12 המילים) של הארנק עם אף אחד!</p>
-                    
-                    <h3>סיכונים שחייבים להכיר</h3>
-                    <p>עם הזדמנות גדולה באה אחריות גדולה:</p>
-                    <ul>
-                        <li><strong>תנודתיות:</strong> המחירים יכולים לעלות ולרדת בעשרות אחוזים בזמן קצר</li>
-                        <li><strong>אבטחה:</strong> אם איבדתם את המפתחות לארנק שלכם – אין "שירות לקוחות" שיכול לשחזר את הגישה לכסף</li>
-                        <li><strong>חובת דיווח:</strong> כסוחרים, עליכם לעקוב אחרי הפעולות שלכם לצורכי מס</li>
-                    </ul>
-                `
-            }
+            { title: "מבוא לנכסים דיגיטליים", content: `<h3>מה זה בלוקצ'יין?</h3><p>ספר חשבונות דיגיטלי פתוח - אף אחד לא יכול למחוק או לשנות.</p><h4>מאפיינים</h4><ul><li><strong>ביזור:</strong> אין בנק מרכזי</li><li><strong>אמינות:</strong> עסקה סופית ומאובטחת</li><li><strong>שקיפות:</strong> כולם יכולים לאמת</li></ul><h3>המטבעות הגדולים</h3><h4>BTC (Bitcoin)</h4><p>"זהב דיגיטלי" - שמירת ערך.</p><h4>ETH (Ethereum)</h4><p>"מחשב עולמי" - חוזים חכמים ואפליקציות.</p><h4>Altcoins</h4><p>כל השאר (AVAX, SOL) - פתרונות ספציפיים.</p>` },
+            { title: "הכנסה פסיבית בקריפטו", content: `<h3>איך מייצרים הכנסה פסיבית?</h3><p>הכסף "עובד" בשבילכם גם כשאתם ישנים!</p><h4>Staking</h4><p>"נעילת" מטבעות לאבטחת הרשת + קבלת ריבית.</p><h4>Lending</h4><p>השאלת קריפטו למשתמשים אחרים דרך פלטפורמות מאובטחות.</p><h3>הארנק הדיגיטלי</h3><p>אתם הבנק של עצמכם!</p><h4>Hot Wallet</h4><p>בבורסה - נוח למסחר, פחות בטוח לטווח ארוך.</p><h4>Cold Wallet</h4><p>מכשיר פיזי מנותק - הבטוח ביותר!</p><p style="color:#ff5757; font-weight:600;">⚠️ לעולם לא לשתף את ה-Seed (12 מילים)!</p>` },
+            { title: "סיכונים ואבטחה", content: `<h3>סיכונים שחייבים להכיר</h3><ul><li><strong>תנודתיות:</strong> עשרות אחוזים בזמן קצר</li><li><strong>אבטחה:</strong> איבדת מפתחות = אין שירות לקוחות</li><li><strong>דיווח:</strong> חובה לעקוב לצורכי מס</li></ul><h3>טיפים לאבטחה</h3><ol><li>2FA בכל בורסה</li><li>לא לשמור סכומים גדולים בבורסות</li><li>גיבוי Seed במקום בטוח (לא ענן!)</li><li>זהירות מפישינג - בדיקת URLs</li></ol>` }
         ]
     },
     {
         id: 10,
         title: "סיכום, מיסוי ויציאה לדרך",
-        description: "יומן מסחר, מדריך מיסוי והצעדים הבאים",
+        description: "יומן, מיסוי והצעדים הבאים",
+        summary: "ניהול יומן מקצועי, הבנת חובות מס בישראל ובניית תוכנית ארוכת טווח.",
+        meta: { lessons: 3, duration: "7 שעות", level: "מתקדם" },
         lessons: [
-            {
-                title: "ניהול יומן מסחר מקצועי",
-                content: `
-                    <h3>בניית ה"ביזנס פלאן" של הסוחר</h3>
-                    <p>סוחר מצליח מתייחס למסחר כאל עסק. ללא תוכנית עבודה, אתם פועלים מהמר (Gambling) ולא סוחרים.</p>
-                    
-                    <h4>יומן מסחר:</h4>
-                    <p>חובה לתעד כל עסקה – למה נכנסתי? מה היה הסטופ לוס? איך הרגשתי? הניתוח בדיעבד הוא המורה הטוב ביותר שלכם.</p>
-                    
-                    <h4>שעות עבודה:</h4>
-                    <p>הגדירו מתי אתם סוחרים. האם אתם סוחרי יום בבורסה האמריקאית (16:30-23:00) או משקיעי לטווח ארוך שבודקים את התיק פעם בשבוע?</p>
-                    
-                    <h4>יעדים ריאליים:</h4>
-                    <p>אל תנסו "להכפיל את החשבון" בחודש. היעד הוא עקביות.</p>
-                    
-                    <h3>פסיכולוגיה של מסחר: האויב שבפנים</h3>
-                    <p>במודולים הקודמים דיברנו על אסטרטגיה, אבל במציאות – המסחר הוא 80% פסיכולוגיה.</p>
-                    
-                    <h4>פחד וגרידיות (FOMO):</h4>
-                    <p>אלו שני הרגשות שישרפו לכם את החשבון. התוכנית שבניתם נועדה להחליף את הרגש באוטומציה מחשבתית.</p>
-                    
-                    <h4>משמעת עצמית:</h4>
-                    <p>היכולת לא להיכנס לעסקה כשאין איתות, והיכולת לצאת בהפסד כשצריך, היא שמבדילה בין ה-5% שמרוויחים לכל השאר.</p>
-                `
-            },
-            {
-                title: "מדריך מיסוי",
-                content: `
-                    <h3>עולם המיסוי: מה שחובה לדעת</h3>
-                    <p>מסחר בשוק ההון ובקריפטו נחשב לפעילות מניבת הכנסה, ובישראל קיימת חובת דיווח ותשלום מס על רווחי הון.</p>
-                    
-                    <h4>מס רווחי הון:</h4>
-                    <p>ככלל, המס עומד על 25% מהרווח הריאלי (הרווח לאחר ניכוי האינפלציה).</p>
-                    
-                    <h4>קיזוז הפסדים:</h4>
-                    <p>זהו אחד הכלים החשובים ביותר. אם הפסדתם בעסקה אחת והרווחתם באחרת, אתם משלמים מס רק על ההפרש (הנטו). לכן חשוב לתעד גם הפסדים!</p>
-                    
-                    <h4>ניכוי במקור לעומת דיווח עצמאי:</h4>
-                    <ul>
-                        <li>בברוקרים ישראלים (כמו קולמקס או דרך הבנק), המס מנוכה לרוב באופן אוטומטי</li>
-                        <li>בברוקרים זרים (אינטראקטיב) ובבורסות קריפטו (בייביט), חובת הדיווח והתשלום חלה עליכם בסוף שנת המס</li>
-                    </ul>
-                `
-            },
-            {
-                title: "הצעדים הבאים",
-                content: `
-                    <h3>סיכום הקורס וצידה לדרך</h3>
-                    <p>עברנו דרך ארוכה:</p>
-                    <ol>
-                        <li>הבנו את יסודות השוק</li>
-                        <li>למדנו לקרוא את שפת הגרפים (ניתוח טכני)</li>
-                        <li>הטמענו ניהול סיכונים קפדני</li>
-                        <li>פתחנו חשבונות בברוקרים המובילים</li>
-                        <li>למדנו לתעד ולדווח</li>
-                    </ol>
-                    
-                    <h3>הצעד הבא שלכם:</h3>
-                    <p>התחילו בקטן. אל תפקידו את כל חסכונותיכם ביום הראשון. תתרגלו את המערכות, תרגישו את השוק עם סכומים קטנים, ורק כשתרגישו ביטחון ועקביות – תגדילו חשיפה.</p>
-                    
-                    <h3>משפט לסיכום:</h3>
-                    <p><strong>שוק ההון הוא המקום הקשה ביותר להרוויח בו כסף קל, אבל המקום הטוב ביותר לבנות בו חופש כלכלי אמיתי למי שמוכן להשקיע בלימוד ומשמעת.</strong></p>
-                    
-                    <p style="margin-top: 30px; font-size: 1.3em; color: #4ade80;"><strong>בהצלחה בדרככם החדשה כסוחרים! 🚀</strong></p>
-                `
-            }
+            { title: "ניהול יומן מסחר מקצועי", content: `<h3>ביזנס פלאן של הסוחר</h3><p>סוחר מצליח = מתייחס למסחר כעסק!</p><h4>יומן מסחר</h4><p>חובה לתעד כל עסקה - למה נכנסתי? Stop? איך הרגשתי?</p><h4>שעות עבודה</h4><p>הגדירו מתי אתם סוחרים - Day Trading (16:30-23:00) או Swing?</p><h4>יעדים ריאליים</h4><p>אל תנסו להכפיל חשבון בחודש. היעד = עקביות.</p><h3>פסיכולוגיה</h3><p>80% פסיכולוגיה, 20% אסטרטגיה!</p><h4>FOMO וגרידיות</h4><p>שני הרגשות שישרפו חשבון. התוכנית מחליפה רגש באוטומציה.</p><h4>משמעת</h4><p>לא להיכנס בלי איתות + לצאת בהפסד כשצריך = ה-5% שמרוויחים.</p>` },
+            { title: "מדריך מיסוי", content: `<h3>עולם המיסוי - מה חובה לדעת</h3><p>מסחר = הכנסה → חובת דיווח ומס.</p><h4>מס רווחי הון</h4><p>ככלל: 25% מהרווח הריאלי (אחרי אינפלציה).</p><h4>קיזוז הפסדים</h4><p>כלי חשוב! הפסד בעסקה + רווח באחרת = מס על ההפרש בלבד. לכן - תעדו הפסדים!</p><h4>ניכוי במקור vs. דיווח עצמאי</h4><ul><li>ברוקרים ישראליים (קולמקס, בנק) - ניכוי אוטומטי</li><li>ברוקרים זרים (IB) וקריפטו - דיווח עצמאי בסוף שנה</li></ul><h3>טיפים</h3><ol><li>שמרו אישורי עסקאות</li><li>תעדו הפסדים - הם מקזזים!</li><li>שקלו רואה חשבון מתמחה</li><li>דווחו בזמן - קנסות כבדים</li></ol>` },
+            { title: "הצעדים הבאים", content: `<h3>סיכום וצידה לדרך</h3><p>עברנו דרך ארוכה:</p><ol><li>הבנו יסודות השוק</li><li>למדנו לקרוא גרפים</li><li>הטמענו ניהול סיכונים</li><li>פתחנו חשבונות בברוקרים</li><li>למדנו לתעד ולדווח</li></ol><h3>הצעד הבא</h3><p>התחילו בקטן! אל תפקידו חסכונות ביום ראשון. תרגלו, תרגישו את השוק עם סכומים קטנים.</p><h3>המשאבים שלכם</h3><ul><li><a href="https://t.me/+pFfWwRGAUlFjZjJk" target="_blank">📱 טלגרם - עדכונים</a></li><li><a href="https://chat.whatsapp.com/Iej39KWKKIK" target="_blank">💬 וואטסאפ - קהילה</a></li><li><a href="https://youtube.com/@sagi-trading" target="_blank">🎥 YouTube</a></li><li><a href="https://open.spotify.com/show/2uyrQFh2OrVR9P0uOxeKxF" target="_blank">🎧 Spotify</a></li></ul><h3>משפט לסיום</h3><p style="font-size:1.4em; color:#f7b731; margin:30px 0; text-align:center; font-weight:600;">שוק ההון הוא המקום הקשה ביותר להרוויח בו כסף קל,<br/>אבל המקום הטוב ביותר לבנות בו חופש כלכלי אמיתי<br/>למי שמוכן להשקיע בלימוד ומשמעת.</p><p style="text-align:center; font-size:1.5em; color:#00f2c3; margin-top:40px;">🚀 בהצלחה בדרככם החדשה כסוחרים!</p>` }
         ]
     }
 ];
 
-// Progress tracking
-let progress = new Set(JSON.parse(localStorage.getItem('sagiProgress') || '[]'));
-let currentMod = 1, currentLesson = 0;
+        // Progress tracking
+        let progress = new Set(JSON.parse(localStorage.getItem('sagiProgress') || '[]'));
+        let currentMod = 0;
+        let currentLesson = 0;
 
-function save() {
-    localStorage.setItem('sagiProgress', JSON.stringify([...progress]));
-    updateStats();
-}
+        function saveProgress() {
+            localStorage.setItem('sagiProgress', JSON.stringify([...progress]));
+            updateStats();
+        }
 
-function updateStats() {
-    document.getElementById('completedLessons').textContent = progress.size;
-    document.getElementById('completedModules').textContent = modules.filter(m => 
-        m.lessons.every((_, i) => progress.has(`${m.id}-${i}`))
-    ).length;
-}
+        function updateStats() {
+            const totalLessons = modules.reduce((sum, m) => sum + m.lessons.length, 0);
+            const completed = progress.size;
+            const completedModules = modules.filter(m => 
+                m.lessons.every((_, i) => progress.has(`${m.id}-${i}`))
+            ).length;
+            
+            document.getElementById('completedLessons').textContent = completed;
+            document.getElementById('completedModules').textContent = completedModules;
+            document.getElementById('progressPercent').textContent = Math.round((completed / totalLessons) * 100) + '%';
+        }
 
-function render() {
-    const grid = document.getElementById('modulesGrid');
-    grid.innerHTML = modules.map(m => {
-        const done = m.lessons.filter((_, i) => progress.has(`${m.id}-${i}`)).length;
-        const complete = done === m.lessons.length;
-        return `
-            <div class="module-card ${complete ? 'completed' : ''}" onclick="openModule(${m.id})">
-                <div class="module-header">
-                    <div class="module-number">${m.id}</div>
-                    <div class="module-status">${complete ? '✓' : '📚'}</div>
-                </div>
-                <div class="module-title">${m.title}</div>
-                <div class="module-description">${m.description}</div>
-                <div class="lessons-preview">
-                    ${m.lessons.map((l, i) => `
-                        <div class="lesson-item ${progress.has(`${m.id}-${i}`) ? 'completed' : ''}">
-                            ${l.title}
+        function renderModules() {
+            const container = document.getElementById('modulesContainer');
+            
+            container.innerHTML = modules.map(m => {
+                const completed = m.lessons.filter((_, i) => progress.has(`${m.id}-${i}`)).length;
+                const total = m.lessons.length;
+                const progressPercent = Math.round((completed / total) * 100);
+                const isComplete = completed === total;
+                
+                return `
+                    <div class="module-card ${isComplete ? 'completed' : ''} ${m.badge ? 'new' : ''}" onclick="openModule(${m.id})">
+                        <div class="module-header">
+                            <div class="module-number">${m.id}</div>
+                            <div class="module-badges">
+                                ${m.badge ? `<div class="module-badge badge-new">${m.badge}</div>` : ''}
+                                <div class="badge-status">${isComplete ? '✓' : '📚'}</div>
+                            </div>
                         </div>
-                    `).join('')}
+                        
+                        <h3 class="module-title">${m.title}</h3>
+                        <p class="module-description">${m.description}</p>
+                        <div class="module-summary">💡 ${m.summary}</div>
+                        
+                        <div class="module-meta">
+                            <div class="meta-item">📖 ${m.meta.lessons} שיעורים</div>
+                            <div class="meta-item">⏱️ ${m.meta.duration}</div>
+                            <div class="meta-item">🎯 ${m.meta.level}</div>
+                        </div>
+                        
+                        <div class="lessons-list">
+                            ${m.lessons.map((l, i) => `
+                                <div class="lesson-item ${progress.has(`${m.id}-${i}`) ? 'completed' : ''}">
+                                    ${l.title}
+                                </div>
+                            `).join('')}
+                        </div>
+                        
+                        <div class="module-footer">
+                            <div class="progress-container">
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: ${progressPercent}%"></div>
+                                </div>
+                                <div class="progress-text">${completed}/${total} שיעורים (${progressPercent}%)</div>
+                            </div>
+                            <button class="module-btn">${isComplete ? 'סקור מחדש' : completed > 0 ? 'המשך' : 'התחל'}</button>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function openModule(id) {
+            currentMod = id;
+            currentLesson = 0;
+            showLesson();
+        }
+
+        function showLesson() {
+            const m = modules.find(x => x.id === currentMod);
+            if (!m) return;
+            
+            const key = `${currentMod}-${currentLesson}`;
+            const isDone = progress.has(key);
+            
+            document.getElementById('lessonContent').innerHTML = `
+                <div class="lesson-header">
+                    <div class="lesson-breadcrumb">מודול ${currentMod}: ${m.title}</div>
+                    <h2 class="lesson-title">${m.lessons[currentLesson].title}</h2>
                 </div>
-                <div class="module-footer">
-                    <div class="progress-text">${done}/${m.lessons.length} שיעורים</div>
-                    <button class="start-btn">${complete ? 'סקירה' : done > 0 ? 'המשך' : 'התחל'}</button>
+                <div class="lesson-content">
+                    ${m.lessons[currentLesson].content}
                 </div>
-            </div>
-        `;
-    }).join('');
-}
+            `;
+            
+            // Navigation
+            document.getElementById('prevLesson').disabled = currentLesson === 0 && currentMod === 0;
+            document.getElementById('nextLesson').disabled = 
+                currentLesson === m.lessons.length - 1 && currentMod === modules.length - 1;
+            
+            // Complete button
+            const completeBtn = document.getElementById('completeLesson');
+            completeBtn.textContent = isDone ? 'הושלם ✓' : 'סמן כהושלם ✓';
+            completeBtn.style.opacity = isDone ? '0.7' : '1';
+            
+            document.getElementById('lessonModal').style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
 
-function openModule(id) {
-    currentMod = id;
-    currentLesson = 0;
-    showLesson();
-}
+        function closeLesson() {
+            document.getElementById('lessonModal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+            renderModules();
+        }
 
-function showLesson() {
-    const m = modules.find(x => x.id === currentMod);
-    if (!m) return;
-    const key = `${currentMod}-${currentLesson}`;
-    const done = progress.has(key);
-    
-    document.getElementById('lessonContent').innerHTML = `
-        <div class="lesson-header">
-            <div class="lesson-breadcrumb">מודול ${currentMod}: ${m.title}</div>
-            <h2 class="lesson-title">${m.lessons[currentLesson].title}</h2>
-        </div>
-        <div class="lesson-content">
-            ${m.lessons[currentLesson].content}
-        </div>
-    `;
-    
-    document.getElementById('prevLesson').disabled = currentLesson === 0;
-    document.getElementById('nextLesson').disabled = currentLesson === m.lessons.length - 1;
-    document.getElementById('completeLesson').textContent = done ? 'הושלם ✓' : 'סמן כהושלם ✓';
-    document.getElementById('completeLesson').style.opacity = done ? '0.7' : '1';
-    
-    document.getElementById('lessonModal').style.display = 'block';
-    document.body.style.overflow = 'hidden';
-}
+        function navigateLesson(direction) {
+            const m = modules.find(x => x.id === currentMod);
+            const newIdx = currentLesson + direction;
+            
+            if (newIdx >= 0 && newIdx < m.lessons.length) {
+                currentLesson = newIdx;
+                showLesson();
+            } else if (direction > 0 && currentMod < modules.length - 1) {
+                currentMod++;
+                currentLesson = 0;
+                showLesson();
+            } else if (direction < 0 && currentMod > 0) {
+                currentMod--;
+                const prevModule = modules.find(x => x.id === currentMod);
+                currentLesson = prevModule.lessons.length - 1;
+                showLesson();
+            }
+        }
 
-function closeLesson() {
-    document.getElementById('lessonModal').style.display = 'none';
-    document.body.style.overflow = 'auto';
-    render();
-}
+        function toggleComplete() {
+            const key = `${currentMod}-${currentLesson}`;
+            
+            if (progress.has(key)) {
+                progress.delete(key);
+            } else {
+                progress.add(key);
+            }
+            
+            saveProgress();
+            
+            const isDone = progress.has(key);
+            const completeBtn = document.getElementById('completeLesson');
+            completeBtn.textContent = isDone ? 'הושלם ✓' : 'סמן כהושלם ✓';
+            completeBtn.style.opacity = isDone ? '0.7' : '1';
+        }
 
-function navigateLesson(dir) {
-    const m = modules.find(x => x.id === currentMod);
-    const newIdx = currentLesson + dir;
-    if (newIdx >= 0 && newIdx < m.lessons.length) {
-        currentLesson = newIdx;
-        showLesson();
-    } else if (dir > 0 && currentMod < modules.length) {
-        currentMod++;
-        currentLesson = 0;
-        showLesson();
-    } else if (dir < 0 && currentMod > 1) {
-        currentMod--;
-        currentLesson = modules.find(x => x.id === currentMod).lessons.length - 1;
-        showLesson();
-    }
-}
+        // Close modal on click outside
+        window.onclick = (e) => {
+            const modal = document.getElementById('lessonModal');
+            if (e.target === modal) closeLesson();
+        };
 
-function toggleComplete() {
-    const key = `${currentMod}-${currentLesson}`;
-    if (progress.has(key)) progress.delete(key);
-    else progress.add(key);
-    save();
-    const done = progress.has(key);
-    document.getElementById('completeLesson').textContent = done ? 'הושלם ✓' : 'סמן כהושלם ✓';
-    document.getElementById('completeLesson').style.opacity = done ? '0.7' : '1';
-}
+        // Close modal with Escape
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeLesson();
+        });
 
-window.onclick = e => {
-    if (e.target.id === 'lessonModal') closeLesson();
-};
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
 
-document.addEventListener('keydown', e => {
-    if (e.key === 'Escape') closeLesson();
-});
-
-render();
-updateStats();
-
-document.querySelectorAll('a[href^="#"]').forEach(a => {
-    a.addEventListener('click', e => {
-        e.preventDefault();
-        document.querySelector(a.getAttribute('href'))?.scrollIntoView({ behavior: 'smooth' });
-    });
-});
+        // Initialize
+        window.addEventListener('DOMContentLoaded', () => {
+            renderModules();
+            updateStats();
+        });
     </script>
 </body>
 </html>
