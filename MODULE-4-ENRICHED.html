@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>מודול 4 - ניתוח טכני א'</title>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Heebo',sans-serif;background:#0a1628;color:#fff;line-height:1.8;padding:40px}
+.container{max-width:1000px;margin:0 auto;background:#152238;padding:50px;border-radius:20px;border:1px solid rgba(255,255,255,.1)}
+h1{color:#f7b731;font-size:2.8em;margin-bottom:30px;text-align:center}
+h2{color:#ffd369;font-size:2em;margin:40px 0 20px;padding-bottom:10px;border-bottom:2px solid rgba(247,183,49,.3)}
+h3{color:#00d4ff;font-size:1.5em;margin:30px 0 15px}
+h4{color:#00f2c3;font-size:1.2em;margin:20px 0 10px}
+p{font-size:1.1em;line-height:1.9;margin:15px 0;color:#cbd5e1}
+ul,ol{margin:15px 0 15px 35px;font-size:1.05em;color:#cbd5e1}
+li{margin:10px 0;line-height:1.8}
+strong{color:#fff}
+.tip{background:rgba(247,183,49,.1);border-right:4px solid #f7b731;padding:20px;border-radius:10px;margin:25px 0}
+.tip strong{color:#f7b731}
+.example{background:rgba(0,212,255,.1);border-right:4px solid #00d4ff;padding:20px;border-radius:10px;margin:25px 0}
+.example strong{color:#00d4ff}
+.warning{background:rgba(255,87,87,.1);border-right:4px solid #ff5757;padding:20px;border-radius:10px;margin:25px 0}
+.warning strong{color:#ff5757}
+.exercise{background:rgba(0,242,195,.1);border-right:4px solid #00f2c3;padding:25px;border-radius:10px;margin:30px 0}
+.exercise h4{color:#00f2c3}
+.highlight{background:linear-gradient(135deg,rgba(247,183,49,.15),rgba(0,212,255,.1));border:1px solid rgba(247,183,49,.3);padding:25px;border-radius:12px;text-align:center;font-size:1.3em;font-weight:600;margin:30px 0}
+table{width:100%;border-collapse:collapse;margin:25px 0}
+th,td{padding:14px;border:1px solid rgba(255,255,255,.1);text-align:right}
+th{background:rgba(247,183,49,.2);color:#f7b731;font-weight:700}
+.quote{font-size:1.4em;font-style:italic;text-align:center;color:#ffd369;margin:30px 0;padding:20px;border-top:2px solid rgba(247,183,49,.3);border-bottom:2px solid rgba(247,183,49,.3)}
+.candle-section{background:rgba(255,255,255,.03);border:2px solid #f7b731;border-radius:16px;padding:30px;margin:30px 0;text-align:center}
+.candle-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:25px;margin:25px 0}
+.candle-card{background:rgba(0,0,0,.3);border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:20px;text-align:center}
+.candle-name{color:#f7b731;font-weight:700;font-size:1.1em;margin-bottom:15px}
+.candle-visual{min-height:100px;display:flex;align-items:center;justify-content:center;margin:15px 0;flex-direction:column}
+.wick{width:3px;background:#94a3b8;margin:0 auto}
+.body-bull{background:#00f2c3;border:2px solid rgba(255,255,255,.3);margin:0 auto}
+.body-bear{background:#ff5757;border:2px solid rgba(255,255,255,.3);margin:0 auto}
+.body-doji{width:50px;height:3px;background:#fff;margin:0 auto}
+.candle-meaning{color:#cbd5e1;font-size:.95em;margin-top:10px}
+.signal{font-weight:600;margin-top:8px;font-size:.95em}
+</style>
+</head>
+<body>
+<div class="container">
+
+<h1>📍 מודול 4: ניתוח טכני א' – לקרוא את שפת הגרפים</h1>
+
+<p style="font-size:1.2em;text-align:center;color:#ffd369;margin-bottom:40px">הגרף הוא שיקוף של פחד וחמדנות בזמן אמת</p>
+
+<div class="quote">
+"ניתוח טכני הוא לא חיזוי העתיד.<br>זו קריאת פסיכולוגיית ההמונים."
+</div>
+
+<h2>מה זה בכלל ניתוח טכני?</h2>
+
+<p>ניתוח טכני הוא <strong>אמנות קריאת הגרפים</strong> כדי להבין מה השוק אומר לנו. זה לא קסם, לא כדור בדולח – זו <strong>פסיכולוגיה</strong>.</p>
+
+<p>כשאתם רואים גרף, אתם לא רואים סתם קווים. אתם רואים:</p>
+<ul>
+<li>🧠 <strong>פחד</strong> – כשהמחיר יורד בפאניקה</li>
+<li>🤑 <strong>חמדנות</strong> – כשהמחיר עולה באופוריה</li>
+<li>⚖️ <strong>היסוס</strong> – כשהשוק לא מחליט</li>
+<li>💪 <strong>ביטחון</strong> – כשהכסף הגדול נכנס</li>
+</ul>
+
+<div class="highlight">
+הגרף הוא "טביעות האצבעות" של הכסף הגדול.<br>המוסדיים לא יכולים להתחבא – הגרף חושף אותם!
+</div>
+
+<h3>3 העקרונות היסודיים של ניתוח טכני</h3>
+
+<table>
+<tr><th>עיקרון</th><th>משמעות</th></tr>
+<tr>
+<td><strong>1. המחיר משקף הכל</strong></td>
+<td>כל המידע הקיים (חדשות, רווחים, שמועות) כבר נמצא במחיר</td>
+</tr>
+<tr>
+<td><strong>2. המחיר נע במגמות</strong></td>
+<td>השוק לא זז באקראי – יש מגמות שנמשכות בזמן</td>
+</tr>
+<tr>
+<td><strong>3. ההיסטוריה חוזרת על עצמה</strong></td>
+<td>אנשים מגיבים באותן דרכים לאותם מצבים</td>
+</tr>
+</table>
+
+<div class="tip">
+<strong>💡 למה זה עובד?</strong><br>
+כי בסוף, <strong>אנשים הם אנשים</strong>. הפסיכולוגיה של פחד וחמדנות לא השתנתה מאז 1600 (כשהמציאו את הבורסה הראשונה בהולנד).<br><br>
+תבניות שעבדו לפני 50 שנה – עדיין עובדות היום!
+</div>
+
+<h2>שיעור 1: נרות יפניים – הסיפור שמאחורי המחיר</h2>
+
+<p><strong>נר יפני (Japanese Candlestick)</strong> הוא הדרך הטובה ביותר להבין <strong>מי שולט בטרייד</strong>: הקונים (השוורים 🐂) או המוכרים (הדובים 🐻).</p>
+
+<h3>מבנה הנר – אנטומיה מלאה</h3>
+
+<p>כל נר מורכב מ-2 חלקים עיקריים:</p>
+
+<table>
+<tr><th>חלק</th><th>מה הוא מראה</th></tr>
+<tr>
+<td><strong>גוף הנר (Body)</strong></td>
+<td>המרחק בין מחיר הפתיחה למחיר הסגירה<br>גוף גדול = תנועה חזקה<br>גוף קטן = היסוס</td>
+</tr>
+<tr>
+<td><strong>זנבות/פתילים (Wicks/Shadows)</strong></td>
+<td>השיא והשפל שהמחיר הגיע אליהם אבל לא שמר<br>זנב ארוך = דחייה של המחיר באותו כיוון</td>
+</tr>
+</table>
+
+<div class="example">
+<strong>📊 איך לקרוא נר בשנייה אחת:</strong><br><br>
+<strong>נר ירוק/לבן:</strong> הסגירה גבוהה מהפתיחה → הקונים ניצחו! 🟢<br>
+<strong>נר אדום/שחור:</strong> הסגירה נמוכה מהפתיחה → המוכרים ניצחו! 🔴<br><br>
+<strong>גוף גדול:</strong> צד אחד שלט בבירור<br>
+<strong>גוף קטן:</strong> מלחמה צמודה, אף אחד לא ניצח
+</div>
+
+<h3>תבניות נרות קריטיות – חובה להכיר!</h3>
+
+<p>יש מאות תבניות, אבל <strong>3 התבניות האלה</strong> הן הכי חשובות ואמינות:</p>
+
+<div class="candle-section">
+<h4 style="color:#f7b731;margin-bottom:25px">🎯 3 תבניות היפוך קריטיות</h4>
+
+<div class="candle-grid">
+<div class="candle-card">
+<div class="candle-name">🔨 Hammer (פטיש)</div>
+<div class="candle-visual">
+<div class="wick" style="height:8px"></div>
+<div class="body-bull" style="width:40px;height:25px"></div>
+<div class="wick" style="height:80px"></div>
+</div>
+<div class="candle-meaning">נר עם זנב תחתון ארוך (פי 2-3 מהגוף)<br>מופיע אחרי ירידות</div>
+<div class="signal" style="color:#00f2c3">⬆️ סימן שורי חזק!<br>הקונים דחו את המוכרים</div>
+</div>
+
+<div class="candle-card">
+<div class="candle-name">☁️ Bearish Engulfing (בליעה דובית)</div>
+<div class="candle-visual">
+<div style="display:flex;align-items:flex-end;gap:10px;justify-content:center">
+<div class="body-bull" style="width:30px;height:40px"></div>
+<div class="body-bear" style="width:45px;height:80px"></div>
+</div>
+</div>
+<div class="candle-meaning">נר אדום גדול שבולע נר ירוק קטן<br>מופיע אחרי עליות</div>
+<div class="signal" style="color:#ff5757">⬇️ סימן דובי חזק!<br>המוכרים השתלטו</div>
+</div>
+
+<div class="candle-card">
+<div class="candle-name">⚖️ Doji (דוג'י)</div>
+<div class="candle-visual">
+<div class="wick" style="height:60px"></div>
+<div class="body-doji"></div>
+<div class="wick" style="height:60px"></div>
+</div>
+<div class="candle-meaning">נר ללא גוף (פתיחה = סגירה)<br>זנבות ארוכים לשני הכיוונים</div>
+<div class="signal" style="color:#00d4ff">⚡ חוסר החלטה!<br>המלחמה תלויה ועומדת</div>
+</div>
+</div>
+</div>
+
+<div class="warning">
+<strong>⚠️ כלל זהב:</strong><br>
+<strong>אף תבנית לא עובדת ב-100%!</strong><br><br>
+פטיש אחרי ירידות = סיכוי טוב לעליות (70-80%)<br>
+אבל <strong>תמיד צריך אישור!</strong><br><br>
+אישור = הנר הבא צריך להיות ירוק ולעלות מעל הפטיש.
+</div>
+
+<div class="example">
+<strong>📊 דוגמה אמיתית – TSLA ינואר 2025:</strong><br><br>
+TSLA ירדה מ-$260 ל-$210 בשבועיים.<br>
+ב-$210 נוצר נר פטיש ענק עם זנב של $15!<br><br>
+<strong>מה זה אמר?</strong> המחיר ירד ל-$195 במהלך היום, אבל הקונים דחפו אותו חזרה ל-$210 בסגירה.<br><br>
+<strong>מה קרה אחרי?</strong> היום שאחרי – נר ירוק גדול, עליה ל-$225 (+7%)!<br><br>
+<strong>המסקנה:</strong> הפטיש עבד! מי שזיהה אותו הרוויח יפה.
+</div>
+
+<h2>שיעור 2: תמיכה, התנגדות וקווי מגמה – מפת הדרכים של הסוחר</h2>
+
+<div class="quote">
+"תמיכה והתנגדות הן 80% מהניתוח הטכני.<br>תשלוט בזה – תשלוט בשוק."
+</div>
+
+<h3>1. תמיכה (Support) – "הרצפה"</h3>
+
+<p><strong>תמיכה</strong> = רמת מחיר שבה <strong>הקונים חזקים מספיק</strong> לעצור ירידות ולהחזיר את המחיר למעלה.</p>
+
+<p><strong>למה זה קורה?</strong></p>
+<ul>
+<li>💰 הקונים רואים "מבצע" – "המחיר זול מדי!"</li>
+<li>😨 המוכרים חוששים – "אם נמשיך, זה יקפוץ בחזרה"</li>
+<li>📊 יש הרבה פקודות קנייה שמחכות ברמה הזו</li>
+</ul>
+
+<div class="tip">
+<strong>💡 כיצד לזהות תמיכה חזקה?</strong><br>
+1. <strong>נבדקה הרבה פעמים</strong> – ככל שהמחיר נגע בה ועלה יותר פעמים, היא חזקה יותר<br>
+2. <strong>Volume גבוה</strong> – אם בכל נגיעה היה Volume גבוה, זה אומר שהכסף הגדול קונה שם<br>
+3. <strong>מספר עגול</strong> – $100, $200, $50 – אנשים אוהבים מספרים עגולים (פסיכולוגיה!)<br>
+4. <strong>ממוצעים נעים</strong> – MA 200 לעיתים משמש כתמיכה דינמית
+</div>
+
+<h3>2. התנגדות (Resistance) – "התקרה"</h3>
+
+<p><strong>התנגדות</strong> = רמת מחיר שבה <strong>המוכרים חזקים מספיק</strong> לעצור עליות ולהוריד את המחיר.</p>
+
+<p><strong>למה זה קורה?</strong></p>
+<ul>
+<li>💸 מוכרים רוצים רווח – "הגענו ליעד, נמכור!"</li>
+<li>😰 קונים חוששים – "זה יקר מדי, זה ירד"</li>
+<li>📊 יש הרבה פקודות מכירה שמחכות שם</li>
+</ul>
+
+<div class="warning">
+<strong>⚠️ טעות נפוצה:</strong><br>
+"תמיכה והתנגדות הן קווים מדויקים!"<br><br>
+<strong>❌ לא נכון!</strong><br>
+זה לא קו דק – זה <strong>אזור</strong> (Zone) של 1-2%.<br><br>
+אם תמיכה ב-$100, היא יכולה להיות בין $98-$102.<br>
+אל תצפו לדיוק מתמטי!
+</div>
+
+<h3>3. קווי מגמה (Trendlines) – הכיוון של השוק</h3>
+
+<p><strong>קו מגמה</strong> = קו אלכסוני שמחבר 2 או יותר שיאים (במגמה יורדת) או שפלים (במגמה עולה).</p>
+
+<table>
+<tr><th>סוג מגמה</th><th>איך לזהות</th><th>מה לעשות</th></tr>
+<tr>
+<td><strong>מגמה עולה<br>(Uptrend)</strong></td>
+<td>• שיאים עולים<br>• שפלים עולים<br>• קו מגמה למטה שנוגעים בו</td>
+<td style="color:#00f2c3">✅ קנייה בנסיגות לקו המגמה<br>✅ החזקת פוזיציות ארוכות</td>
+</tr>
+<tr>
+<td><strong>מגמה יורדת<br>(Downtrend)</strong></td>
+<td>• שיאים יורדים<br>• שפלים יורדים<br>• קו מגמה למעלה שנוגעים בו</td>
+<td style="color:#ff5757">⚠️ מכירה בעליות לקו המגמה<br>⚠️ שורט או המתנה בצד</td>
+</tr>
+<tr>
+<td><strong>דשדוש<br>(Sideways/Range)</strong></td>
+<td>• מחיר תקוע בין תמיכה להתנגדות<br>• אין שיאים/שפלים חדשים</td>
+<td style="color:#00d4ff">⚡ קנייה בתמיכה, מכירה בהתנגדות<br>⚡ או המתנה לפריצה</td>
+</tr>
+</table>
+
+<div class="highlight">
+<strong>כלל הזהב של קווי מגמה:</strong><br><br>
+ככל שקו המגמה ננגע יותר פעמים – הוא חזק יותר!<br><br>
+2 נגיעות = רמז<br>
+3 נגיעות = אישור<br>
+4+ נגיעות = קו מגמה חזק מאוד!
+</div>
+
+<h2>שיעור 3: מבנה שוק – שיאים עולים ושפלים עולים</h2>
+
+<p>זיהוי <strong>מבנה השוק</strong> הוא אחד הכלים הכי חשובים. זה אומר לכם <strong>במי לתמוך</strong> – בקונים או במוכרים.</p>
+
+<h3>מבנה שורי (Bullish Structure)</h3>
+
+<p>שוק שורי מאופיין ב:</p>
+<ul>
+<li>📈 <strong>Higher Highs (HH)</strong> – כל שיא גבוה יותר מהקודם</li>
+<li>📈 <strong>Higher Lows (HL)</strong> – כל שפל גבוה יותר מהקודם</li>
+</ul>
+
+<div class="example">
+<strong>📊 דוגמה:</strong><br>
+שיא 1: $100 → שפל 1: $90 → שיא 2: $110 → שפל 2: $95 → שיא 3: $120<br><br>
+<strong>מה רואים?</strong> כל שיא וכל שפל גבוהים יותר!<br>
+<strong>המסקנה:</strong> מבנה שורי חזק – המגמה עולה, כדאי לקנות בנסיגות!
+</div>
+
+<h3>מבנה דובי (Bearish Structure)</h3>
+
+<p>שוק דובי מאופיין ב:</p>
+<ul>
+<li>📉 <strong>Lower Highs (LH)</strong> – כל שיא נמוך יותר מהקודם</li>
+<li>📉 <strong>Lower Lows (LL)</strong> – כל שפל נמוך יותר מהקודם</li>
+</ul>
+
+<div class="warning">
+<strong>⚠️ שבירת מבנה = אזהרת היפוך!</strong><br><br>
+אם במגמה עולה, המחיר שובר את השפל האחרון → המבנה נשבר!<br>
+זה יכול להיות התחלה של מגמה יורדת.<br><br>
+<strong>דוגמה:</strong><br>
+NVDA עולה: $400 → $380 → $420 → $390 → $440<br>
+אבל אז: ירידה ל-$375 (מתחת ל-$380 הקודם!)<br>
+→ המבנה נשבר! שימו לב!
+</div>
+
+<h2>שיעור 4: אסטרטגיית ה-Breakout (פריצה) – לרכוב על גל של עוצמה</h2>
+
+<p>אסטרטגיית הפריצה היא אחת הדרכים המהירות ביותר לייצר רווח בתנועה חדה.</p>
+
+<h3>מהי פריצה?</h3>
+
+<p><strong>פריצה (Breakout)</strong> = כשהמחיר שובר רמת התנגדות חזקה ועולה מעליה, או שובר תמיכה חזקה ויורד מתחתיה.</p>
+
+<p><strong>הרעיון:</strong> המחיר היה "כלוא" בין תמיכה להתנגדות. ברגע שהוא פורץ – יש אנרגיה חדשה והוא יכול לזוז הרבה!</p>
+
+<h3>תנאים לפריצה איכותית</h3>
+
+<table>
+<tr><th>תנאי</th><th>למה זה חשוב</th><th>איך לבדוק</th></tr>
+<tr>
+<td><strong>1. דחיסה<br>(Consolidation)</strong></td>
+<td>המחיר דשדש זמן רב בטווח צר = "קפיץ דרוך"</td>
+<td>חפש לפחות 5-10 נרות בטווח של 2-3%</td>
+</tr>
+<tr>
+<td><strong>2. Volume גבוה</strong></td>
+<td>הווליום הוא ה"דלק" – בלעדיו אין תנועה אמיתית</td>
+<td>ווליום צריך להיות פי 1.5-2 מהממוצע</td>
+</tr>
+<tr>
+<td><strong>3. סגירה מעל</strong></td>
+<td>נר שסוגר מעל ההתנגדות = אישור חזק</td>
+<td>אל תיכנס על "פתיחת נר" – חכה לסגירה!</td>
+</tr>
+<tr>
+<td><strong>4. Retest (רצוי)</strong></td>
+<td>המחיר חוזר לבדוק את ההתנגדות שהפכה לתמיכה</td>
+<td>אופציונלי אבל מעלה את הסיכוי להצלחה</td>
+</tr>
+</table>
+
+<div class="highlight">
+<strong>כלל ברזל של פריצות:</strong><br><br>
+פריצה ללא Volume גבוה = <strong>פריצת שווא!</strong><br>
+(False Breakout)<br><br>
+זה המלכודת הכי נפוצה – המחיר פורץ, אתם נכנסים בהתרגשות,<br>
+ואז הוא קורס בחזרה. למה? כי אף אחד לא קנה ברצינות!
+</div>
+
+<div class="example">
+<strong>📊 דוגמה מנצחת – AAPL ספטמבר 2024:</strong><br><br>
+<strong>המצב:</strong> AAPL דשדשה בין $170-$180 במשך חודש.<br>
+$180 = התנגדות חזקה (נבדקה 4 פעמים!).<br><br>
+<strong>הפריצה:</strong> 15.9.2024 – נר ירוק ענק סגר ב-$183.<br>
+Volume: 75M (ממוצע: 45M) = פי 1.66!<br><br>
+<strong>התוצאה:</strong> עליה ל-$195 בשבועיים (+6.5%).<br><br>
+<strong>למה זה עבד?</strong><br>
+✅ דחיסה ארוכה (חודש)<br>
+✅ Volume גבוה בפריצה<br>
+✅ סגירה חזקה מעל $180<br>
+✅ ה-Retest ב-$180 החזיק (הפך לתמיכה!)<br><br>
+<strong>פריצה מושלמת!</strong>
+</div>
+
+<h3>ניהול העסקה בפריצה</h3>
+
+<ol>
+<li><strong>כניסה:</strong> מעל רמת הפריצה (אחרי סגירת נר מאושרת)</li>
+<li><strong>Stop Loss:</strong> מתחת לרמת ההתנגדות השבורה<br>
+<em>(אם המחיר חוזר מתחת = הפריצה נכשלה)</em></li>
+<li><strong>Target:</strong> מרחק של גובה הדחיסה<br>
+<em>(אם דשדשו בטווח של $10, היעד הוא +$10 מהפריצה)</em></li>
+</ol>
+
+<div class="exercise">
+<h4>📝 המשימה שלכם לסיום מודול 4 (חשובה!):</h4>
+
+<ol>
+<li><strong>פתחו TradingView</strong> והכנסו למניה גדולה (TSLA / NVDA / AAPL)</li>
+<li><strong>מצאו 3 דוגמאות:</strong>
+<ul style="margin-top:10px">
+<li>1 דוגמה לפריצה שהצליחה (עם Volume גבוה)</li>
+<li>1 דוגמה לפריצה שנכשלה (עם Volume נמוך)</li>
+<li>1 דוגמה לנר פטיש שעבד</li>
+</ul>
+</li>
+<li><strong>סמנו על הגרף:</strong>
+<ul style="margin-top:10px">
+<li>תמיכה והתנגדות עיקריות</li>
+<li>קו מגמה (אם יש)</li>
+<li>רמות Volume</li>
+</ul>
+</li>
+<li><strong>שמרו צילומי מסך</strong> ביומן המסחר שלכם</li>
+</ol>
+
+<p style="margin-top:20px"><strong>למה זה קריטי?</strong><br>
+אתם לומדים לזהות תבניות בפועל, לא רק בתיאוריה!<br>
+זה ההבדל בין ידע לניסיון.</p>
+</div>
+
+<h3>סיכום מודול 4 – מה למדנו?</h3>
+
+<div class="highlight" style="text-align:right">
+<p style="margin-bottom:10px">✅ <strong>הבנו את עקרונות הניתוח הטכני</strong> – המחיר משקף הכל</p>
+<p style="margin-bottom:10px">✅ <strong>למדנו לקרוא נרות יפניים</strong> – פטיש, בליעה, דוג'י</p>
+<p style="margin-bottom:10px">✅ <strong>שלטנו בתמיכה והתנגדות</strong> – הרצפה והתקרה</p>
+<p style="margin-bottom:10px">✅ <strong>הכרנו קווי מגמה</strong> – כיוון השוק</p>
+<p style="margin-bottom:10px">✅ <strong>הבנו מבנה שוק</strong> – HH/HL או LH/LL</p>
+<p>✅ <strong>שלטנו באסטרטגיית הפריצה</strong> – הכלי החזק ביותר!</p>
+</div>
+
+<p style="text-align:center;margin-top:50px;font-size:1.3em;color:#ffd369"><strong>מוכנים למודול 5 – ניתוח טכני מתקדם! 🚀</strong></p>
+
+</div>
+</body>
+</html>

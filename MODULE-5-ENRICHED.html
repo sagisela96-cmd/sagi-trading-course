@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>מודול 5 - ניתוח טכני ב'</title>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Heebo',sans-serif;background:#0a1628;color:#fff;line-height:1.8;padding:40px}
+.container{max-width:1000px;margin:0 auto;background:#152238;padding:50px;border-radius:20px;border:1px solid rgba(255,255,255,.1)}
+h1{color:#f7b731;font-size:2.8em;margin-bottom:30px;text-align:center}
+h2{color:#ffd369;font-size:2em;margin:40px 0 20px;padding-bottom:10px;border-bottom:2px solid rgba(247,183,49,.3)}
+h3{color:#00d4ff;font-size:1.5em;margin:30px 0 15px}
+h4{color:#00f2c3;font-size:1.2em;margin:20px 0 10px}
+p{font-size:1.1em;line-height:1.9;margin:15px 0;color:#cbd5e1}
+ul,ol{margin:15px 0 15px 35px;font-size:1.05em;color:#cbd5e1}
+li{margin:10px 0;line-height:1.8}
+strong{color:#fff}
+.tip{background:rgba(247,183,49,.1);border-right:4px solid #f7b731;padding:20px;border-radius:10px;margin:25px 0}
+.tip strong{color:#f7b731}
+.example{background:rgba(0,212,255,.1);border-right:4px solid #00d4ff;padding:20px;border-radius:10px;margin:25px 0}
+.example strong{color:#00d4ff}
+.warning{background:rgba(255,87,87,.1);border-right:4px solid #ff5757;padding:20px;border-radius:10px;margin:25px 0}
+.warning strong{color:#ff5757}
+.exercise{background:rgba(0,242,195,.1);border-right:4px solid #00f2c3;padding:25px;border-radius:10px;margin:30px 0}
+.exercise h4{color:#00f2c3}
+.highlight{background:linear-gradient(135deg,rgba(247,183,49,.15),rgba(0,212,255,.1));border:1px solid rgba(247,183,49,.3);padding:25px;border-radius:12px;text-align:center;font-size:1.3em;font-weight:600;margin:30px 0}
+table{width:100%;border-collapse:collapse;margin:25px 0}
+th,td{padding:14px;border:1px solid rgba(255,255,255,.1);text-align:right}
+th{background:rgba(247,183,49,.2);color:#f7b731;font-weight:700}
+.quote{font-size:1.4em;font-style:italic;text-align:center;color:#ffd369;margin:30px 0;padding:20px;border-top:2px solid rgba(247,183,49,.3);border-bottom:2px solid rgba(247,183,49,.3)}
+.pattern-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;margin:30px 0}
+.pattern-card{background:rgba(0,0,0,.3);border:1px solid var(--gold,#f7b731);border-radius:12px;padding:20px;text-align:center}
+</style>
+</head>
+<body>
+<div class="container">
+
+<h1>📍 מודול 5: ניתוח טכני ב' – תבניות ומדדים (Indicators)</h1>
+
+<p style="font-size:1.2em;text-align:center;color:#ffd369;margin-bottom:40px">הכלים המתמטיים לזהות הזדמנויות</p>
+
+<div class="quote">
+"תבניות גרפיות הן הפסיכולוגיה של ההמונים.<br>אינדיקטורים הם המתמטיקה שמאשרת אותה."
+</div>
+
+<h2>שיעור 1: תבניות מחיר (Chart Patterns) – היפוך והמשכיות</h2>
+
+<p>תבניות מחיר הן <strong>צורות גיאומטריות</strong> שהשוק יוצר שוב ושוב. הן מעידות על <strong>פסיכולוגיה</strong> – מה הקונים והמוכרים חושבים.</p>
+
+<h3>חלק א': תבניות היפוך (Reversal Patterns)</h3>
+
+<p>תבניות שמעידות על כך שהמגמה הנוכחית עומדת להסתיים ומתחיל שינוי כיוון.</p>
+
+<h4>1. ראש וכתפיים (Head and Shoulders) – מלך התבניות</h4>
+
+<p><strong>מבנה:</strong></p>
+<ul>
+<li>כתף שמאל – שיא</li>
+<li>ראש – שיא גבוה יותר</li>
+<li>כתף ימין – שיא בגובה דומה לשמאל</li>
+<li>קו הצוואר (Neckline) – הקו שמחבר את השפלים</li>
+</ul>
+
+<p><strong>משמעות:</strong> הקונים נחלשים! הם לא מצליחים לייצר שיא חדש (הכתף הימנית נמוכה מהראש).</p>
+
+<div class="example">
+<strong>📊 איך להשתמש בתבנית:</strong><br><br>
+<strong>כניסה:</strong> רק אחרי שבירת קו הצוואר! (לא לפני)<br>
+<strong>Stop Loss:</strong> מעל הכתף הימנית<br>
+<strong>Target:</strong> גובה הראש (מקו הצוואר) = המרחק למטה<br><br>
+<strong>דוגמה:</strong> אם הראש ב-$120 וקו הצוואר ב-$100:<br>
+→ גובה = $20<br>
+→ יעד = $100 - $20 = $80
+</div>
+
+<div class="warning">
+<strong>⚠️ נקודה קריטית:</strong><br>
+הכניסה לעסקה מתבצעת רק לאחר <strong>שבירת קו הצוואר</strong>!<br>
+אם המחיר לא שובר את קו הצוואר = התבנית לא מאושרת.
+</div>
+
+<h4>2. פסגה כפולה / תחתית כפולה (Double Top / Double Bottom)</h4>
+
+<p><strong>Double Top (פסגה כפולה):</strong></p>
+<ul>
+<li>המחיר מנסה לפרוץ רמה פעמיים – ונכשל!</li>
+<li>נראית כמו האות <strong>M</strong></li>
+<li>תבנית דובית מובהקת</li>
+</ul>
+
+<p><strong>Double Bottom (תחתית כפולה):</strong></p>
+<ul>
+<li>המחיר נבלם באותה רמת תמיכה פעמיים</li>
+<li>נראית כמו האות <strong>W</strong></li>
+<li>מעידה שהקונים חזקים מאוד באזור – תבנית שורית</li>
+</ul>
+
+<table>
+<tr><th>תבנית</th><th>סימן ל...</th><th>אישור</th></tr>
+<tr><td>Double Top (M)</td><td style="color:#ff5757">ירידות</td><td>שבירת השפל שבין שני השיאים</td></tr>
+<tr><td>Double Bottom (W)</td><td style="color:#00f2c3">עליות</td><td>פריצת השיא שבין שתי התחתיות</td></tr>
+</table>
+
+<div class="tip">
+<strong>💡 איך לזהות Double Top אמיתי?</strong><br>
+1. שני השיאים בגובה דומה (הפרש של עד 2%)<br>
+2. המרחק בין השיאים – לפחות 2-4 שבועות<br>
+3. Volume: בשיא השני Volume נמוך יותר = חולשה!<br>
+4. שבירת השפל עם Volume גבוה = אישור
+</div>
+
+<h4>3. ראש וכתפיים הפוך (Inverse Head and Shoulders)</h4>
+
+<p>אותו הדבר בדיוק אבל הפוך – בתחתית מגמה יורדת. מאותת על תחילת גל עליות חזק!</p>
+
+<h3>חלק ב': תבניות המשכיות (Continuation Patterns)</h3>
+
+<p>תבניות שמעידות על כך שהשוק לוקח "נשימה" לפני שממשיך באותו כיוון.</p>
+
+<h4>1. דגל (Flag) – האהוב על סוחרי המומנטום</h4>
+
+<p><strong>מבנה:</strong></p>
+<ul>
+<li><strong>תורן (Pole):</strong> תנועה חדה למעלה או למטה</li>
+<li><strong>דגל:</strong> דשדוש קל בתעלה מקבילה (נגד המגמה)</li>
+<li><strong>פריצה:</strong> המשך בכיוון התורן</li>
+</ul>
+
+<p><strong>שני סוגים:</strong></p>
+<ul>
+<li><strong>Bullish Flag (דגל שורי):</strong> תורן למעלה → תיקון קל למטה → פריצה למעלה</li>
+<li><strong>Bearish Flag (דגל דובי):</strong> תורן למטה → תיקון קל למעלה → פריצה למטה</li>
+</ul>
+
+<div class="example">
+<strong>📊 דוגמה – NVDA ינואר 2025:</strong><br><br>
+<strong>התורן:</strong> עליה חדה מ-$480 ל-$520 ב-3 ימים (+8.3%)<br>
+<strong>הדגל:</strong> דשדוש בין $515-$520 במשך שבוע<br>
+<strong>הפריצה:</strong> נר ירוק גדול עם Volume פריצה ל-$530<br>
+<strong>היעד:</strong> גובה התורן ($40) מהפריצה = $520 + $40 = $560<br>
+<strong>התוצאה:</strong> הגיע ל-$555 תוך 4 ימים! (+6.7%)
+</div>
+
+<div class="highlight">
+<strong>כלל זהב של דגלים:</strong><br>
+היעד = גובה התורן מנקודת הפריצה!
+</div>
+
+<h4>2. משולשים (Triangles) – המתנה לכיוון</h4>
+
+<p><strong>3 סוגי משולשים:</strong></p>
+
+<table>
+<tr><th>סוג</th><th>מבנה</th><th>משמעות</th></tr>
+<tr>
+<td><strong>Ascending<br>(עולה)</strong></td>
+<td>• קו עליון ישר (התנגדות)<br>• קו תחתון עולה (שפלים עולים)</td>
+<td style="color:#00f2c3">בד"כ פריצה למעלה<br>הקונים מתחזקים</td>
+</tr>
+<tr>
+<td><strong>Descending<br>(יורד)</strong></td>
+<td>• קו תחתון ישר (תמיכה)<br>• קו עליון יורד (שיאים יורדים)</td>
+<td style="color:#ff5757">בד"כ פריצה למטה<br>המוכרים מתחזקים</td>
+</tr>
+<tr>
+<td><strong>Symmetrical<br>(סימטרי)</strong></td>
+<td>• שני קווים מתכנסים<br>• שיאים יורדים ושפלים עולים</td>
+<td style="color:#00d4ff">ניטרלי – מחכים לכיוון<br>הפריצה תקבע</td>
+</tr>
+</table>
+
+<div class="tip">
+<strong>💡 איך לסחור במשולשים?</strong><br>
+1. <strong>זהה את המשולש</strong> – לפחות 4 נגיעות (2 בכל קו)<br>
+2. <strong>חכה לפריצה</strong> – אל תנסה לנחש את הכיוון!<br>
+3. <strong>Volume חייב להיות גבוה</strong> בפריצה<br>
+4. <strong>היעד:</strong> גובה המשולש הרחב ביותר
+</div>
+
+<h2>שיעור 2: ממוצעים נעים – ה-GPS של המגמה</h2>
+
+<p>ממוצעים נעים (Moving Averages) הם <strong>הכלי הפשוט והעוצמתי ביותר</strong> בניתוח טכני.</p>
+
+<h3>מה זה ממוצע נע?</h3>
+
+<p>זה <strong>ממוצע של המחיר</strong> בתקופה מסוימת, שמתעדכן כל יום.</p>
+
+<p><strong>למה "נע"?</strong> כי הוא זז עם המחיר!</p>
+
+<div class="example">
+<strong>📊 דוגמה פשוטה – MA 10:</strong><br><br>
+ממוצע נע של 10 ימים = סכום המחיר ב-10 הימים האחרונים ÷ 10<br><br>
+אם המחיר היה: 100, 102, 98, 105, 103, 107, 104, 106, 108, 110<br>
+→ סכום = 1,043<br>
+→ MA 10 = 1,043 ÷ 10 = 104.3<br><br>
+מחר המחיר 112 → MA מתעדכן (מוריד את 100, מוסיף 112)
+</example>
+
+<h3>הממוצעים החשובים ביותר</h3>
+
+<table>
+<tr><th>ממוצע</th><th>טווח</th><th>שימוש</th></tr>
+<tr>
+<td><strong>MA 20 / EMA 20</strong></td>
+<td>קצר</td>
+<td>תמיכה דינמית ל-Day Trading</td>
+</tr>
+<tr>
+<td><strong>MA 50 / EMA 50</strong></td>
+<td>קצר-בינוני</td>
+<td>קו המגמה לטווח קצר<br>תמיכה ל-Swing Trading</td>
+</tr>
+<tr>
+<td><strong>MA 200</strong></td>
+<td>ארוך</td>
+<td>📍 <strong>"קו פרשת המים"</strong><br>מעליו = שורי, מתחתיו = דובי</td>
+</tr>
+</table>
+
+<div class="highlight">
+<strong>MA 200 – המלך של הממוצעים!</strong><br><br>
+מעל MA 200 = שוק שורי (Bull Market)<br>
+מתחת MA 200 = שוק דובי (Bear Market)<br><br>
+זה הקו הכי חשוב בגרף!
+</div>
+
+<h3>Golden Cross vs Death Cross – הצלבים המפורסמים</h3>
+
+<table>
+<tr><th>אירוע</th><th>מה קורה</th><th>משמעות</th></tr>
+<tr>
+<td style="color:#00f2c3"><strong>Golden Cross<br>(צלב הזהב)</strong></td>
+<td>MA 50 חוצה את MA 200<br><strong>מלמטה למעלה</strong></td>
+<td>✅ <strong>סימן שורי חזק מאוד!</strong><br>תחילת גל עליות ארוך<br>הכסף הגדול קונה</td>
+</tr>
+<tr>
+<td style="color:#ff5757"><strong>Death Cross<br>(צלב המוות)</strong></td>
+<td>MA 50 חוצה את MA 200<br><strong>מלמעלה למטה</strong></td>
+<td>⚠️ <strong>סימן דובי חזק!</strong><br>אזהרה לירידות<br>הכסף הגדול מוכר</td>
+</tr>
+</table>
+
+<div class="example">
+<strong>📊 Golden Cross היסטורי – S&P 500 נובמבר 2023:</strong><br><br>
+ב-1.11.2023 MA 50 חצה את MA 200 מלמטה למעלה.<br>
+המדד היה ב-4,250 נקודות.<br><br>
+<strong>מה קרה אחרי?</strong><br>
+תוך 3 חודשים: עליה ל-4,850 (+14%)<br>
+תוך שנה: עליה ל-5,700 (+34%!)<br><br>
+<strong>המסקנה:</strong> Golden Cross עובד! (לא תמיד, אבל לעיתים קרובות)
+</div>
+
+<div class="tip">
+<strong>💡 איך להשתמש בממוצעים נעים?</strong><br>
+1. <strong>זיהוי מגמה:</strong> מחיר מעל MA = עליות, מתחת = ירידות<br>
+2. <strong>תמיכה דינמית:</strong> במגמה עולה, MA משמש כתמיכה<br>
+3. <strong>כניסה בנסיגות:</strong> קנה כשהמחיר נוגע ב-MA ומקפץ חזרה<br>
+4. <strong>Golden/Death Cross:</strong> סימנים ארוכי טווח
+</div>
+
+<h2>שיעור 3: מתנד RSI ו-MACD – מתי המניה ב"קנייה יתר"?</h2>
+
+<h3>RSI – מדד הכוח היחסי (Relative Strength Index)</h3>
+
+<p>RSI מודד את <strong>עוצמת התנועה</strong> בסקאלה של 0-100.</p>
+
+<p><strong>הרעיון:</strong> אם המחיר עלה יותר מדי, יותר מהר מדי → הוא "קנוי יתר" ויתקן.<br>
+אם המחיר ירד יותר מדי → הוא "נמכר יתר" ויקפוץ.</p>
+
+<h4>רמות RSI – מה הן אומרות</h4>
+
+<table>
+<tr><th>רמת RSI</th><th>מצב</th><th>פעולה</th></tr>
+<tr>
+<td style="color:#ff5757"><strong>> 70</strong></td>
+<td>Overbought<br>(קנייה יתר)</td>
+<td>⚠️ זהירות! המחיר עלול לרדת<br>שקול מכירה או המתנה</td>
+</tr>
+<tr>
+<td style="color:#00f2c3"><strong>< 30</strong></td>
+<td>Oversold<br>(מכירה יתר)</td>
+<td>✅ הזדמנות! המחיר זול מדי<br>שקול קנייה</td>
+</tr>
+<tr>
+<td><strong>50</strong></td>
+<td>ניטרלי</td>
+<td>קו הפרדה – מעל = חיובי, מתחת = שלילי</td>
+</tr>
+</table>
+
+<div class="warning">
+<strong>⚠️ טעות נפוצה!</strong><br>
+"RSI מעל 70 → אני מוכר מיד!"<br><br>
+<strong>לא נכון!</strong><br>
+במגמה חזקה, RSI יכול להישאר מעל 70 שבועות!<br>
+אל תילחם במגמה רק בגלל RSI.<br><br>
+<strong>כלל:</strong> RSI הוא כלי עזר, לא אות לבד!
+</div>
+
+<h4>Divergence – הטריק המתקדם של RSI</h4>
+
+<p><strong>Divergence (סטייה)</strong> = כשהמחיר וה-RSI לא מסכימים!</p>
+
+<p><strong>Bearish Divergence (דובית):</strong></p>
+<ul>
+<li>המחיר עושה שיא חדש (גבוה יותר)</li>
+<li>אבל RSI עושה שיא נמוך יותר</li>
+<li>→ המומנטום נחלש! סימן לירידה</li>
+</ul>
+
+<p><strong>Bullish Divergence (שורית):</strong></p>
+<ul>
+<li>המחיר עושה שפל חדש (נמוך יותר)</li>
+<li>אבל RSI עושה שפל גבוה יותר</li>
+<li>→ הלחץ נגמר! סימן לעליה</li>
+</ul>
+
+<div class="example">
+<strong>📊 Bearish Divergence – TSLA דצמבר 2024:</strong><br><br>
+<strong>שיא 1:</strong> 15.12 – מחיר $420, RSI 78<br>
+<strong>שיא 2:</strong> 28.12 – מחיר $435 (גבוה יותר!), RSI 72 (נמוך יותר!)<br><br>
+<strong>Divergence!</strong> המחיר עולה אבל המומנטום נחלש.<br><br>
+<strong>מה קרה?</strong> תיקון ל-$380 בשבועיים (-12.6%)<br><br>
+<strong>המסקנה:</strong> Divergence עבד! מי שזיהה – יצא בזמן או שורט.
+</div>
+
+<h3>Bollinger Bands – רצועות התנודתיות</h3>
+
+<p>Bollinger Bands מראה לנו <strong>עד כמה המחיר רחוק מהממוצע</strong>.</p>
+
+<p><strong>מבנה:</strong></p>
+<ul>
+<li><strong>קו אמצעי:</strong> MA 20 (ממוצע נע 20 ימים)</li>
+<li><strong>רצועה עליונה:</strong> MA 20 + (2 × סטיית תקן)</li>
+<li><strong>רצועה תחתונה:</strong> MA 20 - (2 × סטיית תקן)</li>
+</ul>
+
+<h4>התכווצות (Squeeze) – "שקט לפני סערה"</h4>
+
+<p>כשהרצועות מתקרבות זו לזו והופכות צרות מאוד = Squeeze!</p>
+
+<p><strong>משמעות:</strong> תנודתיות נמוכה, השוק מתכונן לתנועה גדולה.</p>
+
+<div class="highlight">
+<strong>כלל Bollinger Squeeze:</strong><br>
+אחרי Squeeze חזק → תמיד באה תנועה חדה!<br>
+הכיוון? צריך לחכות ולראות לאיזה צד הוא פורץ.
+</div>
+
+<h4>Walking the Bands – רכיבה על הרצועה</h4>
+
+<p>במגמות חזקות מאוד, המחיר יכול ל"רכוב" על הרצועה:</p>
+<ul>
+<li><strong>מגמה עולה חזקה:</strong> המחיר דבוק לרצועה העליונה</li>
+<li><strong>מגמה יורדת חזקה:</strong> המחיר דבוק לרצועה התחתונה</li>
+</ul>
+
+<div class="exercise">
+<h4>📝 המשימה שלכם:</h4>
+<ol>
+<li><strong>פתחו TradingView</strong></li>
+<li><strong>הוסיפו למניה:</strong>
+<ul style="margin-top:10px">
+<li>MA 50 (כחול)</li>
+<li>MA 200 (אדום)</li>
+<li>RSI</li>
+<li>Bollinger Bands</li>
+</ul>
+</li>
+<li><strong>מצאו:</strong>
+<ul style="margin-top:10px">
+<li>1 דוגמה ל-Golden Cross</li>
+<li>1 דוגמה ל-RSI Divergence</li>
+<li>1 דוגמה ל-Bollinger Squeeze</li>
+</ul>
+</li>
+<li><strong>תעדו ביומן</strong> – מה קרה אחרי כל אירוע?</li>
+</ol>
+</div>
+
+<h3>סיכום מודול 5</h3>
+
+<div class="highlight" style="text-align:right">
+<p style="margin-bottom:10px">✅ <strong>שלטנו בתבניות היפוך</strong> – H&S, Double Top/Bottom</p>
+<p style="margin-bottom:10px">✅ <strong>הכרנו תבניות המשכה</strong> – Flags, Triangles</p>
+<p style="margin-bottom:10px">✅ <strong>למדנו ממוצעים נעים</strong> – MA 50, MA 200, Golden Cross</p>
+<p style="margin-bottom:10px">✅ <strong>שלטנו ב-RSI</strong> – 70/30, Divergence</p>
+<p>✅ <strong>הכרנו Bollinger Bands</strong> – Squeeze, Walking</p>
+</div>
+
+<p style="text-align:center;margin-top:50px;font-size:1.3em;color:#ffd369"><strong>מוכנים למודול 6 – אסטרטגיות מסחר! 🚀</strong></p>
+
+</div>
+</body>
+</html>
