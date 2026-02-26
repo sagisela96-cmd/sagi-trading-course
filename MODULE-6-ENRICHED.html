@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>מודול 6 - אסטרטגיות מסחר (משודרג)</title>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Heebo',sans-serif;background:#0a1628;color:#fff;line-height:1.8;padding:40px}
+.container{max-width:1000px;margin:0 auto;background:#152238;padding:50px;border-radius:20px;border:1px solid rgba(255,255,255,.1)}
+h1{color:#f7b731;font-size:2.8em;margin-bottom:30px;text-align:center}
+h2{color:#ffd369;font-size:2em;margin:40px 0 20px;padding-bottom:10px;border-bottom:2px solid rgba(247,183,49,.3)}
+h3{color:#00d4ff;font-size:1.5em;margin:30px 0 15px}
+h4{color:#00f2c3;font-size:1.2em;margin:20px 0 10px}
+p{font-size:1.1em;line-height:1.9;margin:15px 0;color:#cbd5e1}
+ul,ol{margin:15px 0 15px 35px;font-size:1.05em;color:#cbd5e1}
+li{margin:10px 0;line-height:1.8}
+strong{color:#fff}
+.tip{background:rgba(247,183,49,.1);border-right:4px solid #f7b731;padding:20px;border-radius:10px;margin:25px 0}
+.tip strong{color:#f7b731}
+.example{background:rgba(0,212,255,.1);border-right:4px solid #00d4ff;padding:20px;border-radius:10px;margin:25px 0}
+.example strong{color:#00d4ff}
+.warning{background:rgba(255,87,87,.1);border-right:4px solid #ff5757;padding:20px;border-radius:10px;margin:25px 0}
+.warning strong{color:#ff5757}
+.exercise{background:rgba(0,242,195,.1);border-right:4px solid #00f2c3;padding:25px;border-radius:10px;margin:30px 0}
+.exercise h4{color:#00f2c3}
+.highlight{background:linear-gradient(135deg,rgba(247,183,49,.15),rgba(0,212,255,.1));border:1px solid rgba(247,183,49,.3);padding:25px;border-radius:12px;text-align:center;font-size:1.3em;font-weight:600;margin:30px 0}
+table{width:100%;border-collapse:collapse;margin:25px 0}
+th,td{padding:14px;border:1px solid rgba(255,255,255,.1);text-align:right}
+th{background:rgba(247,183,49,.2);color:#f7b731;font-weight:700}
+.quote{font-size:1.4em;font-style:italic;text-align:center;color:#ffd369;margin:30px 0;padding:20px;border-top:2px solid rgba(247,183,49,.3);border-bottom:2px solid rgba(247,183,49,.3)}
+.strategy-box{background:rgba(0,212,255,.05);border:2px solid #00d4ff;border-radius:15px;padding:30px;margin:30px 0}
+.chart-visual{background:#1a1a2e;border:2px solid #00d4ff;border-radius:12px;padding:20px;margin:30px 0;text-align:center}
+.chart-caption{color:#00d4ff;font-size:.95em;margin-top:15px;text-align:center}
+</style>
+</head>
+<body>
+<div class="container">
+
+<h1>📍 מודול 6: אסטרטגיות מסחר מעשיות</h1>
+
+<p style="font-size:1.2em;text-align:center;color:#ffd369;margin-bottom:40px">"הבשר" – איך להרוויח כסף בפועל</p>
+
+<div class="quote">
+"אסטרטגיה בלי ביצוע = חלום.<br>ביצוע בלי אסטרטגיה = סיוט."
+</div>
+
+<h2>שיעור 1: אסטרטגיית הפריצה (Breakout)</h2>
+
+<p>אסטרטגיית הפריצה היא <strong>אחת הדרכים המהירות ביותר לייצר רווח</strong> בתנועה חדה.</p>
+
+<h3>הקונספט – מה זו פריצה?</h3>
+
+<div class="chart-visual">
+<h4 style="color:#00d4ff;margin-bottom:20px">📊 אסטרטגיית הפריצה - ויזואליזציה מלאה</h4>
+<svg width="100%" height="400" viewBox="0 0 800 400" style="max-width:100%">
+<defs>
+<pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+<path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
+</pattern>
+<marker id="arrowgreen" markerWidth="10" markerHeight="10" refX="5" refY="5" orient="auto">
+<polygon points="0,0 10,5 0,10" fill="#00f2c3"/>
+</marker>
+</defs>
+<rect width="800" height="400" fill="url(#grid)"/>
+
+<!-- Resistance level -->
+<line x1="50" y1="150" x2="600" y2="150" stroke="#ff5757" stroke-width="3" stroke-dasharray="8,4"/>
+<text x="610" y="155" fill="#ff5757" font-size="14" font-weight="bold">התנגדות $100</text>
+
+<!-- Support level -->
+<line x1="50" y1="300" x2="600" y2="300" stroke="#00f2c3" stroke-width="3" stroke-dasharray="8,4"/>
+<text x="610" y="305" fill="#00f2c3" font-size="14" font-weight="bold">תמיכה $90</text>
+
+<!-- Consolidation (ranging price) -->
+<rect x="100" y="150" width="400" height="150" fill="rgba(255,215,0,0.05)" stroke="#ffd369" stroke-width="2" stroke-dasharray="5,3"/>
+<text x="300" y="130" fill="#ffd369" font-size="15" font-weight="bold" text-anchor="middle">דחיסה (Consolidation)</text>
+
+<!-- Price action in range -->
+<polyline points="120,250 150,200 180,270 210,180 240,250 270,200 300,260 330,190 360,240 390,210 420,260 450,220 480,240" 
+fill="none" stroke="#ffd369" stroke-width="3" opacity="0.7"/>
+
+<!-- Breakout! -->
+<polyline points="500,230 520,180 540,140 560,110 580,90 600,70" 
+fill="none" stroke="#00f2c3" stroke-width="5"/>
+
+<!-- Breakout arrow -->
+<path d="M 600 70 L 620 50" stroke="#00f2c3" stroke-width="4" marker-end="url(#arrowgreen)"/>
+
+<!-- Volume bars -->
+<g transform="translate(100,320)">
+<text x="0" y="-10" fill="#cbd5e1" font-size="12">Volume:</text>
+<rect x="20" y="-20" width="30" height="20" fill="#94a3b8" opacity="0.5"/>
+<rect x="60" y="-25" width="30" height="25" fill="#94a3b8" opacity="0.5"/>
+<rect x="100" y="-22" width="30" height="22" fill="#94a3b8" opacity="0.5"/>
+<rect x="140" y="-18" width="30" height="18" fill="#94a3b8" opacity="0.5"/>
+<rect x="180" y="-20" width="30" height="20" fill="#94a3b8" opacity="0.5"/>
+<rect x="220" y="-24" width="30" height="24" fill="#94a3b8" opacity="0.5"/>
+<rect x="260" y="-19" width="30" height="19" fill="#94a3b8" opacity="0.5"/>
+<rect x="300" y="-21" width="30" height="21" fill="#94a3b8" opacity="0.5"/>
+<rect x="340" y="-23" width="30" height="23" fill="#94a3b8" opacity="0.5"/>
+<!-- High volume at breakout -->
+<rect x="380" y="-55" width="30" height="55" fill="#00f2c3" opacity="0.8"/>
+<text x="395" y="-60" fill="#00f2c3" font-size="13" font-weight="bold" text-anchor="middle">Volume ⬆️</text>
+</g>
+
+<!-- Annotations -->
+<circle cx="500" cy="230" r="10" fill="#f7b731" opacity="0.8"/>
+<text x="500" y="255" fill="#f7b731" font-size="13" font-weight="bold" text-anchor="middle">נקודת פריצה!</text>
+
+<!-- Target line -->
+<line x1="600" y1="70" x2="750" y2="70" stroke="#f7b731" stroke-width="2" stroke-dasharray="3,2"/>
+<line x1="500" y1="150" x2="750" y2="150" stroke="#f7b731" stroke-width="2" stroke-dasharray="3,2" opacity="0.4"/>
+<path d="M 740 70 L 740 150" stroke="#f7b731" stroke-width="2"/>
+<text x="750" y="110" fill="#f7b731" font-size="12">גובה הדחיסה</text>
+<text x="750" y="125" fill="#f7b731" font-size="12">= היעד</text>
+
+<text x="400" y="390" fill="#cbd5e1" font-size="14" text-anchor="middle" font-weight="bold">💡 פריצה עם Volume גבוה + סגירה מעל = אות חזק!</text>
+</svg>
+<p class="chart-caption">🚀 דחיסה ארוכה → פריצה עם Volume → תנועה חזקה!</p>
+</div>
+
+<div class="strategy-box">
+<h4 style="color:#00d4ff;margin-bottom:20px">✅ Checklist לפריצה מנצחת</h4>
+
+<p><strong>תנאי 1: דחיסה (Consolidation)</strong></p>
+<ul>
+<li>המחיר דשדש בטווח צר לאורך זמן</li>
+<li>לפחות 5-10 נרות בטווח של 2-3%</li>
+<li>ככל שהדחיסה ארוכה יותר – הפריצה חזקה יותר!</li>
+</ul>
+
+<p><strong>תנאי 2: Volume גבוה בפריצה</strong></p>
+<ul>
+<li>הווליום בנר הפריצה חייב להיות <strong>פי 1.5-2 מהממוצע</strong></li>
+<li>Volume = הדלק של המחיר</li>
+<li>ללא Volume = פריצת שווא!</li>
+</ul>
+
+<p><strong>תנאי 3: סגירה מעל ההתנגדות</strong></p>
+<ul>
+<li>אל תיכנס על "פתיחת הנר"</li>
+<li>חכה לסגירה מעל ההתנגדות = אישור!</li>
+</ul>
+
+<p><strong>תנאי 4: Retest (בונוס)</strong></p>
+<ul>
+<li>המחיר חוזר לבדוק את ההתנגדות שהפכה לתמיכה</li>
+<li>אם זה מחזיק = אישור כפול!</li>
+</ul>
+</div>
+
+<h3>ניהול העסקה – Entry, Stop, Target</h3>
+
+<div class="chart-visual">
+<h4 style="color:#00d4ff;margin-bottom:20px">📊 ניהול טרייד פריצה - Entry/Stop/Target</h4>
+<svg width="100%" height="350" viewBox="0 0 800 350" style="max-width:100%">
+<rect width="800" height="350" fill="url(#grid)"/>
+
+<!-- Resistance/Breakout level -->
+<line x1="50" y1="200" x2="750" y2="200" stroke="#ff5757" stroke-width="3" stroke-dasharray="8,4"/>
+<text x="50" y="185" fill="#ff5757" font-size="14" font-weight="bold">התנגדות $100</text>
+
+<!-- Price breaking out -->
+<polyline points="100,250 200,230 300,210 400,205 500,200 550,180 600,150 650,130" 
+fill="none" stroke="#ffd369" stroke-width="4"/>
+
+<!-- Entry point -->
+<circle cx="550" cy="180" r="12" fill="#00f2c3"/>
+<text x="550" y="165" fill="#00f2c3" font-size="15" font-weight="bold" text-anchor="middle">ENTRY</text>
+<text x="550" y="210" fill="#00f2c3" font-size="13" text-anchor="middle">$102</text>
+
+<!-- Stop Loss -->
+<line x1="400" y1="220" x2="700" y2="220" stroke="#ff5757" stroke-width="2" stroke-dasharray="5,3"/>
+<circle cx="550" cy="220" r="8" fill="#ff5757"/>
+<text x="710" y="225" fill="#ff5757" font-size="14" font-weight="bold">Stop Loss $98</text>
+
+<!-- Target -->
+<line x1="400" y1="120" x2="700" y2="120" stroke="#00f2c3" stroke-width="2" stroke-dasharray="5,3"/>
+<circle cx="650" cy="130" r="8" fill="#00f2c3"/>
+<text x="710" y="125" fill="#00f2c3" font-size="14" font-weight="bold">Target $110</text>
+
+<!-- Risk/Reward arrows -->
+<g transform="translate(720,140)">
+<!-- Reward arrow -->
+<path d="M 0 40 L 0 0" stroke="#00f2c3" stroke-width="3"/>
+<text x="10" y="20" fill="#00f2c3" font-size="13" font-weight="bold">Reward: $8</text>
+
+<!-- Risk arrow -->
+<path d="M 0 40 L 0 80" stroke="#ff5757" stroke-width="3"/>
+<text x="10" y="60" fill="#ff5757" font-size="13" font-weight="bold">Risk: $4</text>
+
+<!-- R:R ratio -->
+<text x="10" y="100" fill="#f7b731" font-size="15" font-weight="bold">R:R = 1:2 ✅</text>
+</g>
+
+<text x="400" y="330" fill="#cbd5e1" font-size="14" text-anchor="middle" font-weight="bold">💰 סיכון $4 → פוטנציאל $8 = יחס מושלם!</text>
+</svg>
+<p class="chart-caption">✅ תמיד תכנן Entry, Stop, Target לפני הכניסה!</p>
+</div>
+
+<h2>שיעור 2: מסחר בנסיגות (Pullbacks)</h2>
+
+<div class="chart-visual">
+<h4 style="color:#00d4ff;margin-bottom:20px">📈 אסטרטגיית Pullback - ויזואליזציה</h4>
+<svg width="100%" height="350" viewBox="0 0 800 350" style="max-width:100%">
+<rect width="800" height="350" fill="url(#grid)"/>
+
+<!-- Uptrend line -->
+<line x1="50" y1="300" x2="750" y2="100" stroke="#00f2c3" stroke-width="3" stroke-dasharray="8,4"/>
+<text x="50" y="320" fill="#00f2c3" font-size="14" font-weight="bold">קו מגמה עולה</text>
+
+<!-- EMA 20 -->
+<polyline points="50,290 150,260 250,230 350,200 450,170 550,140 650,110 750,90" 
+fill="none" stroke="#ffd369" stroke-width="2" stroke-dasharray="5,3" opacity="0.7"/>
+<text x="760" y="95" fill="#ffd369" font-size="13">EMA 20</text>
+
+<!-- Price action with pullbacks -->
+<polyline points="50,290 120,250 180,270 250,220 320,240 380,190 450,210 520,160 580,180 650,130 720,140 750,100" 
+fill="none" stroke="#fff" stroke-width="4"/>
+
+<!-- Pullback entry points -->
+<circle cx="180" cy="270" r="10" fill="#00f2c3"/>
+<text x="180" y="295" fill="#00f2c3" font-size="13" font-weight="bold" text-anchor="middle">נסיגה 1</text>
+<text x="180" y="310" fill="#00f2c3" font-size="11" text-anchor="middle">קנייה! ✅</text>
+
+<circle cx="320" cy="240" r="10" fill="#00f2c3"/>
+<text x="320" y="265" fill="#00f2c3" font-size="13" font-weight="bold" text-anchor="middle">נסיגה 2</text>
+
+<circle cx="450" cy="210" r="10" fill="#00f2c3"/>
+<text x="450" y="235" fill="#00f2c3" font-size="13" font-weight="bold" text-anchor="middle">נסיגה 3</text>
+
+<circle cx="580" cy="180" r="10" fill="#00f2c3"/>
+<text x="580" y="205" fill="#00f2c3" font-size="13" font-weight="bold" text-anchor="middle">נסיגה 4</text>
+
+<!-- Upward arrows -->
+<path d="M 250 220 L 280 195" stroke="#00f2c3" stroke-width="3" marker-end="url(#arrowgreen)"/>
+<path d="M 380 190 L 410 165" stroke="#00f2c3" stroke-width="3" marker-end="url(#arrowgreen)"/>
+<path d="M 520 160 L 550 135" stroke="#00f2c3" stroke-width="3" marker-end="url(#arrowgreen)"/>
+
+<text x="400" y="340" fill="#cbd5e1" font-size="14" text-anchor="middle" font-weight="bold">💡 במגמה חזקה - קנה בנסיגות ל-EMA או קו מגמה!</text>
+</svg>
+<p class="chart-caption">✅ נסיגה = הזדמנות לקנות "בזול" מניה שכבר הוכיחה כוח</p>
+</div>
+
+<div class="strategy-box">
+<h4 style="color:#00d4ff;margin-bottom:20px">✅ Checklist לנסיגה מנצחת</h4>
+
+<p><strong>כלל 1: המגמה חייבת להיות חזקה!</strong></p>
+<ul>
+<li>מבנה של Higher Highs + Higher Lows</li>
+<li>מחיר מעל MA 50 ו-MA 200</li>
+<li>אל תנסה לקנות נסיגות במגמה יורדת!</li>
+</ul>
+
+<p><strong>כלל 2: הנסיגה לא יכולה להיות עמוקה מדי</strong></p>
+<ul>
+<li>נסיגה של 5-15% מהשיא = בריא</li>
+<li>נסיגה של 20%+ = זו כבר לא נסיגה!</li>
+</ul>
+
+<p><strong>כלל 3: חפש אישור לפני הכניסה</strong></p>
+<ul>
+<li>נר פטיש או נר ירוק חזק ליד הממוצע</li>
+<li>Volume עולה בקפיצה בחזרה</li>
+<li>RSI מתחיל לעלות</li>
+</ul>
+</div>
+
+<h2>שיעור 3: מסחר ב-Pre-Market</h2>
+
+<div class="chart-visual">
+<h4 style="color:#00d4ff;margin-bottom:20px">🌅 Pre-Market Trading Timeline</h4>
+<svg width="100%" height="250" viewBox="0 0 800 250" style="max-width:100%">
+<defs>
+<linearGradient id="timeGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+<stop offset="0%" style="stop-color:#1a1a2e;stop-opacity:1"/>
+<stop offset="30%" style="stop-color:#2a2a4e;stop-opacity:1"/>
+<stop offset="70%" style="stop-color:#3a3a6e;stop-opacity:1"/>
+<stop offset="100%" style="stop-color:#f7b731;stop-opacity:0.3"/>
+</linearGradient>
+</defs>
+<rect width="800" height="250" fill="url(#timeGrad)"/>
+
+<!-- Timeline -->
+<line x1="50" y1="125" x2="750" y2="125" stroke="#ffd369" stroke-width="4"/>
+
+<!-- Time markers -->
+<g transform="translate(100,125)">
+<circle r="8" fill="#cbd5e1"/>
+<text y="30" fill="#cbd5e1" font-size="13" text-anchor="middle" font-weight="bold">06:00 EST</text>
+<text y="45" fill="#cbd5e1" font-size="11" text-anchor="middle">(13:00 IL)</text>
+<text y="-20" fill="#00d4ff" font-size="12" text-anchor="middle">סריקה</text>
+<text y="-5" fill="#00d4ff" font-size="10" text-anchor="middle">Top Gainers</text>
+</g>
+
+<g transform="translate(300,125)">
+<circle r="8" fill="#cbd5e1"/>
+<text y="30" fill="#cbd5e1" font-size="13" text-anchor="middle" font-weight="bold">08:00 EST</text>
+<text y="45" fill="#cbd5e1" font-size="11" text-anchor="middle">(15:00 IL)</text>
+<text y="-20" fill="#00d4ff" font-size="12" text-anchor="middle">ניתוח</text>
+<text y="-5" fill="#00d4ff" font-size="10" text-anchor="middle">תמיכות/התנגדויות</text>
+</g>
+
+<g transform="translate(500,125)">
+<circle r="8" fill="#cbd5e1"/>
+<text y="30" fill="#cbd5e1" font-size="13" text-anchor="middle" font-weight="bold">09:15 EST</text>
+<text y="45" fill="#cbd5e1" font-size="11" text-anchor="middle">(16:15 IL)</text>
+<text y="-20" fill="#f7b731" font-size="12" text-anchor="middle">תכנון</text>
+<text y="-5" fill="#f7b731" font-size="10" text-anchor="middle">Entry/Stop/Target</text>
+</g>
+
+<g transform="translate(700,125)">
+<circle r="10" fill="#00f2c3"/>
+<text y="35" fill="#00f2c3" font-size="15" text-anchor="middle" font-weight="bold">09:30 EST</text>
+<text y="50" fill="#00f2c3" font-size="13" text-anchor="middle" font-weight="bold">(16:30 IL)</text>
+<text y="-20" fill="#00f2c3" font-size="14" text-anchor="middle" font-weight="bold">🔔 פתיחה!</text>
+<text y="-5" fill="#00f2c3" font-size="11" text-anchor="middle">ביצוע הטרייד</text>
+</g>
+
+<text x="400" y="230" fill="#cbd5e1" font-size="13" text-anchor="middle" font-weight="bold">⏰ תכנון מוקדם = יתרון אדיר על השוק!</text>
+</svg>
+<p class="chart-caption">🌅 תכנון נכון ב-Pre-Market יכול להכפיל סיכויי הצלחה</p>
+</div>
+
+<div class="exercise">
+<h4>📝 המשימה שלכם:</h4>
+
+<ol>
+<li><strong>תרגלו פריצה:</strong>
+<ul style="margin-top:10px">
+<li>מצאו מניה שדשדשה בטווח לפחות שבוע</li>
+<li>סמנו את רמת ההתנגדות</li>
+<li>חשבו: Entry, Stop, Target</li>
+</ul>
+</li>
+
+<li><strong>תרגלו נסיגה:</strong>
+<ul style="margin-top:10px">
+<li>מצאו מניה במגמה עולה חזקה</li>
+<li>המתינו לנסיגה ל-EMA 20 או 50</li>
+<li>חפשו נר פטיש/אישור</li>
+</ul>
+</li>
+
+<li><strong>צפו ב-Pre-Market:</strong>
+<ul style="margin-top:10px">
+<li>יום אחד קומו מוקדם (13:00-14:00)</li>
+<li>בדקו Top Gainers ב-Pre</li>
+<li>עקבו אחרי אחת עד הפתיחה</li>
+</ul>
+</li>
+</ol>
+</div>
+
+<h3>סיכום מודול 6</h3>
+
+<div class="highlight" style="text-align:right">
+<p style="margin-bottom:10px">✅ <strong>שלטנו באסטרטגיית הפריצה</strong> – 4 תנאים + ניהול מלא</p>
+<p style="margin-bottom:10px">✅ <strong>למדנו מסחר בנסיגות</strong> – לקנות בזול במגמה חזקה</p>
+<p style="margin-bottom:10px">✅ <strong>הכרנו Pre-Market</strong> – הזדמנויות מוקדמות</p>
+<p>✅ <strong>קיבלנו 3 אסטרטגיות מוכחות</strong> + ויזואליזציות!</p>
+</div>
+
+<p style="text-align:center;margin-top:50px;font-size:1.3em;color:#ffd369"><strong>מוכנים למודול 7 – ניהול סיכונים! 🚀</strong></p>
+
+</div>
+</body>
+</html>

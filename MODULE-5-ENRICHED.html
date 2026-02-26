@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>מודול 5 - ניתוח טכני ב' (משודרג)</title>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Heebo',sans-serif;background:#0a1628;color:#fff;line-height:1.8;padding:40px}
+.container{max-width:1000px;margin:0 auto;background:#152238;padding:50px;border-radius:20px;border:1px solid rgba(255,255,255,.1)}
+h1{color:#f7b731;font-size:2.8em;margin-bottom:30px;text-align:center}
+h2{color:#ffd369;font-size:2em;margin:40px 0 20px;padding-bottom:10px;border-bottom:2px solid rgba(247,183,49,.3)}
+h3{color:#00d4ff;font-size:1.5em;margin:30px 0 15px}
+h4{color:#00f2c3;font-size:1.2em;margin:20px 0 10px}
+p{font-size:1.1em;line-height:1.9;margin:15px 0;color:#cbd5e1}
+ul,ol{margin:15px 0 15px 35px;font-size:1.05em;color:#cbd5e1}
+li{margin:10px 0;line-height:1.8}
+strong{color:#fff}
+.tip{background:rgba(247,183,49,.1);border-right:4px solid #f7b731;padding:20px;border-radius:10px;margin:25px 0}
+.tip strong{color:#f7b731}
+.example{background:rgba(0,212,255,.1);border-right:4px solid #00d4ff;padding:20px;border-radius:10px;margin:25px 0}
+.example strong{color:#00d4ff}
+.warning{background:rgba(255,87,87,.1);border-right:4px solid #ff5757;padding:20px;border-radius:10px;margin:25px 0}
+.warning strong{color:#ff5757}
+.exercise{background:rgba(0,242,195,.1);border-right:4px solid #00f2c3;padding:25px;border-radius:10px;margin:30px 0}
+.exercise h4{color:#00f2c3}
+.highlight{background:linear-gradient(135deg,rgba(247,183,49,.15),rgba(0,212,255,.1));border:1px solid rgba(247,183,49,.3);padding:25px;border-radius:12px;text-align:center;font-size:1.3em;font-weight:600;margin:30px 0}
+table{width:100%;border-collapse:collapse;margin:25px 0}
+th,td{padding:14px;border:1px solid rgba(255,255,255,.1);text-align:right}
+th{background:rgba(247,183,49,.2);color:#f7b731;font-weight:700}
+.quote{font-size:1.4em;font-style:italic;text-align:center;color:#ffd369;margin:30px 0;padding:20px;border-top:2px solid rgba(247,183,49,.3);border-bottom:2px solid rgba(247,183,49,.3)}
+.pattern-showcase{background:rgba(0,0,0,.3);border:2px solid #f7b731;border-radius:16px;padding:40px;margin:40px 0}
+.chart-visual{background:#1a1a2e;border:2px solid #00d4ff;border-radius:12px;padding:20px;margin:30px 0;text-align:center}
+.chart-caption{color:#00d4ff;font-size:.95em;margin-top:15px;text-align:center}
+</style>
+</head>
+<body>
+<div class="container">
+
+<h1>📍 מודול 5: ניתוח טכני ב' – תבניות ומדדים</h1>
+
+<p style="font-size:1.2em;text-align:center;color:#ffd369;margin-bottom:40px">הכלים המתמטיים לזהות הזדמנויות</p>
+
+<div class="quote">
+"תבניות גרפיות הן הפסיכולוגיה של ההמונים.<br>אינדיקטורים הם המתמטיקה שמאשרת אותה."
+</div>
+
+<h2>שיעור 1: תבניות מחיר – היפוך והמשכיות</h2>
+
+<p>תבניות מחיר הן <strong>צורות גיאומטריות</strong> שהשוק יוצר שוב ושוב. הן מעידות על <strong>פסיכולוגיה</strong>.</p>
+
+<h3>חלק א': תבניות היפוך (Reversal Patterns)</h3>
+
+<h4>1. ראש וכתפיים (Head and Shoulders) – מלך התבניות</h4>
+
+<div class="chart-visual">
+<h4 style="color:#00d4ff;margin-bottom:20px">📊 Head and Shoulders - ויזואליזציה</h4>
+<svg width="100%" height="350" viewBox="0 0 800 350" style="max-width:100%">
+<defs>
+<pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+<path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
+</pattern>
+</defs>
+<rect width="800" height="350" fill="url(#grid)"/>
+
+<!-- Price action forming H&S -->
+<polyline points="50,250 150,200 200,220 250,150 300,220 350,200 400,250 450,270" 
+fill="none" stroke="#ffd369" stroke-width="4"/>
+
+<!-- Neckline -->
+<line x1="50" y1="220" x2="500" y2="230" stroke="#ff5757" stroke-width="3" stroke-dasharray="10,5"/>
+<text x="510" y="235" fill="#ff5757" font-size="14" font-weight="bold">Neckline (קו צוואר)</text>
+
+<!-- Labels -->
+<text x="150" y="190" fill="#00f2c3" font-size="16" font-weight="bold">כתף שמאל</text>
+<text x="250" y="140" fill="#f7b731" font-size="18" font-weight="bold">ראש</text>
+<text x="350" y="190" fill="#00f2c3" font-size="16" font-weight="bold">כתף ימין</text>
+
+<!-- Breakdown arrow -->
+<path d="M 450 270 L 450 320" stroke="#ff5757" stroke-width="3" marker-end="url(#arrowred)"/>
+<defs>
+<marker id="arrowred" markerWidth="10" markerHeight="10" refX="5" refY="5" orient="auto">
+<polygon points="0,0 10,5 0,10" fill="#ff5757"/>
+</marker>
+</defs>
+<text x="460" y="310" fill="#ff5757" font-size="14">שבירה ⬇️</text>
+
+<!-- Annotations -->
+<circle cx="150" cy="200" r="8" fill="#00f2c3" opacity="0.6"/>
+<circle cx="250" cy="150" r="8" fill="#f7b731" opacity="0.8"/>
+<circle cx="350" cy="200" r="8" fill="#00f2c3" opacity="0.6"/>
+
+<text x="400" y="340" fill="#cbd5e1" font-size="13" text-anchor="middle">💡 הכתף הימנית נמוכה מהראש = חולשה!</text>
+</svg>
+<p class="chart-caption">⚠️ תבנית דובית - מסמנת סוף מגמת עליות</p>
+</div>
+
+<p><strong>מבנה:</strong></p>
+<ul>
+<li>כתף שמאל – שיא</li>
+<li>ראש – שיא גבוה יותר</li>
+<li>כתף ימין – שיא בגובה דומה לשמאל</li>
+<li>קו הצוואר (Neckline) – הקו שמחבר את השפלים</li>
+</ul>
+
+<div class="example">
+<strong>📊 איך להשתמש בתבנית:</strong><br><br>
+<strong>כניסה:</strong> רק אחרי שבירת קו הצוואר! (לא לפני)<br>
+<strong>Stop Loss:</strong> מעל הכתף הימנית<br>
+<strong>Target:</strong> גובה הראש (מקו הצוואר) = המרחק למטה<br><br>
+<strong>דוגמה:</strong> אם הראש ב-$120 וקו הצוואר ב-$100:<br>
+→ גובה = $20<br>
+→ יעד = $100 - $20 = $80
+</div>
+
+<h4>2. פסגה כפולה / תחתית כפולה (Double Top / Double Bottom)</h4>
+
+<div class="chart-visual">
+<h4 style="color:#00d4ff;margin-bottom:20px">📊 Double Top (M) - ויזואליזציה</h4>
+<svg width="100%" height="300" viewBox="0 0 800 300" style="max-width:100%">
+<rect width="800" height="300" fill="url(#grid)"/>
+
+<!-- Price forming M shape -->
+<polyline points="100,250 200,100 300,180 400,100 500,250" 
+fill="none" stroke="#ffd369" stroke-width="4"/>
+
+<!-- Two peaks -->
+<circle cx="200" cy="100" r="10" fill="#ff5757" opacity="0.8"/>
+<circle cx="400" cy="100" r="10" fill="#ff5757" opacity="0.8"/>
+<text x="200" y="85" fill="#ff5757" font-size="14" font-weight="bold" text-anchor="middle">פסגה 1</text>
+<text x="400" y="85" fill="#ff5757" font-size="14" font-weight="bold" text-anchor="middle">פסגה 2</text>
+
+<!-- Support level between peaks -->
+<line x1="100" y1="180" x2="600" y2="180" stroke="#00f2c3" stroke-width="2" stroke-dasharray="8,4"/>
+<text x="610" y="185" fill="#00f2c3" font-size="13">תמיכה</text>
+
+<!-- Valley -->
+<circle cx="300" cy="180" r="8" fill="#00f2c3" opacity="0.6"/>
+
+<!-- Breakdown -->
+<path d="M 500 250 L 550 290" stroke="#ff5757" stroke-width="3" marker-end="url(#arrowred)"/>
+<text x="560" y="295" fill="#ff5757" font-size="14">שבירה ⬇️</text>
+
+<text x="400" y="285" fill="#cbd5e1" font-size="13" text-anchor="middle">💡 שתי נסיונות כושלים לפרוץ = חולשה</text>
+</svg>
+<p class="chart-caption">⚠️ צורת M = תבנית דובית, סוף מגמת עליות</p>
+</div>
+
+<h3>חלק ב': תבניות המשכיות (Continuation Patterns)</h3>
+
+<h4>1. דגל (Flag) – האהוב על סוחרי המומנטום</h4>
+
+<div class="chart-visual">
+<h4 style="color:#00d4ff;margin-bottom:20px">🚩 Bull Flag - ויזואליזציה</h4>
+<svg width="100%" height="350" viewBox="0 0 800 350" style="max-width:100%">
+<rect width="800" height="350" fill="url(#grid)"/>
+
+<!-- Pole (sharp move up) -->
+<polyline points="100,300 150,250 200,150 250,100" 
+fill="none" stroke="#00f2c3" stroke-width="5"/>
+<text x="120" y="320" fill="#00f2c3" font-size="14" font-weight="bold">תורן (Pole)</text>
+<text x="120" y="335" fill="#00f2c3" font-size="12">תנועה חדה למעלה</text>
+
+<!-- Flag (consolidation) -->
+<line x1="250" y1="100" x2="450" y2="130" stroke="#ffd369" stroke-width="2" stroke-dasharray="5,3"/>
+<line x1="250" y1="140" x2="450" y2="170" stroke="#ffd369" stroke-width="2" stroke-dasharray="5,3"/>
+<polyline points="250,120 300,135 350,125 400,140 450,135" 
+fill="none" stroke="#ffd369" stroke-width="3"/>
+<text x="350" y="190" fill="#ffd369" font-size="14" font-weight="bold" text-anchor="middle">דגל (Flag)</text>
+<text x="350" y="205" fill="#ffd369" font-size="12" text-anchor="middle">דשדוש קל</text>
+
+<!-- Breakout -->
+<polyline points="450,135 500,110 550,80 600,50" 
+fill="none" stroke="#00f2c3" stroke-width="5"/>
+<path d="M 600 50 L 620 30" stroke="#00f2c3" stroke-width="3" marker-end="url(#arrowgreen)"/>
+<defs>
+<marker id="arrowgreen" markerWidth="10" markerHeight="10" refX="5" refY="5" orient="auto">
+<polygon points="0,0 10,5 0,10" fill="#00f2c3"/>
+</marker>
+</defs>
+<text x="630" y="35" fill="#00f2c3" font-size="14" font-weight="bold">פריצה! ⬆️</text>
+
+<!-- Target line -->
+<line x1="250" y1="100" x2="600" y2="100" stroke="#f7b731" stroke-width="2" stroke-dasharray="3,3" opacity="0.5"/>
+<line x1="450" y1="135" x2="600" y2="135" stroke="#f7b731" stroke-width="2" stroke-dasharray="3,3" opacity="0.5"/>
+<text x="610" y="105" fill="#f7b731" font-size="11">גובה התורן</text>
+<text x="610" y="140" fill="#f7b731" font-size="11">= היעד</text>
+
+<text x="400" y="340" fill="#cbd5e1" font-size="13" text-anchor="middle" font-weight="bold">✅ היעד = גובה התורן מנקודת הפריצה</text>
+</svg>
+<p class="chart-caption">🚀 דגל שורי - המשך מגמת עליות לאחר מנוחה קצרה</p>
+</div>
+
+<h4>2. משולשים (Triangles)</h4>
+
+<div class="chart-visual">
+<h4 style="color:#00d4ff;margin-bottom:20px">📐 3 סוגי משולשים</h4>
+<svg width="100%" height="450" viewBox="0 0 800 450" style="max-width:100%">
+<rect width="800" height="450" fill="url(#grid)"/>
+
+<!-- Ascending Triangle -->
+<g transform="translate(50,50)">
+<text x="100" y="-10" fill="#00f2c3" font-size="15" font-weight="bold">Ascending (עולה)</text>
+<!-- Resistance line (flat) -->
+<line x1="0" y1="0" x2="200" y2="0" stroke="#ff5757" stroke-width="3"/>
+<text x="210" y="5" fill="#ff5757" font-size="11">התנגדות</text>
+<!-- Rising support -->
+<line x1="0" y1="100" x2="200" y2="0" stroke="#00f2c3" stroke-width="3"/>
+<!-- Price action -->
+<polyline points="20,90 60,10 100,70 140,10 180,50" fill="none" stroke="#ffd369" stroke-width="3"/>
+<!-- Breakout -->
+<path d="M 200 0 L 220 -20" stroke="#00f2c3" stroke-width="3" marker-end="url(#arrowgreen)"/>
+<text x="100" y="125" fill="#00f2c3" font-size="11" text-anchor="middle">⬆️ בד"כ פריצה למעלה</text>
+</g>
+
+<!-- Descending Triangle -->
+<g transform="translate(350,50)">
+<text x="100" y="-10" fill="#ff5757" font-size="15" font-weight="bold">Descending (יורד)</text>
+<!-- Support line (flat) -->
+<line x1="0" y1="100" x2="200" y2="100" stroke="#00f2c3" stroke-width="3"/>
+<text x="210" y="105" fill="#00f2c3" font-size="11">תמיכה</text>
+<!-- Falling resistance -->
+<line x1="0" y1="0" x2="200" y2="100" stroke="#ff5757" stroke-width="3"/>
+<!-- Price action -->
+<polyline points="20,10 60,90 100,30 140,90 180,50" fill="none" stroke="#ffd369" stroke-width="3"/>
+<!-- Breakdown -->
+<path d="M 200 100 L 220 120" stroke="#ff5757" stroke-width="3" marker-end="url(#arrowred)"/>
+<text x="100" y="125" fill="#ff5757" font-size="11" text-anchor="middle">⬇️ בד"כ פריצה למטה</text>
+</g>
+
+<!-- Symmetrical Triangle -->
+<g transform="translate(200,250)">
+<text x="100" y="-10" fill="#00d4ff" font-size="15" font-weight="bold">Symmetrical (סימטרי)</text>
+<!-- Rising support -->
+<line x1="0" y1="100" x2="200" y2="50" stroke="#00f2c3" stroke-width="3"/>
+<!-- Falling resistance -->
+<line x1="0" y1="0" x2="200" y2="50" stroke="#ff5757" stroke-width="3"/>
+<!-- Price action -->
+<polyline points="20,90 60,10 100,70 140,30 180,50" fill="none" stroke="#ffd369" stroke-width="3"/>
+<!-- Breakout (could go either way) -->
+<text x="220" y="30" fill="#00d4ff" font-size="13">?</text>
+<text x="220" y="80" fill="#00d4ff" font-size="13">?</text>
+<text x="100" y="130" fill="#00d4ff" font-size="11" text-anchor="middle">⚡ ניטרלי - הפריצה תקבע</text>
+</g>
+
+<text x="400" y="440" fill="#cbd5e1" font-size="13" text-anchor="middle" font-weight="bold">💡 חכה לפריצה + Volume גבוה!</text>
+</svg>
+<p class="chart-caption">📐 שלושת המשולשים - כל אחד אומר סיפור אחר</p>
+</div>
+
+<h2>שיעור 2: ממוצעים נעים – ה-GPS של המגמה</h2>
+
+<h3>Golden Cross vs Death Cross</h3>
+
+<div class="chart-visual">
+<h4 style="color:#00d4ff;margin-bottom:20px">✨ Golden Cross - צלב הזהב</h4>
+<svg width="100%" height="300" viewBox="0 0 800 300" style="max-width:100%">
+<rect width="800" height="300" fill="url(#grid)"/>
+
+<!-- MA 200 (slower) -->
+<polyline points="50,200 150,190 250,180 350,170 450,165 550,160 650,155 750,150" 
+fill="none" stroke="#ff5757" stroke-width="3" opacity="0.7"/>
+<text x="760" y="155" fill="#ff5757" font-size="13">MA 200</text>
+
+<!-- MA 50 (faster) - crosses above -->
+<polyline points="50,220 150,210 250,190 350,165 450,140 550,120 650,100 750,80" 
+fill="none" stroke="#00f2c3" stroke-width="3"/>
+<text x="760" y="85" fill="#00f2c3" font-size="13">MA 50</text>
+
+<!-- Cross point -->
+<circle cx="350" cy="167" r="12" fill="#f7b731" opacity="0.8"/>
+<text x="350" y="145" fill="#f7b731" font-size="16" font-weight="bold" text-anchor="middle">✨ Golden Cross!</text>
+
+<!-- Arrow up -->
+<path d="M 450 120 L 450 80" stroke="#00f2c3" stroke-width="3" marker-end="url(#arrowgreen)"/>
+<text x="460" y="95" fill="#00f2c3" font-size="14">עליות חזקות ⬆️</text>
+
+<text x="400" y="285" fill="#cbd5e1" font-size="13" text-anchor="middle" font-weight="bold">🐂 סימן שורי חזק מאוד - תחילת Bull Market!</text>
+</svg>
+<p class="chart-caption">✅ MA 50 חוצה את MA 200 מלמטה למעלה = Golden Cross</p>
+</div>
+
+<div class="chart-visual">
+<h4 style="color:#00d4ff;margin-bottom:20px">💀 Death Cross - צלב המוות</h4>
+<svg width="100%" height="300" viewBox="0 0 800 300" style="max-width:100%">
+<rect width="800" height="300" fill="url(#grid)"/>
+
+<!-- MA 200 (slower) -->
+<polyline points="50,100 150,110 250,120 350,130 450,135 550,140 650,145 750,150" 
+fill="none" stroke="#00f2c3" stroke-width="3" opacity="0.7"/>
+<text x="760" y="155" fill="#00f2c3" font-size="13">MA 200</text>
+
+<!-- MA 50 (faster) - crosses below -->
+<polyline points="50,80 150,90 250,110 350,135 450,160 550,180 650,200 750,220" 
+fill="none" stroke="#ff5757" stroke-width="3"/>
+<text x="760" y="225" fill="#ff5757" font-size="13">MA 50</text>
+
+<!-- Cross point -->
+<circle cx="350" cy="133" r="12" fill="#ff5757" opacity="0.8"/>
+<text x="350" y="110" fill="#ff5757" font-size="16" font-weight="bold" text-anchor="middle">💀 Death Cross!</text>
+
+<!-- Arrow down -->
+<path d="M 550 190 L 550 230" stroke="#ff5757" stroke-width="3" marker-end="url(#arrowred)"/>
+<text x="560" y="220" fill="#ff5757" font-size="14">ירידות ⬇️</text>
+
+<text x="400" y="285" fill="#cbd5e1" font-size="13" text-anchor="middle" font-weight="bold">🐻 סימן דובי חזק - אזהרה לBear Market!</text>
+</svg>
+<p class="chart-caption">⚠️ MA 50 חוצה את MA 200 מלמעלה למטה = Death Cross</p>
+</div>
+
+<h2>שיעור 3: RSI ו-Bollinger Bands</h2>
+
+<h3>RSI – מדד הכוח היחסי</h3>
+
+<div class="chart-visual">
+<h4 style="color:#00d4ff;margin-bottom:20px">📊 RSI - Overbought & Oversold</h4>
+<svg width="100%" height="350" viewBox="0 0 800 350" style="max-width:100%">
+<rect width="800" height="350" fill="url(#grid)"/>
+
+<!-- RSI scale -->
+<line x1="50" y1="50" x2="50" y2="300" stroke="#cbd5e1" stroke-width="2"/>
+<text x="30" y="55" fill="#cbd5e1" font-size="13" text-anchor="end">100</text>
+<text x="30" y="125" fill="#cbd5e1" font-size="13" text-anchor="end">70</text>
+<text x="30" y="175" fill="#cbd5e1" font-size="13" text-anchor="end">50</text>
+<text x="30" y="225" fill="#cbd5e1" font-size="13" text-anchor="end">30</text>
+<text x="30" y="305" fill="#cbd5e1" font-size="13" text-anchor="end">0</text>
+
+<!-- Overbought zone -->
+<rect x="50" y="50" width="700" height="75" fill="#ff5757" opacity="0.1"/>
+<line x1="50" y1="125" x2="750" y2="125" stroke="#ff5757" stroke-width="2" stroke-dasharray="5,3"/>
+<text x="760" y="130" fill="#ff5757" font-size="14" font-weight="bold">70 - Overbought</text>
+
+<!-- Neutral zone -->
+<rect x="50" y="125" width="700" height="100" fill="transparent"/>
+<line x1="50" y1="175" x2="750" y2="175" stroke="#cbd5e1" stroke-width="1" stroke-dasharray="3,2" opacity="0.5"/>
+
+<!-- Oversold zone -->
+<rect x="50" y="225" width="700" height="75" fill="#00f2c3" opacity="0.1"/>
+<line x1="50" y1="225" x2="750" y2="225" stroke="#00f2c3" stroke-width="2" stroke-dasharray="5,3"/>
+<text x="760" y="230" fill="#00f2c3" font-size="14" font-weight="bold">30 - Oversold</text>
+
+<!-- RSI line -->
+<polyline points="100,200 150,240 200,260 250,270 300,250 350,220 400,180 450,140 500,110 550,100 600,120 650,160 700,200" 
+fill="none" stroke="#ffd369" stroke-width="4"/>
+
+<!-- Annotations -->
+<circle cx="250" cy="270" r="8" fill="#00f2c3"/>
+<text x="250" y="295" fill="#00f2c3" font-size="12" text-anchor="middle">נמכר יתר</text>
+<text x="250" y="310" fill="#00f2c3" font-size="11" text-anchor="middle">⬆️ קנייה?</text>
+
+<circle cx="500" cy="110" r="8" fill="#ff5757"/>
+<text x="500" y="90" fill="#ff5757" font-size="12" text-anchor="middle">קנוי יתר</text>
+<text x="500" y="75" fill="#ff5757" font-size="11" text-anchor="middle">⬇️ מכירה?</text>
+
+<text x="400" y="340" fill="#cbd5e1" font-size="13" text-anchor="middle">💡 RSI מעל 70 = קנוי יתר | מתחת ל-30 = נמכר יתר</text>
+</svg>
+<p class="chart-caption">⚖️ RSI עוזר לזהות קיצוניות - אבל לא להילחם במגמה!</p>
+</div>
+
+<h3>Bollinger Bands – רצועות התנודתיות</h3>
+
+<div class="chart-visual">
+<h4 style="color:#00d4ff;margin-bottom:20px">📈 Bollinger Bands Squeeze</h4>
+<svg width="100%" height="300" viewBox="0 0 800 300" style="max-width:100%">
+<rect width="800" height="300" fill="url(#grid)"/>
+
+<!-- Upper band -->
+<polyline points="50,80 150,75 250,72 350,70 450,68 550,65 600,120 650,180 700,220 750,240" 
+fill="none" stroke="#ff5757" stroke-width="2" stroke-dasharray="5,3" opacity="0.7"/>
+
+<!-- Middle (MA 20) -->
+<polyline points="50,150 150,148 250,146 350,145 450,144 550,143 600,160 650,200 700,230 750,250" 
+fill="none" stroke="#cbd5e1" stroke-width="2"/>
+
+<!-- Lower band -->
+<polyline points="50,220 150,221 250,220 350,220 450,220 550,221 600,200 650,220 700,240 750,260" 
+fill="none" stroke="#00f2c3" stroke-width="2" stroke-dasharray="5,3" opacity="0.7"/>
+
+<!-- Price -->
+<polyline points="50,150 150,160 250,155 350,152 450,148 550,145 600,140 650,190 700,235 750,255" 
+fill="none" stroke="#ffd369" stroke-width="4"/>
+
+<!-- Squeeze annotation -->
+<rect x="300" y="50" width="250" height="200" fill="none" stroke="#f7b731" stroke-width="3" stroke-dasharray="10,5"/>
+<text x="425" y="35" fill="#f7b731" font-size="16" font-weight="bold" text-anchor="middle">⚡ SQUEEZE!</text>
+<text x="425" y="265" fill="#f7b731" font-size="12" text-anchor="middle">רצועות צרות = תנודתיות נמוכה</text>
+
+<!-- Expansion annotation -->
+<path d="M 600 140 L 650 80" stroke="#00f2c3" stroke-width="3" marker-end="url(#arrowgreen)"/>
+<path d="M 600 200 L 650 260" stroke="#ff5757" stroke-width="3" marker-end="url(#arrowred)"/>
+<text x="700" y="60" fill="#00f2c3" font-size="13" font-weight="bold">התרחבות!</text>
+
+<text x="400" y="290" fill="#cbd5e1" font-size="13" text-anchor="middle" font-weight="bold">💡 אחרי Squeeze → תמיד באה תנועה חזקה!</text>
+</svg>
+<p class="chart-caption">⚡ רצועות מתכווצות = שוק שקט לפני פריצה גדולה</p>
+</div>
+
+<div class="exercise">
+<h4>📝 המשימה שלכם:</h4>
+<ol>
+<li><strong>פתחו TradingView</strong></li>
+<li><strong>הוסיפו למניה:</strong>
+<ul style="margin-top:10px">
+<li>MA 50 (כחול)</li>
+<li>MA 200 (אדום)</li>
+<li>RSI</li>
+<li>Bollinger Bands</li>
+</ul>
+</li>
+<li><strong>מצאו:</strong>
+<ul style="margin-top:10px">
+<li>1 דוגמה ל-Golden Cross</li>
+<li>1 דוגמה ל-RSI Divergence</li>
+<li>1 דוגמה ל-Bollinger Squeeze</li>
+</ul>
+</li>
+<li><strong>תעדו ביומן</strong> – מה קרה אחרי כל אירוע?</li>
+</ol>
+</div>
+
+<h3>סיכום מודול 5</h3>
+
+<div class="highlight" style="text-align:right">
+<p style="margin-bottom:10px">✅ <strong>שלטנו בתבניות היפוך</strong> – H&S, Double Top/Bottom</p>
+<p style="margin-bottom:10px">✅ <strong>הכרנו תבניות המשכה</strong> – Flags, Triangles</p>
+<p style="margin-bottom:10px">✅ <strong>למדנו ממוצעים נעים</strong> – MA 50, MA 200, Golden Cross</p>
+<p style="margin-bottom:10px">✅ <strong>שלטנו ב-RSI</strong> – 70/30, Divergence</p>
+<p>✅ <strong>הכרנו Bollinger Bands</strong> – Squeeze, Walking</p>
+</div>
+
+<p style="text-align:center;margin-top:50px;font-size:1.3em;color:#ffd369"><strong>מוכנים למודול 6 – אסטרטגיות מסחר! 🚀</strong></p>
+
+</div>
+</body>
+</html>

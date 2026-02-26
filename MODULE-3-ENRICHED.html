@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>מודול 3 - בחירת ברוקר מלא</title>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Heebo',sans-serif;background:#0a1628;color:#fff;line-height:1.8;padding:40px}
+.container{max-width:1000px;margin:0 auto;background:#152238;padding:50px;border-radius:20px;border:1px solid rgba(255,255,255,.1)}
+h1{color:#f7b731;font-size:2.8em;margin-bottom:30px;text-align:center}
+h2{color:#ffd369;font-size:2em;margin:40px 0 20px;padding-bottom:10px;border-bottom:2px solid rgba(247,183,49,.3)}
+h3{color:#00d4ff;font-size:1.5em;margin:30px 0 15px}
+h4{color:#00f2c3;font-size:1.2em;margin:20px 0 10px}
+p{font-size:1.1em;line-height:1.9;margin:15px 0;color:#cbd5e1}
+ul,ol{margin:15px 0 15px 35px;font-size:1.05em;color:#cbd5e1}
+li{margin:10px 0;line-height:1.8}
+strong{color:#fff}
+.tip{background:rgba(247,183,49,.1);border-right:4px solid #f7b731;padding:20px;border-radius:10px;margin:25px 0}
+.tip strong{color:#f7b731}
+.example{background:rgba(0,212,255,.1);border-right:4px solid #00d4ff;padding:20px;border-radius:10px;margin:25px 0}
+.example strong{color:#00d4ff}
+.warning{background:rgba(255,87,87,.1);border-right:4px solid #ff5757;padding:20px;border-radius:10px;margin:25px 0}
+.warning strong{color:#ff5757}
+.exercise{background:rgba(0,242,195,.1);border-right:4px solid #00f2c3;padding:25px;border-radius:10px;margin:30px 0}
+.exercise h4{color:#00f2c3}
+.highlight{background:linear-gradient(135deg,rgba(247,183,49,.15),rgba(0,212,255,.1));border:1px solid rgba(247,183,49,.3);padding:25px;border-radius:12px;text-align:center;font-size:1.3em;font-weight:600;margin:30px 0}
+table{width:100%;border-collapse:collapse;margin:25px 0}
+th,td{padding:14px;border:1px solid rgba(255,255,255,.1);text-align:right}
+th{background:rgba(247,183,49,.2);color:#f7b731;font-weight:700}
+.quote{font-size:1.4em;font-style:italic;text-align:center;color:#ffd369;margin:30px 0;padding:20px;border-top:2px solid rgba(247,183,49,.3);border-bottom:2px solid rgba(247,183,49,.3)}
+.broker-card{background:rgba(0,212,255,.05);border:2px solid #00d4ff;border-radius:15px;padding:25px;margin:25px 0}
+.broker-card h4{color:#00d4ff;font-size:1.4em;margin-bottom:15px}
+.pros{color:#00f2c3}
+.cons{color:#ff5757}
+a{color:#00d4ff;text-decoration:none;font-weight:600}
+a:hover{text-decoration:underline}
+</style>
+</head>
+<body>
+<div class="container">
+
+<h1>📍 מודול 3: בחירת ברוקר והקמת עמדת עבודה</h1>
+
+<p style="font-size:1.2em;text-align:center;color:#ffd369;margin-bottom:40px">השותף העסקי שלך למסחר – איך לבחור נכון?</p>
+
+<div class="quote">
+"הברוקר הוא השער שלך לשוק.<br>בחירה טובה = עסקים טובים. בחירה גרועה = סיוט."
+</div>
+
+<h2>הקדמה: למה בחירת ברוקר היא קריטית?</h2>
+
+<p>כדי להתחיל לסחור בבורסה האמריקאית, אתם זקוקים ל<strong>ברוקר</strong> – גוף פיננסי מורשה שדרכו אתם מזרימים פקודות קנייה ומכירה לשוק.</p>
+
+<p>חשבו על הברוקר כעל <strong>"השותף העסקי"</strong> שלכם:</p>
+<ul>
+<li>🏦 הוא מחזיק את הכסף שלכם</li>
+<li>⚡ הוא מבצע את הפקודות שלכם</li>
+<li>📊 הוא מספק לכם כלים וגרפים</li>
+<li>💰 הוא גובה מכם עמלות</li>
+<li>🛡️ הוא אחראי על האבטחה של החשבון</li>
+</ul>
+
+<div class="warning">
+<strong>⚠️ אזהרה חשובה:</strong><br>
+בחירת ברוקר גרוע יכולה לעלות לכם אלפי דולרים בשנה בעמלות מיותרות, ביצועים איטיים, ופלטפורמות מסורבלות. <strong>זו החלטה שחייבים לקחת ברצינות!</strong>
+</div>
+
+<h2>שיעור 1: השוואה בין ברוקרים מובילים</h2>
+
+<p>ב-SAGI TRADING בחרנו לעבוד עם הגופים המובילים בעולם, תוך דאגה לתנאים מועדפים עבורכם. בוא נשווה את 2 הברוקרים העיקריים:</p>
+
+<h3>מה לבדוק בברוקר? – 7 הקריטריונים</h3>
+
+<table>
+<tr><th>קריטריון</th><th>למה זה חשוב</th><th>טווח טוב</th></tr>
+<tr>
+<td><strong>עמלות</strong></td>
+<td>כמה משלמים לכל טרייד</td>
+<td>$0-$5 לטרייד</td>
+</tr>
+<tr>
+<td><strong>מהירות ביצוע</strong></td>
+<td>קריטי ל-Day Trading וסקאלפינג</td>
+<td>< 100ms</td>
+</tr>
+<tr>
+<td><strong>פלטפורמה</strong></td>
+<td>כלים וחוויית משתמש</td>
+<td>אינטואיטיבית + כלים מתקדמים</td>
+</tr>
+<tr>
+<td><strong>מינימום הפקדה</strong></td>
+<td>כמה צריך להתחיל</td>
+<td>$0-$500</td>
+</tr>
+<tr>
+<td><strong>גישה ל-ECN</strong></td>
+<td>ביצוע ישיר לבורסה</td>
+<td>מספר ECN זמינים</td>
+</tr>
+<tr>
+<td><strong>שירות לקוחות</strong></td>
+<td>עזרה כשצריך</td>
+<td>24/7 בעברית/אנגלית</td>
+</tr>
+<tr>
+<td><strong>מגוון נכסים</strong></td>
+<td>מניות, אופציות, קריפטו</td>
+<td>גישה לכל הנכסים הרלוונטיים</td>
+</tr>
+</table>
+
+<h3>הברוקרים שלנו – השוואה מפורטת</h3>
+
+<div class="broker-card">
+<h4>🏦 Interactive Brokers – הברוקר הגדול והנפוץ ביותר בעולם</h4>
+
+<p><strong>למי זה מתאים?</strong> משקיעים לטווח ארוך, סוחרי Swing Trading, ומי שרוצה מגוון נכסים אינסופי.</p>
+
+<p><strong class="pros">✅ יתרונות:</strong></p>
+<ul>
+<li><strong>יציבות מקסימלית</strong> – ברוקר ותיק (מאז 1978!) עם מוניטין מצוין</li>
+<li><strong>מגוון עצום של נכסים</strong> – מניות, אופציות, חוזים עתידיים, פורקס, קריפטו, אג"ח</li>
+<li><strong>גישה לבורסות בכל העולם</strong> – ארה"ב, אירופה, אסיה, 150+ שווקים</li>
+<li><strong>כלים מקצועיים</strong> – TWS (Trader Workstation) עם ניתוח מתקדם</li>
+<li><strong>שירות איכותי</strong> – תמיכה 24/7</li>
+</ul>
+
+<p><strong class="cons">❌ חסרונות:</strong></p>
+<ul>
+<li><strong>ממשק מורכב למתחילים</strong> – TWS דורש עקומת למידה</li>
+<li><strong>עמלות גבוהות יותר</strong> – $0.005 למניה (מינימום $1 לטרייד)</li>
+<li><strong>פחות מתאים לסקאלפינג אגרסיבי</strong> – מהירות טובה אך לא הכי מהירה</li>
+</ul>
+
+<div class="tip">
+<strong>💡 מתי לבחור ב-Interactive Brokers?</strong><br>
+• אתה סוחר Swing (מחזיק ימים-שבועות)<br>
+• אתה רוצה לסחור גם באופציות/פורקס/קריפטו<br>
+• אתה רוצה גישה לשווקים בכל העולם<br>
+• אתה מעדיף יציבות ואמינות על פני מהירות מקסימלית
+</div>
+
+<p><strong>🎁 הטבת קהילה:</strong></p>
+<p>הרשמה דרך הקישור הזה תניב לכם הטבות מסחר ועמלות מופחתות:<br>
+<a href="https://lp3.inter-il.com/ab/673" target="_blank">👉 Interactive Brokers – פתיחת חשבון + הטבות</a></p>
+</div>
+
+<div class="broker-card">
+<h4>⚡ Colmex Pro – הבחירה המועדפת של Day Traders בישראל</h4>
+
+<p><strong>למי זה מתאים?</strong> סוחרי Day Trading, סקאלפינג, ומי שצריך מהירות ביצוע מקסימלית.</p>
+
+<p><strong class="pros">✅ יתרונות:</strong></p>
+<ul>
+<li><strong>מהירות ביצוע מעולה</strong> – Colmex Pro 2.0 מהירה במיוחד, קריטי לסקאלפינג</li>
+<li><strong>עמלות נמוכות יותר</strong> – משתלם יותר מ-Interactive Brokers לסוחרים אקטיביים</li>
+<li><strong>ממשק פשוט בעברית</strong> – קל ללמידה, מתאים למתחילים</li>
+<li><strong>תמיכה ישראלית מצוינת</strong> – שירות בעברית, זמינות גבוהה</li>
+<li><strong>אידיאלי לסקאלפינג</strong> – ביצוע בשבריר שנייה</li>
+</ul>
+
+<p><strong class="cons">❌ חסרונות:</strong></p>
+<ul>
+<li><strong>מגוון נכסים מצומצם יותר</strong> – בעיקר מניות אמריקאיות</li>
+<li><strong>פחות מתאים למשקיעים לטווח ארוך</strong> – מיועד בעיקר לטריידינג אקטיבי</li>
+<li><strong>כלים פחות מתקדמים</strong> – לא כמו TWS של IB</li>
+</ul>
+
+<div class="tip">
+<strong>💡 מתי לבחור ב-Colmex Pro?</strong><br>
+• אתה סוחר Day Trading או סקאלפר<br>
+• מהירות ביצוע קריטית עבורך<br>
+• אתה מעדיף ממשק פשוט בעברית<br>
+• אתה מתמקד במניות אמריקאיות בלבד
+</div>
+
+<p><strong>🎁 הטבת קהילה:</strong></p>
+<p>הרשמה דרך הקישור הזה תניב עמלות מוזלות + חודש חינם במערכת המסחר:<br>
+<a href="https://bit.ly/SagiSelaPRO" target="_blank">👉 Colmex Pro – עמלות מוזלות + חודש חינם</a></p>
+</div>
+
+<h3>ברוקרים נוספים (למודעות)</h3>
+
+<div class="broker-card" style="border-color:#ffd369">
+<h4>🇮🇱 אקסלנס טרייד – ברוקר ישראלי מוסדר</h4>
+<p>ברוקר ישראלי מורשה, מתאים למי שמעדיף להישאר בתוך המערכת הישראלית.</p>
+<p><a href="https://xnestrade.xnes.co.il/page/101?customerCode=172f7190" target="_blank">👉 אקסלנס טרייד – פתיחת חשבון</a></p>
+</div>
+
+<div class="broker-card" style="border-color:#ffd369">
+<h4>📊 TradingView – פלטפורמת ניתוח (לא ברוקר מסחר!)</h4>
+<p>TradingView היא פלטפורמת גרפים וניתוח מתקדמת. אפשר להתחבר אליה מהברוקר שלכם.</p>
+<p><a href="https://il.tradingview.com/?aff_id=162251" target="_blank">👉 TradingView – הרשמה</a></p>
+</div>
+
+<div class="highlight">
+<strong>סיכום ההבדל:</strong><br><br>
+Interactive Brokers = יציבה, מגוון עצום, עמלות גבוהות יותר, מתאימה לסווינג ומשקיעים<br>
+↕<br>
+Colmex Pro = מהירה, עמלות נמוכות יותר, מתאימה לDay Trading וסקאלפינג
+</div>
+
+<h2>שיעור 2: פתיחת חשבון – שלב אחר שלב</h2>
+
+<p>תהליך פתיחת החשבון טכני, אך <strong>דורש דיוק</strong>. הנה הדברים שחשוב לשים לב אליהם:</p>
+
+<h3>1. סוגי חשבונות – מה ההבדל?</h3>
+
+<table>
+<tr><th>סוג חשבון</th><th>מה זה אומר</th><th>מתאים ל...</th></tr>
+<tr>
+<td><strong>Cash Account<br>(חשבון מזומן)</strong></td>
+<td>מסחר רק בכסף שיש לכם בחשבון<br>אין מינוף, אין Short</td>
+<td style="color:#00f2c3">✅ מתחילים<br>✅ משקיעים לטווח ארוך</td>
+</tr>
+<tr>
+<td><strong>Margin Account<br>(חשבון מרג'ין)</strong></td>
+<td>מאפשר מינוף (2:1 או 4:1)<br>מאפשר Short<br>דורש $25,000 מינימום (בארה"ב)</td>
+<td style="color:#00f2c3">✅ סוחרים אקטיביים<br>✅ Day Traders<br>✅ סוחרים מנוסים</td>
+</tr>
+</table>
+
+<div class="warning">
+<strong>⚠️ חשוב להבין:</strong><br>
+<strong>PDT Rule (Pattern Day Trader)</strong> – בארה"ב, אם אתם עושים יותר מ-3 Day Trades בשבוע בחשבון Margin, אתם חייבים לשמור $25,000 מינימום בחשבון. אחרת החשבון יוקפא!<br><br>
+<strong>פתרון:</strong> התחילו עם Cash Account או Swing Trading עד שתצברו $25K.
+</div>
+
+<h3>2. מסמכים נדרשים – תכינו מראש</h3>
+
+<p>כדי לפתוח חשבון, תצטרכו:</p>
+
+<ol>
+<li><strong>תעודת זהות / דרכון בתוקף</strong>
+<ul><li>צילום ברור (צבע) של שני הצדדים</li></ul>
+</li>
+<li><strong>אישור כתובת מהחודשים האחרונים:</strong>
+<ul>
+<li>חשבון חשמל / מים / ארנונה</li>
+<li>תדפיס בנק</li>
+<li>חשבון טלפון / אינטרנט</li>
+<li><strong>חשוב:</strong> התאריך חייב להיות מ-3 החודשים האחרונים!</li>
+</ul>
+</li>
+<li><strong>אישור על מקור הכנסה (לפעמים):</strong>
+<ul>
+<li>תלוש שכר</li>
+<li>דוח רווח והפסד (לעצמאים)</li>
+<li>אישור מהבנק</li>
+</ul>
+</li>
+</ol>
+
+<div class="tip">
+<strong>💡 טיפ חשוב:</strong><br>
+סרקו את כל המסמכים מראש ושמרו אותם בתיקייה במחשב. זה יזרז את התהליך!
+</div>
+
+<h3>3. אימות והצהרות – תשובות נכונות</h3>
+
+<p>בזמן ההרשמה תתבקשו להצהיר על:</p>
+
+<ul>
+<li><strong>רמת ניסיון במסחר</strong> – ישר כדאי לענות בכנות! זה משפיע על האפשרויות שיתנו לכם</li>
+<li><strong>רמת הכנסה ונכסים</strong> – שאלה סטנדרטית, אין צורך להגזים</li>
+<li><strong>מטרות ההשקעה</strong> – ספקולציה / הכנסה / צמיחה</li>
+<li><strong>סיכון שאתם מוכנים לקחת</strong> – גבוה / בינוני / נמוך</li>
+</ul>
+
+<div class="warning">
+<strong>⚠️ אל תשקרו!</strong><br>
+ודאו שאתם מבינים את כל השאלות. שקר יכול לגרום לחסימת חשבון בעתיד או לבעיות משפטיות.<br>
+אם לא בטוחים – בחרו ב"ניסיון בינוני" ו"סיכון בינוני".
+</div>
+
+<h3>4. זמן אישור – כמה זה לוקח?</h3>
+
+<table>
+<tr><th>שלב</th><th>זמן משוער</th></tr>
+<tr><td>הגשת בקשה</td><td>10-20 דקות</td></tr>
+<tr><td>אימות מסמכים</td><td>1-3 ימי עסקים</td></tr>
+<tr><td>העברת כסף לחשבון</td><td>2-5 ימי עסקים</td></tr>
+<tr><td><strong>סה"כ עד מסחר ראשון</strong></td><td><strong>3-8 ימי עסקים</strong></td></tr>
+</table>
+
+<div class="tip">
+<strong>💡 תכננו מראש!</strong><br>
+אל תחכו עד הרגע האחרון. פתחו חשבון ושלחו מסמכים <strong>לפני</strong> שאתם מוכנים לסחור, כדי שהכל יהיה מוכן כשתרצו להתחיל!
+</div>
+
+<h2>שיעור 3: הכרת מערכת המסחר והגדרות ראשוניות</h2>
+
+<p>לאחר פתיחת החשבון, נתקין את תוכנת המסחר במחשב.</p>
+
+<div class="warning">
+<strong>⚠️ חשוב מאוד:</strong><br>
+<strong>לסחור במחשב, לא מהנייד!</strong><br><br>
+למה? כי במחשב יש לכם:<br>
+• מסכים גדולים יותר<br>
+• יותר כוח עיבוד<br>• קלות בהצבת פקודות מהירות<br>
+• אפשרות לעבוד עם מספר חלונות במקביל<br><br>
+הנייד טוב לצפייה בלבד, לא למסחר אקטיבי!
+</div>
+
+<h3>מה נגדיר במערכת?</h3>
+
+<h4>1. סידור ה-Layout – המסך שלכם</h4>
+
+<p><strong>Layout אופטימלי למסחר:</strong></p>
+
+<table>
+<tr><th>אזור</th><th>מה להציג</th><th>למה זה חשוב</th></tr>
+<tr><td><strong>מסך ראשי</strong></td><td>גרף עיקרי (Daily / 4H)</td><td>הציפור הגדולה – איפה השוק?</td></tr>
+<tr><td><strong>מסך משני</strong></td><td>גרף משני (15min / 5min)</td><td>טיימינג מדויק לכניסה</td></tr>
+<tr><td><strong>Level 2</strong></td><td>ספר פקודות</td><td>רואים איפה הקונים והמוכרים</td></tr>
+<tr><td><strong>Time & Sales</strong></td><td>עסקאות בזמן אמת</td><td>מבינים את זרימת הכסף</td></tr>
+<tr><td><strong>Watchlist</strong></td><td>רשימת מניות למעקב</td><td>מעקב אחר הזדמנויות</td></tr>
+<tr><td><strong>Positions</strong></td><td>פוזיציות פתוחות</td><td>מעקב אחרי הטריידים הפעילים</td></tr>
+</table>
+
+<div class="example">
+<strong>📊 Layout מומלץ למתחילים:</strong><br><br>
+מסך 1 (שמאל): גרף גדול + Watchlist למטה<br>
+מסך 2 (ימין, למעלה): Level 2 + Time & Sales<br>
+מסך 2 (ימין, למטה): Positions + Orders<br><br>
+<strong>אם יש לכם רק מסך אחד:</strong> התמקדו בגרף + Watchlist + Positions
+</div>
+
+<h4>2. הגדרת פקודות הגנה – Stop Loss אוטומטי</h4>
+
+<p>בכל ברוקר טוב אפשר להגדיר שכל פוזיציה תיפתח אוטומטית עם Stop Loss.</p>
+
+<div class="highlight">
+זה מציל חשבונות!<br>
+הגדירו Stop Loss אוטומטי = אף פעם לא תשכחו לשים!
+</div>
+
+<h4>3. Hotkeys – מקשים מהירים לביצוע</h4>
+
+<p><strong>Hotkeys מומלצים:</strong></p>
+
+<table>
+<tr><th>מקש</th><th>פעולה</th></tr>
+<tr><td><strong>F1</strong></td><td>קנייה (Buy)</td></tr>
+<tr><td><strong>F2</strong></td><td>מכירה (Sell)</td></tr>
+<tr><td><strong>F3</strong></td><td>יציאה מכל הפוזיציות (Flatten All)</td></tr>
+<tr><td><strong>Shift + F1</strong></td><td>מכירה בשורט (Sell Short)</td></tr>
+<tr><td><strong>Shift + F2</strong></td><td>כיסוי שורט (Buy to Cover)</td></tr>
+</table>
+
+<div class="tip">
+<strong>💡 למה Hotkeys כל כך חשובים?</strong><br>
+בDay Trading, <strong>שניות משנות!</strong><br>
+במקום לחפש את הכפתור בעכבר ולטעות, אתם לוחצים F1 והפקודה יוצאת מיד!
+</div>
+
+<h4>4. הגדרת התראות (Alerts)</h4>
+
+<p>התראות יעזרו לכם לא לפספס הזדמנויות:</p>
+
+<ul>
+<li><strong>התראת מחיר</strong> – "תתריע לי כש-TSLA מגיעה ל-$200"</li>
+<li><strong>התראת Volume</strong> – "תתריע כשהווליום חורג פי 2 מהממוצע"</li>
+<li><strong>התראת Stop Loss</strong> – "תתריע כשהסטופ שלי נפגע"</li>
+</ul>
+
+<div class="exercise">
+<h4>📝 המשימה שלכם לסיום מודול 3:</h4>
+
+<ol>
+<li><strong>בחרו ברוקר:</strong>
+<ul style="margin-top:10px">
+<li>Interactive Brokers (לסווינג ומשקיעים)</li>
+<li>Colmex Pro (ל-Day Trading)</li>
+</ul>
+</li>
+<li><strong>הגישו בקשה לפתיחת חשבון</strong> דרך קישורי הקהילה (כדי לקבל הטבות!)</li>
+<li><strong>הורידו את תוכנת המסחר</strong> (Demo או לייב)</li>
+<li><strong>הגדירו גרף ראשוני</strong> למניה גדולה (TSLA / NVDA / AAPL)</li>
+<li><strong>תרגלו בDEMO</strong> לפחות שבוע לפני כסף אמיתי!</li>
+</ol>
+
+<p style="margin-top:20px;color:#ff5757"><strong>⚠️ אל תפתחו חשבון אמיתי עד שתרגלתם!</strong></p>
+</div>
+
+<h3>סיכום מודול 3 – מה למדנו?</h3>
+
+<div class="highlight" style="text-align:right">
+<p style="margin-bottom:10px">✅ <strong>הבנו את 7 הקריטריונים לבחירת ברוקר</strong></p>
+<p style="margin-bottom:10px">✅ <strong>השווינו בין IB ל-Colmex</strong> – יודעים מי מתאים למי</p>
+<p style="margin-bottom:10px">✅ <strong>למדנו את תהליך פתיחת החשבון</strong> – מסמכים + שלבים</p>
+<p style="margin-bottom:10px">✅ <strong>הכרנו את המערכת</strong> – Layout, Hotkeys, Alerts</p>
+<p>✅ <strong>מוכנים לתרגל!</strong> – Demo בדרך</p>
+</div>
+
+<p style="text-align:center;margin-top:50px;font-size:1.3em;color:#ffd369"><strong>עכשיו אנחנו מוכנים למודול 4 – ניתוח טכני! 🚀</strong></p>
+
+</div>
+</body>
+</html>

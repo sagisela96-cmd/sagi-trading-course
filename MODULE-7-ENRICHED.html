@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>מודול 7 - ניהול סיכונים (משודרג)</title>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Heebo',sans-serif;background:#0a1628;color:#fff;line-height:1.8;padding:40px}
+.container{max-width:1000px;margin:0 auto;background:#152238;padding:50px;border-radius:20px;border:1px solid rgba(255,255,255,.1)}
+h1{color:#f7b731;font-size:2.8em;margin-bottom:30px;text-align:center}
+h2{color:#ffd369;font-size:2em;margin:40px 0 20px;padding-bottom:10px;border-bottom:2px solid rgba(247,183,49,.3)}
+h3{color:#00d4ff;font-size:1.5em;margin:30px 0 15px}
+h4{color:#00f2c3;font-size:1.2em;margin:20px 0 10px}
+p{font-size:1.1em;line-height:1.9;margin:15px 0;color:#cbd5e1}
+ul,ol{margin:15px 0 15px 35px;font-size:1.05em;color:#cbd5e1}
+li{margin:10px 0;line-height:1.8}
+strong{color:#fff}
+.tip{background:rgba(247,183,49,.1);border-right:4px solid #f7b731;padding:20px;border-radius:10px;margin:25px 0}
+.tip strong{color:#f7b731}
+.example{background:rgba(0,212,255,.1);border-right:4px solid #00d4ff;padding:20px;border-radius:10px;margin:25px 0}
+.example strong{color:#00d4ff}
+.warning{background:rgba(255,87,87,.1);border-right:4px solid #ff5757;padding:20px;border-radius:10px;margin:25px 0}
+.warning strong{color:#ff5757}
+.exercise{background:rgba(0,242,195,.1);border-right:4px solid #00f2c3;padding:25px;border-radius:10px;margin:30px 0}
+.exercise h4{color:#00f2c3}
+.highlight{background:linear-gradient(135deg,rgba(247,183,49,.15),rgba(0,212,255,.1));border:1px solid rgba(247,183,49,.3);padding:25px;border-radius:12px;text-align:center;font-size:1.3em;font-weight:600;margin:30px 0}
+table{width:100%;border-collapse:collapse;margin:25px 0}
+th,td{padding:14px;border:1px solid rgba(255,255,255,.1);text-align:right}
+th{background:rgba(247,183,49,.2);color:#f7b731;font-weight:700}
+.quote{font-size:1.4em;font-style:italic;text-align:center;color:#ffd369;margin:30px 0;padding:20px;border-top:2px solid rgba(247,183,49,.3);border-bottom:2px solid rgba(247,183,49,.3)}
+.chart-visual{background:#1a1a2e;border:2px solid #00d4ff;border-radius:12px;padding:20px;margin:30px 0;text-align:center}
+.chart-caption{color:#00d4ff;font-size:.95em;margin-top:15px;text-align:center}
+</style>
+</head>
+<body>
+<div class="container">
+
+<h1>📍 מודול 7: ניהול סיכונים – חבל ההצלה שלך</h1>
+
+<p style="font-size:1.2em;text-align:center;color:#ffd369;margin-bottom:40px">הכלי החשוב ביותר להישרדות ורווחיות</p>
+
+<div class="quote">
+"מסחר הוא לא על להיות צודק.<br>מסחר הוא על להישאר במשחק מספיק זמן כדי להרוויח."
+</div>
+
+<h2>שיעור 1: חוק ה-1% – כמה לסכן בכל טרייד?</h2>
+
+<div class="highlight">
+לעולם לא תסכן יותר מ-1% עד 2%<br>
+מתיק המסחר שלך בעסקה אחת!
+</div>
+
+<h3>המתמטיקה שמצילה חשבונות</h3>
+
+<div class="chart-visual">
+<h4 style="color:#00d4ff;margin-bottom:20px">📊 1% vs 10% Risk - השוואה דרמטית</h4>
+<svg width="100%" height="400" viewBox="0 0 800 400" style="max-width:100%">
+<defs>
+<pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+<path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
+</pattern>
+</defs>
+<rect width="800" height="400" fill="url(#grid)"/>
+
+<!-- Starting line -->
+<line x1="50" y1="100" x2="750" y2="100" stroke="#ffd369" stroke-width="2" stroke-dasharray="5,3"/>
+<text x="50" y="90" fill="#ffd369" font-size="14" font-weight="bold">התחלה: $10,000</text>
+
+<!-- 1% Risk line (stays high) -->
+<polyline points="100,100 200,102 300,104 400,106 500,108 600,110 700,112" 
+fill="none" stroke="#00f2c3" stroke-width="4"/>
+<text x="710" y="115" fill="#00f2c3" font-size="15" font-weight="bold">1% Risk</text>
+<text x="710" y="130" fill="#00f2c3" font-size="13">$9,510 (-4.9%)</text>
+
+<!-- 10% Risk line (crashes down) -->
+<polyline points="100,100 200,130 300,170 400,220 500,280 600,330 700,360" 
+fill="none" stroke="#ff5757" stroke-width="4"/>
+<text x="710" y="365" fill="#ff5757" font-size="15" font-weight="bold">10% Risk</text>
+<text x="710" y="380" fill="#ff5757" font-size="13">$5,905 (-41%!)</text>
+
+<!-- Loss markers -->
+<g>
+<text x="150" y="50" fill="#cbd5e1" font-size="12" text-anchor="middle">הפסד 1</text>
+<text x="250" y="50" fill="#cbd5e1" font-size="12" text-anchor="middle">הפסד 2</text>
+<text x="350" y="50" fill="#cbd5e1" font-size="12" text-anchor="middle">הפסד 3</text>
+<text x="450" y="50" fill="#cbd5e1" font-size="12" text-anchor="middle">הפסד 4</text>
+<text x="550" y="50" fill="#cbd5e1" font-size="12" text-anchor="middle">הפסד 5</text>
+</g>
+
+<!-- Danger zone -->
+<rect x="500" y="250" width="250" height="140" fill="#ff5757" opacity="0.1"/>
+<text x="625" y="310" fill="#ff5757" font-size="18" font-weight="bold" text-anchor="middle">⚠️ DANGER!</text>
+<text x="625" y="330" fill="#ff5757" font-size="13" text-anchor="middle">החשבון כמעט נמחק!</text>
+
+<text x="400" y="390" fill="#cbd5e1" font-size="14" text-anchor="middle" font-weight="bold">💡 1% מאפשר 100 הפסדים ברצף | 10% רק 10 הפסדים!</text>
+</svg>
+<p class="chart-caption">⚠️ 10% סיכון = הרס מהיר! 1% סיכון = הישרדות ארוכה</p>
+</div>
+
+<table>
+<tr><th>הפסד</th><th>סוחר א' (1%)</th><th>סוחר ב' (10%)</th></tr>
+<tr><td>התחלה</td><td>$10,000</td><td>$10,000</td></tr>
+<tr><td>אחרי 5 הפסדים</td><td style="color:#00f2c3">$9,510</td><td style="color:#ff5757">$5,905</td></tr>
+<tr><td>ירידה מהתיק</td><td style="color:#00f2c3">4.9%</td><td style="color:#ff5757">41%!!!</td></tr>
+</table>
+
+<h2>שיעור 2: יחס סיכון/תגמול (R:R)</h2>
+
+<div class="chart-visual">
+<h4 style="color:#00d4ff;margin-bottom:20px">⚖️ Risk:Reward Ratios - השוואה</h4>
+<svg width="100%" height="450" viewBox="0 0 800 450" style="max-width:100%">
+<rect width="800" height="450" fill="url(#grid)"/>
+
+<!-- Ratio 1:1 (Bad) -->
+<g transform="translate(100,100)">
+<text x="75" y="-10" fill="#ff5757" font-size="16" font-weight="bold" text-anchor="middle">R:R 1:1 ❌</text>
+<!-- Risk bar -->
+<rect x="0" y="0" width="60" height="100" fill="#ff5757" opacity="0.7"/>
+<text x="30" y="55" fill="#fff" font-size="14" font-weight="bold" text-anchor="middle">Risk</text>
+<text x="30" y="70" fill="#fff" font-size="13" text-anchor="middle">$100</text>
+<!-- Reward bar -->
+<rect x="90" y="0" width="60" height="100" fill="#00f2c3" opacity="0.7"/>
+<text x="120" y="55" fill="#fff" font-size="14" font-weight="bold" text-anchor="middle">Reward</text>
+<text x="120" y="70" fill="#fff" font-size="13" text-anchor="middle">$100</text>
+<!-- Result -->
+<text x="75" y="130" fill="#ff5757" font-size="13" text-anchor="middle">צריך 50% Win Rate</text>
+<text x="75" y="145" fill="#ff5757" font-size="12" text-anchor="middle">בקושי שובר שוויון</text>
+</g>
+
+<!-- Ratio 1:2 (Good) -->
+<g transform="translate(350,100)">
+<text x="100" y="-10" fill="#00f2c3" font-size="16" font-weight="bold" text-anchor="middle">R:R 1:2 ✅</text>
+<!-- Risk bar -->
+<rect x="0" y="0" width="60" height="100" fill="#ff5757" opacity="0.7"/>
+<text x="30" y="55" fill="#fff" font-size="14" font-weight="bold" text-anchor="middle">Risk</text>
+<text x="30" y="70" fill="#fff" font-size="13" text-anchor="middle">$100</text>
+<!-- Reward bar (double) -->
+<rect x="90" y="-100" width="60" height="200" fill="#00f2c3" opacity="0.7"/>
+<text x="120" y="0" fill="#fff" font-size="14" font-weight="bold" text-anchor="middle">Reward</text>
+<text x="120" y="15" fill="#fff" font-size="13" text-anchor="middle">$200</text>
+<!-- Result -->
+<text x="100" y="130" fill="#00f2c3" font-size="13" text-anchor="middle" font-weight="bold">צריך רק 34% Win!</text>
+<text x="100" y="145" fill="#00f2c3" font-size="12" text-anchor="middle">רווחי גם עם 40%</text>
+</g>
+
+<!-- Ratio 1:3 (Excellent) -->
+<g transform="translate(600,100)">
+<text x="75" y="-10" fill="#f7b731" font-size="16" font-weight="bold" text-anchor="middle">R:R 1:3 🎯</text>
+<!-- Risk bar -->
+<rect x="0" y="0" width="60" height="100" fill="#ff5757" opacity="0.7"/>
+<text x="30" y="55" fill="#fff" font-size="14" font-weight="bold" text-anchor="middle">Risk</text>
+<text x="30" y="70" fill="#fff" font-size="13" text-anchor="middle">$100</text>
+<!-- Reward bar (triple) -->
+<rect x="90" y="-200" width="60" height="300" fill="#f7b731" opacity="0.7"/>
+<text x="120" y="-50" fill="#fff" font-size="14" font-weight="bold" text-anchor="middle">Reward</text>
+<text x="120" y="-35" fill="#fff" font-size="13" text-anchor="middle">$300</text>
+<!-- Result -->
+<text x="75" y="130" fill="#f7b731" font-size="13" text-anchor="middle" font-weight="bold">צריך רק 26%!</text>
+<text x="75" y="145" fill="#f7b731" font-size="12" text-anchor="middle">מצוין!</text>
+</g>
+
+<text x="400" y="420" fill="#cbd5e1" font-size="15" text-anchor="middle" font-weight="bold">💰 יחס R:R טוב = רווחי גם עם אחוז נמוך של נצחונות!</text>
+</svg>
+<p class="chart-caption">✅ R:R 1:2 או יותר = המינימום שלנו!</p>
+</div>
+
+<h3>המתמטיקה</h3>
+
+<div class="example">
+<strong>📊 תרחיש A – R:R 1:2</strong><br>
+10 טריידים, מסכן $100 בכל אחד<br>
+6 הפסדים × $100 = -$600<br>
+4 נצחונות × $200 = +$800<br>
+<strong>רווח נטו: $200 (40% Win Rate!)</strong><br><br>
+
+<strong>📊 תרחיש B – R:R 1:1</strong><br>
+10 טריידים, מסכן $100 בכל אחד<br>
+5 הפסדים × $100 = -$500<br>
+5 נצחונות × $100 = +$500<br>
+<strong>רווח נטו: $0 (50% Win Rate – אבל אפס רווח!)</strong>
+</div>
+
+<h2>שיעור 3: חישוב גודל פוזיציה (Position Sizing)</h2>
+
+<div class="chart-visual">
+<h4 style="color:#00d4ff;margin-bottom:20px">🧮 Position Sizing Calculator - ויזואליזציה</h4>
+<svg width="100%" height="350" viewBox="0 0 800 350" style="max-width:100%">
+<rect width="800" height="350" fill="url(#grid)"/>
+
+<!-- Portfolio -->
+<rect x="50" y="50" width="200" height="80" fill="#00d4ff" opacity="0.2" stroke="#00d4ff" stroke-width="2" rx="8"/>
+<text x="150" y="80" fill="#00d4ff" font-size="16" font-weight="bold" text-anchor="middle">תיק: $10,000</text>
+<text x="150" y="100" fill="#00d4ff" font-size="14" text-anchor="middle">סיכון 1% = $100</text>
+
+<!-- Arrow -->
+<path d="M 260 90 L 320 90" stroke="#ffd369" stroke-width="3" marker-end="url(#arrowgold)"/>
+<defs>
+<marker id="arrowgold" markerWidth="10" markerHeight="10" refX="5" refY="5" orient="auto">
+<polygon points="0,0 10,5 0,10" fill="#ffd369"/>
+</marker>
+</defs>
+
+<!-- Trade Setup -->
+<rect x="330" y="30" width="200" height="120" fill="#ffd369" opacity="0.2" stroke="#ffd369" stroke-width="2" rx="8"/>
+<text x="430" y="60" fill="#ffd369" font-size="15" font-weight="bold" text-anchor="middle">Setup טרייד</text>
+<text x="430" y="80" fill="#cbd5e1" font-size="13" text-anchor="middle">Entry: $500</text>
+<text x="430" y="98" fill="#cbd5e1" font-size="13" text-anchor="middle">Stop Loss: $495</text>
+<text x="430" y="116" fill="#ff5757" font-size="14" text-anchor="middle" font-weight="bold">סיכון למניה: $5</text>
+
+<!-- Calculation -->
+<rect x="340" y="170" width="180" height="60" fill="#f7b731" opacity="0.3" stroke="#f7b731" stroke-width="2" rx="8"/>
+<text x="430" y="195" fill="#f7b731" font-size="13" font-weight="bold" text-anchor="middle">נוסחה:</text>
+<text x="430" y="215" fill="#f7b731" font-size="14" text-anchor="middle">$100 ÷ $5 = 20 מניות</text>
+
+<!-- Arrow -->
+<path d="M 540 90 L 600 90" stroke="#ffd369" stroke-width="3" marker-end="url(#arrowgold)"/>
+
+<!-- Result -->
+<rect x="610" y="50" width="140" height="80" fill="#00f2c3" opacity="0.2" stroke="#00f2c3" stroke-width="2" rx="8"/>
+<text x="680" y="80" fill="#00f2c3" font-size="16" font-weight="bold" text-anchor="middle">תוצאה</text>
+<text x="680" y="100" fill="#00f2c3" font-size="15" text-anchor="middle" font-weight="bold">20 מניות</text>
+
+<!-- Verification -->
+<g transform="translate(100,260)">
+<text x="250" y="0" fill="#cbd5e1" font-size="15" font-weight="bold" text-anchor="middle">✅ אימות:</text>
+<text x="250" y="25" fill="#cbd5e1" font-size="13" text-anchor="middle">20 מניות × $5 הפסד למניה = $100 סיכון ✓</text>
+<text x="250" y="45" fill="#cbd5e1" font-size="13" text-anchor="middle">השקעה: 20 × $500 = $10,000 (100% מהתיק)</text>
+<text x="250" y="65" fill="#ff5757" font-size="14" text-anchor="middle" font-weight="bold">⚠️ זה 100% מהתיק - מסוכן! הקטן ל-0.5%</text>
+</g>
+</svg>
+<p class="chart-caption">🧮 תמיד חשב Position Size לפני הכניסה!</p>
+</div>
+
+<div class="highlight">
+<strong>הנוסחה הזהב:</strong><br><br>
+כמות מניות = סכום הסיכון (בדולרים) ÷ מרחק לסטופ-לוס (בדולרים למניה)
+</div>
+
+<h2>שיעור 4: קידום סטופ (Trailing Stop)</h2>
+
+<div class="chart-visual">
+<h4 style="color:#00d4ff;margin-bottom:20px">📈 Trailing Stop - ויזואליזציה</h4>
+<svg width="100%" height="350" viewBox="0 0 800 350" style="max-width:100%">
+<rect width="800" height="350" fill="url(#grid)"/>
+
+<!-- Entry level -->
+<line x1="100" y1="250" x2="750" y2="250" stroke="#00f2c3" stroke-width="2" stroke-dasharray="5,3"/>
+<text x="100" y="240" fill="#00f2c3" font-size="14" font-weight="bold">Entry: $100</text>
+
+<!-- Initial Stop Loss -->
+<line x1="100" y1="280" x2="300" y2="280" stroke="#ff5757" stroke-width="3" stroke-dasharray="8,4"/>
+<text x="100" y="295" fill="#ff5757" font-size="13">Stop: $95</text>
+
+<!-- Price moves up -->
+<polyline points="150,250 200,230 250,210 300,200 350,180 400,170 450,160 500,150 550,145" 
+fill="none" stroke="#ffd369" stroke-width="4"/>
+
+<!-- R:R 1:1 reached -->
+<line x1="300" y1="200" x2="750" y2="200" stroke="#ffd369" stroke-width="2" stroke-dasharray="3,2" opacity="0.5"/>
+<text x="310" y="195" fill="#ffd369" font-size="13">R:R 1:1: $105</text>
+
+<!-- Stop moves to Break Even -->
+<line x1="300" y1="250" x2="750" y2="250" stroke="#00f2c3" stroke-width="3" stroke-dasharray="8,4"/>
+<circle cx="300" cy="250" r="8" fill="#00f2c3"/>
+<text x="300" y="270" fill="#00f2c3" font-size="14" font-weight="bold">Stop → Break Even!</text>
+
+<!-- Target -->
+<line x1="500" y1="150" x2="750" y2="150" stroke="#00f2c3" stroke-width="2" stroke-dasharray="5,3"/>
+<text x="510" y="145" fill="#00f2c3" font-size="14" font-weight="bold">Target: $110</text>
+
+<!-- Annotations -->
+<rect x="330" y="110" width="220" height="50" fill="#f7b731" opacity="0.2" stroke="#f7b731" stroke-width="2" rx="6"/>
+<text x="440" y="130" fill="#f7b731" font-size="13" font-weight="bold" text-anchor="middle">🎯 הטרייד הפך "חינם"!</text>
+<text x="440" y="148" fill="#f7b731" font-size="12" text-anchor="middle">כעת אין סיכון - רק פוטנציאל!</text>
+
+<text x="400" y="330" fill="#cbd5e1" font-size:14" text-anchor="middle" font-weight="bold">✅ ב-R:R 1:1 תמיד העבר Stop ל-Break Even!</text>
+</svg>
+<p class="chart-caption">🎯 Trailing Stop הופך טרייד מסיכון ל-"Win-Win"</p>
+</div>
+
+<div class="exercise">
+<h4>📝 המשימה הקריטית ביותר:</h4>
+
+<ol>
+<li><strong>צור יומן מסחר:</strong>
+<ul style="margin-top:10px">
+<li>Excel / Google Sheets / Notion</li>
+<li>השתמש בטבלה שלמדנו</li>
+</ul>
+</li>
+
+<li><strong>תעד 10 טריידים (דמו):</strong>
+<ul style="margin-top:10px">
+<li>תוכנן כל טרייד לפני</li>
+<li>חשב Position Size</li>
+<li>ודא R:R 1:2 לפחות</li>
+</ul>
+</li>
+
+<li><strong>נתח:</strong>
+<ul style="margin-top:10px">
+<li>Win Rate שלך?</li>
+<li>R:R ממוצע?</li>
+<li>עמדת בכלל 1%?</li>
+</ul>
+</li>
+</ol>
+
+<p style="margin-top:20px;color:#ff5757"><strong>⚠️ בלי יומן = בלי שיפור!</strong></p>
+</div>
+
+<h3>סיכום מודול 7</h3>
+
+<div class="highlight" style="text-align:right">
+<p style="margin-bottom:10px">✅ <strong>הטמענו את חוק ה-1%</strong> – עם ויזואליזציה דרמטית</p>
+<p style="margin-bottom:10px">✅ <strong>למדנו R:R 1:2</strong> – ראינו את ההבדל</p>
+<p style="margin-bottom:10px">✅ <strong>שלטנו ב-Position Sizing</strong> – עם מחשבון ויזואלי</p>
+<p style="margin-bottom:10px">✅ <strong>הכרנו Trailing Stop</strong> – תרשים מלא</p>
+<p>✅ <strong>הבנו למה ניהול סיכונים = ההכל!</strong></p>
+</div>
+
+<p style="text-align:center;margin-top:50px;font-size:1.3em;color:#ffd369"><strong>מוכנים למודול 8 – פסיכולוגיה! 🚀</strong></p>
+
+</div>
+</body>
+</html>

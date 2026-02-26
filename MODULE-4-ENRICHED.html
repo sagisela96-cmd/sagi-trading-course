@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>מודול 4 - ניתוח טכני א' (משודרג)</title>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Heebo',sans-serif;background:#0a1628;color:#fff;line-height:1.8;padding:40px}
+.container{max-width:1000px;margin:0 auto;background:#152238;padding:50px;border-radius:20px;border:1px solid rgba(255,255,255,.1)}
+h1{color:#f7b731;font-size:2.8em;margin-bottom:30px;text-align:center}
+h2{color:#ffd369;font-size:2em;margin:40px 0 20px;padding-bottom:10px;border-bottom:2px solid rgba(247,183,49,.3)}
+h3{color:#00d4ff;font-size:1.5em;margin:30px 0 15px}
+h4{color:#00f2c3;font-size:1.2em;margin:20px 0 10px}
+p{font-size:1.1em;line-height:1.9;margin:15px 0;color:#cbd5e1}
+ul,ol{margin:15px 0 15px 35px;font-size:1.05em;color:#cbd5e1}
+li{margin:10px 0;line-height:1.8}
+strong{color:#fff}
+.tip{background:rgba(247,183,49,.1);border-right:4px solid #f7b731;padding:20px;border-radius:10px;margin:25px 0}
+.tip strong{color:#f7b731}
+.example{background:rgba(0,212,255,.1);border-right:4px solid #00d4ff;padding:20px;border-radius:10px;margin:25px 0}
+.example strong{color:#00d4ff}
+.warning{background:rgba(255,87,87,.1);border-right:4px solid #ff5757;padding:20px;border-radius:10px;margin:25px 0}
+.warning strong{color:#ff5757}
+.exercise{background:rgba(0,242,195,.1);border-right:4px solid #00f2c3;padding:25px;border-radius:10px;margin:30px 0}
+.exercise h4{color:#00f2c3}
+.highlight{background:linear-gradient(135deg,rgba(247,183,49,.15),rgba(0,212,255,.1));border:1px solid rgba(247,183,49,.3);padding:25px;border-radius:12px;text-align:center;font-size:1.3em;font-weight:600;margin:30px 0}
+table{width:100%;border-collapse:collapse;margin:25px 0}
+th,td{padding:14px;border:1px solid rgba(255,255,255,.1);text-align:right}
+th{background:rgba(247,183,49,.2);color:#f7b731;font-weight:700}
+.quote{font-size:1.4em;font-style:italic;text-align:center;color:#ffd369;margin:30px 0;padding:20px;border-top:2px solid rgba(247,183,49,.3);border-bottom:2px solid rgba(247,183,49,.3)}
+.candle-showcase{background:rgba(0,0,0,.3);border:2px solid #f7b731;border-radius:16px;padding:40px;margin:40px 0}
+.candle-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:30px;margin:30px 0}
+.candle-card{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:25px;transition:.3s}
+.candle-card:hover{border-color:#00d4ff;transform:translateY(-5px);box-shadow:0 10px 30px rgba(0,212,255,.2)}
+.candle-name{color:#f7b731;font-weight:700;font-size:1.2em;margin-bottom:20px;text-align:center}
+.candle-visual{min-height:200px;display:flex;align-items:center;justify-content:center;margin:20px 0;position:relative}
+.candle-meaning{color:#cbd5e1;font-size:.95em;margin:15px 0;text-align:center}
+.signal{font-weight:600;margin-top:12px;font-size:1em;text-align:center;padding:10px;border-radius:8px}
+.signal.bullish{background:rgba(0,242,195,.2);color:#00f2c3}
+.signal.bearish{background:rgba(255,87,87,.2);color:#ff5757}
+.signal.neutral{background:rgba(0,212,255,.2);color:#00d4ff}
+.chart-example{background:#1a1a2e;border:2px solid #00d4ff;border-radius:12px;padding:20px;margin:30px 0;text-align:center}
+.chart-example img{max-width:100%;border-radius:8px;margin:15px 0}
+.chart-caption{color:#00d4ff;font-size:.9em;margin-top:10px}
+</style>
+</head>
+<body>
+<div class="container">
+
+<h1>📍 מודול 4: ניתוח טכני א' – לקרוא את שפת הגרפים</h1>
+
+<p style="font-size:1.2em;text-align:center;color:#ffd369;margin-bottom:40px">הגרף הוא שיקוף של פחד וחמדנות בזמן אמת</p>
+
+<div class="quote">
+"ניתוח טכני הוא לא חיזוי העתיד.<br>זו קריאת פסיכולוגיית ההמונים."
+</div>
+
+<h2>מה זה בכלל ניתוח טכני?</h2>
+
+<p>ניתוח טכני הוא <strong>אמנות קריאת הגרפים</strong> כדי להבין מה השוק אומר לנו. זה לא קסם, לא כדור בדולח – זו <strong>פסיכולוגיה</strong>.</p>
+
+<p>כשאתם רואים גרף, אתם לא רואים סתם קווים. אתם רואים:</p>
+<ul>
+<li>🧠 <strong>פחד</strong> – כשהמחיר יורד בפאניקה</li>
+<li>🤑 <strong>חמדנות</strong> – כשהמחיר עולה באופוריה</li>
+<li>⚖️ <strong>היסוס</strong> – כשהשוק לא מחליט</li>
+<li>💪 <strong>ביטחון</strong> – כשהכסף הגדול נכנס</li>
+</ul>
+
+<div class="highlight">
+הגרף הוא "טביעות האצבעות" של הכסף הגדול.<br>המוסדיים לא יכולים להתחבא – הגרף חושף אותם!
+</div>
+
+<h3>3 העקרונות היסודיים של ניתוח טכני</h3>
+
+<table>
+<tr><th>עיקרון</th><th>משמעות</th></tr>
+<tr>
+<td><strong>1. המחיר משקף הכל</strong></td>
+<td>כל המידע הקיים (חדשות, רווחים, שמועות) כבר נמצא במחיר</td>
+</tr>
+<tr>
+<td><strong>2. המחיר נע במגמות</strong></td>
+<td>השוק לא זז באקראי – יש מגמות שנמשכות בזמן</td>
+</tr>
+<tr>
+<td><strong>3. ההיסטוריה חוזרת על עצמה</strong></td>
+<td>אנשים מגיבים באותן דרכים לאותם מצבים</td>
+</tr>
+</table>
+
+<h2>שיעור 1: נרות יפניים – הסיפור שמאחורי המחיר</h2>
+
+<p><strong>נר יפני (Japanese Candlestick)</strong> הוא הדרך הטובה ביותר להבין <strong>מי שולט בטרייד</strong>: הקונים (השוורים 🐂) או המוכרים (הדובים 🐻).</p>
+
+<h3>מבנה הנר – אנטומיה מלאה</h3>
+
+<p>כל נר מורכב מ-2 חלקים עיקריים:</p>
+
+<table>
+<tr><th>חלק</th><th>מה הוא מראה</th></tr>
+<tr>
+<td><strong>גוף הנר (Body)</strong></td>
+<td>המרחק בין מחיר הפתיחה למחיר הסגירה<br>גוף גדול = תנועה חזקה<br>גוף קטן = היסוס</td>
+</tr>
+<tr>
+<td><strong>זנבות/פתילים (Wicks/Shadows)</strong></td>
+<td>השיא והשפל שהמחיר הגיע אליהם אבל לא שמר<br>זנב ארוך = דחייה של המחיר באותו כיוון</td>
+</tr>
+</table>
+
+<h3>תבניות נרות קריטיות – עם ויזואליזציות!</h3>
+
+<div class="candle-showcase">
+<h4 style="color:#f7b731;text-align:center;margin-bottom:30px;font-size:1.6em">🎯 3 תבניות היפוך קריטיות</h4>
+
+<div class="candle-grid">
+
+<!-- Hammer -->
+<div class="candle-card">
+<div class="candle-name">🔨 Hammer (פטיש)</div>
+<div class="candle-visual">
+<svg width="100" height="180" viewBox="0 0 100 180">
+<!-- Upper wick (short) -->
+<line x1="50" y1="20" x2="50" y2="40" stroke="#94a3b8" stroke-width="3"/>
+<!-- Body (green, small) -->
+<rect x="35" y="40" width="30" height="40" fill="#00f2c3" stroke="#fff" stroke-width="2" rx="2"/>
+<!-- Lower wick (long) -->
+<line x1="50" y1="80" x2="50" y2="160" stroke="#94a3b8" stroke-width="3"/>
+<!-- Labels -->
+<text x="50" y="175" fill="#cbd5e1" font-size="10" text-anchor="middle">זנב ארוך פי 2-3</text>
+</svg>
+</div>
+<div class="candle-meaning">
+נר עם זנב תחתון ארוך (פי 2-3 מהגוף)<br>
+מופיע אחרי ירידות<br>
+<strong>משמעות:</strong> המחיר ירד אבל הקונים דחפו חזרה!
+</div>
+<div class="signal bullish">⬆️ סימן שורי חזק!<br>הקונים דחו את המוכרים</div>
+</div>
+
+<!-- Bearish Engulfing -->
+<div class="candle-card">
+<div class="candle-name">☁️ Bearish Engulfing (בליעה דובית)</div>
+<div class="candle-visual">
+<svg width="120" height="180" viewBox="0 0 120 180">
+<!-- Day 1: Small green candle -->
+<line x1="40" y1="60" x2="40" y2="70" stroke="#94a3b8" stroke-width="2"/>
+<rect x="30" y="70" width="20" height="50" fill="#00f2c3" stroke="#fff" stroke-width="2" rx="2"/>
+<line x1="40" y1="120" x2="40" y2="130" stroke="#94a3b8" stroke-width="2"/>
+<!-- Day 2: Large red candle that engulfs day 1 -->
+<line x1="80" y1="40" x2="80" y2="50" stroke="#94a3b8" stroke-width="2"/>
+<rect x="65" y="50" width="30" height="90" fill="#ff5757" stroke="#fff" stroke-width="2" rx="2"/>
+<line x1="80" y1="140" x2="80" y2="150" stroke="#94a3b8" stroke-width="2"/>
+<!-- Arrow showing engulfing -->
+<text x="60" y="170" fill="#cbd5e1" font-size="10" text-anchor="middle">נר אדום בולע</text>
+</svg>
+</div>
+<div class="candle-meaning">
+נר אדום גדול שבולע נר ירוק קטן<br>
+מופיע אחרי עליות<br>
+<strong>משמעות:</strong> המוכרים השתלטו לחלוטין!
+</div>
+<div class="signal bearish">⬇️ סימן דובי חזק!<br>המוכרים השתלטו</div>
+</div>
+
+<!-- Doji -->
+<div class="candle-card">
+<div class="candle-name">⚖️ Doji (דוג'י)</div>
+<div class="candle-visual">
+<svg width="100" height="180" viewBox="0 0 100 180">
+<!-- Upper wick -->
+<line x1="50" y1="30" x2="50" y2="90" stroke="#94a3b8" stroke-width="3"/>
+<!-- Body (thin line - open = close) -->
+<line x1="35" y1="90" x2="65" y2="90" stroke="#fff" stroke-width="4"/>
+<!-- Lower wick -->
+<line x1="50" y1="90" x2="50" y2="150" stroke="#94a3b8" stroke-width="3"/>
+<!-- Labels -->
+<text x="50" y="170" fill="#cbd5e1" font-size="10" text-anchor="middle">פתיחה = סגירה</text>
+</svg>
+</div>
+<div class="candle-meaning">
+נר ללא גוף (פתיחה = סגירה)<br>
+זנבות ארוכים לשני הכיוונים<br>
+<strong>משמעות:</strong> מלחמה תלויה ועומדת!
+</div>
+<div class="signal neutral">⚡ חוסר החלטה!<br>המלחמה תלויה ועומדת</div>
+</div>
+
+</div>
+</div>
+
+<div class="warning">
+<strong>⚠️ כלל זהב:</strong><br>
+<strong>אף תבנית לא עובדת ב-100%!</strong><br><br>
+פטיש אחרי ירידות = סיכוי טוב לעליות (70-80%)<br>
+אבל <strong>תמיד צריך אישור!</strong><br><br>
+אישור = הנר הבא צריך להיות ירוק ולעלות מעל הפטיש.
+</div>
+
+<div class="example">
+<strong>📊 דוגמה אמיתית – TSLA ינואר 2025:</strong><br><br>
+TSLA ירדה מ-$260 ל-$210 בשבועיים.<br>
+ב-$210 נוצר נר פטיש ענק עם זנב של $15!<br><br>
+<strong>מה זה אמר?</strong> המחיר ירד ל-$195 במהלך היום, אבל הקונים דחפו אותו חזרה ל-$210 בסגירה.<br><br>
+<strong>מה קרה אחרי?</strong> היום שאחרי – נר ירוק גדול, עליה ל-$225 (+7%)!<br><br>
+<strong>המסקנה:</strong> הפטיש עבד! מי שזיהה אותו הרוויח יפה.
+</div>
+
+<div class="chart-example">
+<h4 style="color:#00d4ff;margin-bottom:15px">📈 דוגמה ויזואלית – נר פטיש בפעולה</h4>
+<svg width="100%" height="300" viewBox="0 0 800 300" style="max-width:100%">
+<!-- Background grid -->
+<defs>
+<pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+<path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
+</pattern>
+</defs>
+<rect width="800" height="300" fill="url(#grid)"/>
+
+<!-- Price line going down -->
+<polyline points="50,80 150,100 250,130 350,170 450,200" fill="none" stroke="#ff5757" stroke-width="3" stroke-dasharray="5,5"/>
+
+<!-- Hammer candle at bottom -->
+<g transform="translate(500,140)">
+<!-- Upper wick -->
+<line x1="0" y1="-10" x2="0" y2="0" stroke="#94a3b8" stroke-width="4"/>
+<!-- Body -->
+<rect x="-15" y="0" width="30" height="30" fill="#00f2c3" stroke="#fff" stroke-width="2" rx="3"/>
+<!-- Long lower wick -->
+<line x1="0" y1="30" x2="0" y2="90" stroke="#94a3b8" stroke-width="4"/>
+<!-- Label -->
+<text x="0" y="110" fill="#f7b731" font-size="16" font-weight="bold" text-anchor="middle">HAMMER!</text>
+</g>
+
+<!-- Price line going up after hammer -->
+<polyline points="550,180 600,160 650,130 700,100 750,70" fill="none" stroke="#00f2c3" stroke-width="3"/>
+
+<!-- Annotations -->
+<text x="250" y="120" fill="#ff5757" font-size="14">ירידות ↓</text>
+<text x="650" y="90" fill="#00f2c3" font-size="14">עליות! ↑</text>
+<text x="500" y="260" fill="#cbd5e1" font-size="12" text-anchor="middle">הפטיש סימן שהקונים חזרו!</text>
+</svg>
+<p class="chart-caption">💡 שים לב: אחרי סדרת ירידות, הפטיש מסמן היפוך!</p>
+</div>
+
+<h2>שיעור 2: תמיכה, התנגדות וקווי מגמה</h2>
+
+<div class="quote">
+"תמיכה והתנגדות הן 80% מהניתוח הטכני.<br>תשלוט בזה – תשלוט בשוק."
+</div>
+
+<h3>1. תמיכה (Support) – "הרצפה"</h3>
+
+<p><strong>תמיכה</strong> = רמת מחיר שבה <strong>הקונים חזקים מספיק</strong> לעצור ירידות ולהחזיר את המחיר למעלה.</p>
+
+<div class="chart-example">
+<h4 style="color:#00d4ff;margin-bottom:15px">📊 ויזואליזציה – תמיכה והתנגדות</h4>
+<svg width="100%" height="350" viewBox="0 0 800 350" style="max-width:100%">
+<!-- Grid -->
+<defs>
+<pattern id="grid2" width="40" height="40" patternUnits="userSpaceOnUse">
+<path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
+</pattern>
+</defs>
+<rect width="800" height="350" fill="url(#grid2)"/>
+
+<!-- Resistance line -->
+<line x1="50" y1="80" x2="750" y2="80" stroke="#ff5757" stroke-width="3" stroke-dasharray="10,5"/>
+<text x="760" y="85" fill="#ff5757" font-size="14" font-weight="bold">התנגדות</text>
+
+<!-- Support line -->
+<line x1="50" y1="270" x2="750" y2="270" stroke="#00f2c3" stroke-width="3" stroke-dasharray="10,5"/>
+<text x="760" y="275" fill="#00f2c3" font-size="14" font-weight="bold">תמיכה</text>
+
+<!-- Price action bouncing between support and resistance -->
+<polyline points="100,200 150,150 200,100 250,90 300,120 350,180 400,250 450,260 500,200 550,120 600,90 650,140 700,220" 
+fill="none" stroke="#ffd369" stroke-width="4"/>
+
+<!-- Circles at bounce points -->
+<circle cx="250" cy="90" r="8" fill="#ff5757" opacity="0.8"/>
+<circle cx="400" cy="250" r="8" fill="#00f2c3" opacity="0.8"/>
+<circle cx="600" cy="90" r="8" fill="#ff5757" opacity="0.8"/>
+
+<!-- Annotations -->
+<text x="260" y="70" fill="#ff5757" font-size="12">נדחה מההתנגדות ↓</text>
+<text x="410" y="240" fill="#00f2c3" font-size="12">קפץ מהתמיכה ↑</text>
+<text x="400" y="330" fill="#cbd5e1" font-size="13" text-anchor="middle">המחיר "מקפץ" בין תמיכה להתנגדות</text>
+</svg>
+<p class="chart-caption">💡 תמיכה והתנגדות יוצרות "תעלה" שהמחיר נע בתוכה</p>
+</div>
+
+<div class="tip">
+<strong>💡 כיצד לזהות תמיכה חזקה?</strong><br>
+1. <strong>נבדקה הרבה פעמים</strong> – ככל שהמחיר נגע בה ועלה יותר פעמים, היא חזקה יותר<br>
+2. <strong>Volume גבוה</strong> – אם בכל נגיעה היה Volume גבוה, זה אומר שהכסף הגדול קונה שם<br>
+3. <strong>מספר עגול</strong> – $100, $200, $50 – אנשים אוהבים מספרים עגולים (פסיכולוגיה!)<br>
+4. <strong>ממוצעים נעים</strong> – MA 200 לעיתים משמש כתמיכה דינמית
+</div>
+
+<h3>3. קווי מגמה (Trendlines)</h3>
+
+<div class="chart-example">
+<h4 style="color:#00d4ff;margin-bottom:15px">📈 ויזואליזציה – מגמה עולה</h4>
+<svg width="100%" height="300" viewBox="0 0 800 300" style="max-width:100%">
+<!-- Grid -->
+<rect width="800" height="300" fill="url(#grid)"/>
+
+<!-- Uptrend line -->
+<line x1="50" y1="250" x2="750" y2="100" stroke="#00f2c3" stroke-width="3" stroke-dasharray="8,4"/>
+
+<!-- Price action above trendline -->
+<polyline points="100,240 150,220 200,200 250,190 300,180 350,160 400,150 450,140 500,120 550,110 600,100 650,90 700,80" 
+fill="none" stroke="#ffd369" stroke-width="4"/>
+
+<!-- Touch points on trendline -->
+<circle cx="100" cy="240" r="10" fill="#00f2c3" opacity="0.6"/>
+<circle cx="250" cy="190" r="10" fill="#00f2c3" opacity="0.6"/>
+<circle cx="450" cy="140" r="10" fill="#00f2c3" opacity="0.6"/>
+<circle cx="650" cy="90" r="10" fill="#00f2c3" opacity="0.6"/>
+
+<!-- Labels -->
+<text x="100" y="275" fill="#00f2c3" font-size="12">שפל 1</text>
+<text x="250" y="225" fill="#00f2c3" font-size="12">שפל 2</text>
+<text x="450" y="175" fill="#00f2c3" font-size="12">שפל 3</text>
+<text x="650" y="125" fill="#00f2c3" font-size="12">שפל 4</text>
+
+<text x="400" y="290" fill="#cbd5e1" font-size="14" text-anchor="middle" font-weight="bold">מגמה עולה - כל שפל גבוה יותר!</text>
+</svg>
+<p class="chart-caption">✅ במגמה עולה: קנה כשהמחיר נוגע בקו המגמה!</p>
+</div>
+
+<h2>שיעור 3: מבנה שוק ואסטרטגיית הפריצה</h2>
+
+<h3>מבנה שורי (Bullish Structure)</h3>
+
+<div class="chart-example">
+<h4 style="color:#00d4ff;margin-bottom:15px">📊 Higher Highs & Higher Lows</h4>
+<svg width="100%" height="250" viewBox="0 0 800 250" style="max-width:100%">
+<rect width="800" height="250" fill="url(#grid2)"/>
+
+<!-- Price action with HH and HL -->
+<polyline points="50,200 150,180 250,150 350,130 450,120 550,100 650,80 750,60" 
+fill="none" stroke="#ffd369" stroke-width="4"/>
+
+<!-- Highs -->
+<circle cx="150" cy="180" r="8" fill="#00f2c3"/>
+<text x="150" y="170" fill="#00f2c3" font-size="12" text-anchor="middle">H1</text>
+
+<circle cx="350" cy="130" r="8" fill="#00f2c3"/>
+<text x="350" y="120" fill="#00f2c3" font-size="12" text-anchor="middle">HH</text>
+
+<circle cx="550" cy="100" r="8" fill="#00f2c3"/>
+<text x="550" y="90" fill="#00f2c3" font-size="12" text-anchor="middle">HH</text>
+
+<circle cx="750" cy="60" r="8" fill="#00f2c3"/>
+<text x="750" y="50" fill="#00f2c3" font-size="12" text-anchor="middle">HH</text>
+
+<!-- Lows -->
+<circle cx="50" cy="200" r="8" fill="#ffd369"/>
+<text x="50" y="220" fill="#ffd369" font-size="12" text-anchor="middle">L1</text>
+
+<circle cx="250" cy="150" r="8" fill="#ffd369"/>
+<text x="250" y="170" fill="#ffd369" font-size="12" text-anchor="middle">HL</text>
+
+<circle cx="450" cy="120" r="8" fill="#ffd369"/>
+<text x="450" y="140" fill="#ffd369" font-size="12" text-anchor="middle">HL</text>
+
+<circle cx="650" cy="80" r="8" fill="#ffd369"/>
+<text x="650" y="100" fill="#ffd369" font-size="12" text-anchor="middle">HL</text>
+
+<text x="400" y="240" fill="#00f2c3" font-size="14" text-anchor="middle" font-weight="bold">מבנה שורי חזק! 🐂</text>
+</svg>
+<p class="chart-caption">✅ זה המבנה שאנחנו רוצים לראות בטרייד Long!</p>
+</div>
+
+<div class="exercise">
+<h4>📝 המשימה שלכם לסיום מודול 4:</h4>
+
+<ol>
+<li><strong>פתחו TradingView</strong> והכנסו למניה גדולה (TSLA / NVDA / AAPL)</li>
+<li><strong>מצאו 3 דוגמאות:</strong>
+<ul style="margin-top:10px">
+<li>1 דוגמה לפריצה שהצליחה (עם Volume גבוה)</li>
+<li>1 דוגמה לפריצה שנכשלה (עם Volume נמוך)</li>
+<li>1 דוגמה לנר פטיש שעבד</li>
+</ul>
+</li>
+<li><strong>סמנו על הגרף:</strong>
+<ul style="margin-top:10px">
+<li>תמיכה והתנגדות עיקריות</li>
+<li>קו מגמה (אם יש)</li>
+<li>רמות Volume</li>
+</ul>
+</li>
+<li><strong>שמרו צילומי מסך</strong> ביומן המסחר שלכם</li>
+</ol>
+
+<p style="margin-top:20px"><strong>למה זה קריטי?</strong><br>
+אתם לומדים לזהות תבניות בפועל, לא רק בתיאוריה!<br>
+זה ההבדל בין ידע לניסיון.</p>
+</div>
+
+<h3>סיכום מודול 4</h3>
+
+<div class="highlight" style="text-align:right">
+<p style="margin-bottom:10px">✅ <strong>הבנו את עקרונות הניתוח הטכני</strong></p>
+<p style="margin-bottom:10px">✅ <strong>למדנו לקרוא נרות יפניים</strong> – עם ויזואליזציות!</p>
+<p style="margin-bottom:10px">✅ <strong>שלטנו בתמיכה והתנגדות</strong> – עם תרשימים</p>
+<p style="margin-bottom:10px">✅ <strong>הכרנו קווי מגמה</strong> – ראינו איך זה נראה</p>
+<p style="margin-bottom:10px">✅ <strong>הבנו מבנה שוק</strong> – HH/HL ויזואלי</p>
+<p>✅ <strong>שלטנו באסטרטגיית הפריצה</strong> – הכלי החזק ביותר!</p>
+</div>
+
+<p style="text-align:center;margin-top:50px;font-size:1.3em;color:#ffd369"><strong>מוכנים למודול 5 – ניתוח טכני מתקדם! 🚀</strong></p>
+
+</div>
+</body>
+</html>
